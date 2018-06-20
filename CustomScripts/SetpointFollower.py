@@ -43,7 +43,8 @@ z1 = 0.35
 z2 = 0.6
 
 DT = 0.1 # Default dT for go_straight_d
-
+T = 1 # default time of flight
+VMAX = 0.3 # m/s if it goes higher than this then change t.
 # d: diameter of circle
 # z: altitude
 params0 = {'d': 1.0, 'z': z1, 'ver': -1}
@@ -188,10 +189,11 @@ def run_sequence(scf, sequence):
 #         time.sleep(dt)
 
 def go_straight_d(cf, d_x, d_y, z, t, dt=DT):
-	if (t != 0):
+	if (t == 0):
 		return
 	steps = int(t/dt)
 	v = [d_x/t, d_y/t]
+        
 	for r in range(steps):
 		cf.commander.send_hover_setpoint(v[0], v[1], 0, z)
 		time.sleep(dt)
@@ -243,7 +245,10 @@ def follow_paths(scf):
 	print('Hovering at 40 cm')
 
 	for position in sequence:
-		go_straight_d(cf, position[0], position[1], position[2], 1)
+        t = T
+        if (position[0]/T > VMAX or position[1]/T > VMAX):
+            t = position[0]/VMAX if position[0]/VMAX > position[1]/VMAX else position[1]/VMAX 
+		go_straight_d(cf, position[0], position[1], position[2], t)
 		print('At pos: ({}, {}, {})'.format(position[0], position[1], position[2]))
 		time.sleep(1)
 
