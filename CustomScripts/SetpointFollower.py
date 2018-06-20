@@ -42,6 +42,8 @@ from cflib.positioning.motion_commander import MotionCommander
 z1 = 0.35
 z2 = 0.6
 
+DT = 0.1 # Default dT for go_straight_d
+
 # d: diameter of circle
 # z: altitude
 params0 = {'d': 1.0, 'z': z1, 'ver': -1}
@@ -75,15 +77,6 @@ sequence = [
     (.2, .2, 0.3, 0),
     (-0.2, -0.2, 0.3, 0),
     (0, 0, 0.3, 0),
-]
-
-seq2 = [
-    (0, 0, 0.2, 0),
-    (0, 0, 0.2, 0.1),
-    (0, 0, 0.2, 0.5),
-    (.1, 0, 0.2, 0),
-    (.1, 0, 0.2, 0),
-
 ]
 
 position_internal = [0,0,0,0]
@@ -166,27 +159,13 @@ def run_sequence(scf, sequence):
 	    for position in sequence:
 	        cf.commander.send_hover_setpoint(0, 0, 0, position[2])
 
-	        movement = (position[0] - position_internal[0], 
-	            position[1] - position_internal[1], 
-	            position[2] - position_internal[2], 
-	            position[3] - position_internal[3] )
-
 	        for i in range(len(position)):
 	            position_internal[i] = position[i]
 
-	        if movement[0] > 0:
-	            mc.forward(movement[0])
-	        elif movement[0] < 0:
-	            mc.back(-1*movement[0])
-	        
-	        if movement[1] > 0:
-	            mc.right(movement[1])
-	        elif movement[1] < 0:
-	            mc.left(-1*movement[1])
+	        mc.move_distance(position[0], position[1], 0)
 
 	        time.sleep(1)
 
-    cf.commander.send_setpoint(0, 0, 0, 0)
     # Make sure that the last packet leaves before the link is closed
     # since the message queue is not flushed before closing
     time.sleep(0.1)
@@ -207,6 +186,15 @@ def run_sequence(scf, sequence):
 #     for r in range(steps):
 #         cf.commander.send_hover_setpoint(v[0], v[1], 0, z)
 #         time.sleep(dt)
+
+def go_straight_d(cf, d_x, d_y, z, t, dt=DT):
+	if (t != 0):
+		return
+	steps = int(t/dt)
+	v = [d_x/t, d_y/t]
+	for r in range(steps):
+		cf.commander.send_hover_setpoint(v[0], v[1], 0, z)
+		time.sleep(dt)
 
 
 # def go_vertical(cf, t, dt, z0, base, direction):
@@ -239,21 +227,26 @@ def run_sequence(scf, sequence):
 #             time.sleep(dt)
 
 def follow_paths(scf):
+	print('In function')
 	cf = scf.cf
 	cf.param.set_value('flightmode.posSet', '1')
 	print(cf)
 	# for position in sequence:
 	# 	cf.commander.send_hover_setpoint(position[0], position[1], position[2], position[3])
 	# 	time.sleep(2)
-    cf.commander.send_hover_setpoint(0, 0, 0, 0.3)
-    time.sleep(1)
-    print("Now starting seq2")
-	for position in seq2:
-        print("Now at: " + str(position))
-		for i in range(15):
-			#cf.commander.send_setpoint(y, x, yaw, z*1000)
-			cf.commander.send_setpoint(position[1], position[0], position[2], position[3]*10)
-			time.sleep(0.1)
+
+			# For future, make passed z a global z
+	print('About to hover at 40 cm')
+	cf.commander.send_hover_setpoint(0,0,0,0.4)
+	time.sleep(1)
+
+	print('Hovering at 40 cm')
+
+	for position in sequence:
+		go_straight_d(cf, position[0], position[1], position[2], 1)
+		print('At pos: ({}, {}, {})'.format(position[0], position[1], position[2]))
+		time.sleep(1)
+
 	cf.commander.send_setpoint(0,0,0,0)
 	time.sleep(0.1)
 
@@ -306,8 +299,7 @@ if __name__ == '__main__':
     	with SyncCrazyflie((available[0][0] + '/E7E7E7E7E8'), cf=Crazyflie(rw_cache='./cache')) as scf:
         	reset_estimator(scf)
         	# start_position_printing(scf)
-    		# run_sequence(scf, sequence)
-            follow_paths(scf)
+    		follow_paths(scf)
     else:
         print('No Crazyflies found, cannot run example')
 
