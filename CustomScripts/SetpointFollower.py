@@ -77,6 +77,15 @@ sequence = [
     (0, 0, 0.3, 0),
 ]
 
+seq2 = [
+    (0, 0, 0.2, 0),
+    (0, 0, 0.2, 0.1),
+    (0, 0, 0.2, 0.5),
+    (.1, 0, 0.2, 0),
+    (.1, 0, 0.2, 0),
+
+]
+
 position_internal = [0,0,0,0]
 
 def wait_for_position_estimator(scf):
@@ -236,9 +245,12 @@ def follow_paths(scf):
 	# for position in sequence:
 	# 	cf.commander.send_hover_setpoint(position[0], position[1], position[2], position[3])
 	# 	time.sleep(2)
-
-	for position in sequence:
-		for i in range(50):
+    cf.commander.send_hover_setpoint(0, 0, 0, 0.3)
+    time.sleep(1)
+    print("Now starting seq2")
+	for position in seq2:
+        print("Now at: " + str(position))
+		for i in range(10):
 			#cf.commander.send_setpoint(y, x, yaw, z*1000)
 			cf.commander.send_setpoint(position[1], position[0], position[2], position[3]*10)
 			time.sleep(0.1)
@@ -294,7 +306,8 @@ if __name__ == '__main__':
     	with SyncCrazyflie((available[0][0] + '/E7E7E7E7E8'), cf=Crazyflie(rw_cache='./cache')) as scf:
         	reset_estimator(scf)
         	# start_position_printing(scf)
-    		run_sequence(scf, sequence)
+    		# run_sequence(scf, sequence)
+            follow_paths(scf)
     else:
         print('No Crazyflies found, cannot run example')
 
