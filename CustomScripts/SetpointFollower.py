@@ -45,6 +45,7 @@ z2 = 0.6
 DT = 0.1 # Default dT for go_straight_d
 T = 1 # default time of flight
 VMAX = 0.3 # m/s if it goes higher than this then change t.
+START_HEIGHT = 0.4 # Initial hover height
 # d: diameter of circle
 # z: altitude
 params0 = {'d': 1.0, 'z': z1, 'ver': -1}
@@ -73,14 +74,14 @@ params4 = {'d': 1.0, 'z': 0.2, 'ver': 1}
 sequence = [
     (0, 0, 0.4, 0),
     (.6, 0, 0.4, 0),
-    (0, .6, 0.4, 0),
-    (-0.6, 0, 0.4, 0),
-    (0, -0.6, 0.4, 0),
+    (.6, .6, 0.4, 0),
+    (0, 0.6, 0.4, 0),
+    (0, 0, 0.4, 0),
     (0, 0, 0.4, 0),
     (0, 0, 0.4, 0),
 ]
 
-position_internal = [0,0,0,0]
+position_internal = [0,0,START_HEIGHT,0]
 
 def wait_for_position_estimator(scf):
     print('Waiting for estimator to find position...')
@@ -249,17 +250,31 @@ def follow_paths(scf):
 
 			# For future, make passed z a global z
 	print('About to hover at 40 cm')
-	cf.commander.send_hover_setpoint(0,0,0,0.4)
+	cf.commander.send_hover_setpoint(0,0,0,START_HEIGHT)
 	time.sleep(1)
 
 	print('Hovering at 40 cm')
 
+	movement = sequence[0]
+
 	for position in sequence:
+
+		movement = (position[0]-position_internal[0], 
+			position[1]-position_internal[1], 
+			position[2], 
+			position[3])
+
 		t = T
 		if (position[0]/T > VMAX or position[1]/T > VMAX):
 			t = position[0]/VMAX if position[0]/VMAX > position[1]/VMAX else position[1]/VMAX 
-		go_straight_d(cf, position[0], position[1], position[2], t)
-		print('At pos: ({}, {}, {})'.format(position[0], position[1], position[2]))
+		go_straight_d(cf, movement[0], movement[1], movement[2], t)
+		print('At pos: ({}, {}, {})'.format(position_internal[0], position_internal[1], position_internal[2]))
+		
+		for i in range(2):
+			position_internal[i] += movement[i]
+		for i in range(2):
+			position_internal[i+2] = movement[i+2]
+
 		time.sleep(1)
 
 	
