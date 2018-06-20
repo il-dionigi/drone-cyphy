@@ -250,7 +250,7 @@ def follow_paths(scf):
     print("Now starting seq2")
 	for position in seq2:
         print("Now at: " + str(position))
-		for i in range(10):
+		for i in range(15):
 			#cf.commander.send_setpoint(y, x, yaw, z*1000)
 			cf.commander.send_setpoint(position[1], position[0], position[2], position[3]*10)
 			time.sleep(0.1)
