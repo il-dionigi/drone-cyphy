@@ -71,13 +71,13 @@ params4 = {'d': 1.0, 'z': 0.2, 'ver': 1}
 # }
 
 sequence = [
-    (0, 0, 0.3, 0),
-    (.2, 0, 0.3, 0),
-    (0, .2, 0.3, 0),
-    (0, 0, 0.3, 0),
-    (.2, .2, 0.3, 0),
-    (-0.2, -0.2, 0.3, 0),
-    (0, 0, 0.3, 0),
+    (0, 0, 0.4, 0),
+    (.6, 0, 0.4, 0),
+    (0, .6, 0.4, 0),
+    (-0.6, 0, 0.4, 0),
+    (0, -0.6, 0.4, 0),
+    (0, 0, 0.4, 0),
+    (0, 0, 0.4, 0),
 ]
 
 position_internal = [0,0,0,0]
@@ -198,6 +198,14 @@ def go_straight_d(cf, d_x, d_y, z, t, dt=DT):
 		cf.commander.send_hover_setpoint(v[0], v[1], 0, z)
 		time.sleep(dt)
 
+def go_land(scf):
+	cf = scf.cf
+	cf.param.set_value('flightmode.posSet', '1')
+	cf.commander.send_hover_setpoint(0,0,0,0.4)
+	time.sleep(0.2)
+	cf.commander.send_hover_setpoint(0,0,0,0.2)
+	cf.commander.send_hover_setpoint(0,0,0,0.1)
+	cf.commander.send_hover_setpoint(0,0,0,0.05)
 
 # def go_vertical(cf, t, dt, z0, base, direction):
 #     steps = int(t / dt)
@@ -213,20 +221,22 @@ def go_straight_d(cf, d_x, d_y, z, t, dt=DT):
 #             time.sleep(dt)
 
 
-# def go_circular(cf, angle, diameter, z, direction, t, dt):
-#     steps = int(t / dt)
-#     rad_angle = angle * math.pi / 180
+def go_circular(scf, angle, diameter, z, direction, t, dt):
+	cf = scf.cf
+	cf.param.set_value('flightmode.posSet', '1')
+	steps = int(t / dt)
+	rad_angle = angle * math.pi / 180
 
-#     speed = 0.5 * diameter * rad_angle / t
+	speed = 0.5 * diameter * rad_angle / t
 
-#     if direction > 0:
-#         for _ in range(steps):
-#             cf.commander.send_hover_setpoint(speed, 0, angle / t, z)
-#             time.sleep(dt)
-#     else:
-#         for _ in range(steps):
-#             cf.commander.send_hover_setpoint(speed, 0, -angle / t, z)
-#             time.sleep(dt)
+	if direction > 0:
+		for _ in range(steps):
+			cf.commander.send_hover_setpoint(speed, 0, angle / t, z)
+			time.sleep(dt)
+	else:
+		for _ in range(steps):
+ 			cf.commander.send_hover_setpoint(speed, 0, -angle / t, z)
+ 			time.sleep(dt)
 
 def follow_paths(scf):
 	print('In function')
@@ -245,14 +255,15 @@ def follow_paths(scf):
 	print('Hovering at 40 cm')
 
 	for position in sequence:
-        t = T
-        if (position[0]/T > VMAX or position[1]/T > VMAX):
-            t = position[0]/VMAX if position[0]/VMAX > position[1]/VMAX else position[1]/VMAX 
+		t = T
+		if (position[0]/T > VMAX or position[1]/T > VMAX):
+			t = position[0]/VMAX if position[0]/VMAX > position[1]/VMAX else position[1]/VMAX 
 		go_straight_d(cf, position[0], position[1], position[2], t)
 		print('At pos: ({}, {}, {})'.format(position[0], position[1], position[2]))
 		time.sleep(1)
 
-	cf.commander.send_setpoint(0,0,0,0)
+	
+
 	time.sleep(0.1)
 
 # def run_sequence(scf, parameters):
@@ -305,6 +316,8 @@ if __name__ == '__main__':
         	reset_estimator(scf)
         	# start_position_printing(scf)
     		follow_paths(scf)
+    		#go_circular(scf, 360, 0.8, 0.4, 0, 4, 0.05)
+    		go_land(scf)
     else:
         print('No Crazyflies found, cannot run example')
 
