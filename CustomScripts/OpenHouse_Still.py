@@ -30,14 +30,13 @@ import math
 import time
 
 import cflib.crtp
-from cflib.crazyflie.swarm import CachedCfFactory
+from cflib.crazyflie.swarm import CachedCfFactor
 from cflib.crazyflie.swarm import Swarm
 
 # Change uris according to your setup
-URI0 = 'radio://0/75/1M/E7E7E7E701'
-URI1 = 'radio://0/80/1M/E7E7E7E702'
-
-URI2 = 'radio://0/94/2M/E7E7E7E7E7'
+URI0 = 'radio://0/70/1M/E7E7E7E7E8'
+URI1 = 'radio://0/75/1M/E7E7E7E7E8'
+URI2 = 'radio://0/80/250K/E7E7E7E7E8'
 URI3 = 'radio://0/5/2M/E7E7E7E702'
 URI4 = 'radio://0/110/2M/E7E7E7E703'
 

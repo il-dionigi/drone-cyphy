@@ -41,18 +41,18 @@ from cflib.crazyflie.syncCrazyflie import SyncCrazyflie
 from cflib.crazyflie.syncLogger import SyncLogger
 
 # URI to the Crazyflie to connect to
-uri = 'radio://0/75/1M/E7E7E7E701'
+uri = 'radio://0/70/1M/E7E7E7E7E8'
 
 # Change the sequence according to your setup
 #             x    y    z  YAW
 sequence = [
+    (0.1, 0, 0, 0),
+    (0.1, 0, 0, 0),
+    (0, 0.1, 0, 0),
+    (0, 0.1, 0, 0),
     (0, 0, 0.1, 0),
-    (0, 0, 0.2, 0),
-    (0, 0, 0.3, 0),
-    (0, 0, 0.4, 0),
-    (0, 0, 0.3, 0),
-    (0, 0, 0.2, 0),
     (0, 0, 0.1, 0),
+    (0, 0, 0, 0),
 ]
 
 
@@ -129,12 +129,14 @@ def run_sequence(scf, sequence):
 
     cf.param.set_value('flightmode.posSet', '1')
 
+    cf.commander.send_hover_setpoint(0, 0, 0, 0.2)
+
     for position in sequence:
         print('Setting position {}'.format(position))
         for i in range(50):
             cf.commander.send_setpoint(position[1], position[0],
                                        position[3],
-                                       int(position[2] * 1000))
+                                       int(position[2] * 10))
             time.sleep(0.1)
 
     cf.commander.send_setpoint(0, 0, 0, 0)
