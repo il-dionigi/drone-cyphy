@@ -51,10 +51,12 @@ class Logger:
     link uri and disconnects after 5s.
     """
 
-    def __init__(self, link_uri):
+    def __init__(self, link_uri, cf, logIDs):
         """ Initialize and run the example with the specified link_uri """
 
-        self._cf = Crazyflie(rw_cache='./cache')
+        self._cf = cf
+
+        self._logIDs
 
         # Connect some callbacks from the Crazyflie API
         self._cf.connected.add_callback(self._connected)
@@ -70,96 +72,98 @@ class Logger:
         # Variable used to keep main loop occupied until disconnect
         self.is_connected = True
 
+    def __del__(self):
+        if errorLog != None:
+            errorLog.close()
+
+        if dataLog != None:
+            dataLog.close()
+
     def _connected(self, link_uri):
         """ This callback is called form the Crazyflie API when a Crazyflie
         has been connected and the TOCs have been downloaded."""
         print('Connected to %s' % link_uri)
 
         # The definition of the logconfig can be made before connecting
-        self._lg_stab = LogConfig(name='Stabilizer', period_in_ms=10)
-        self._lg_stab.add_variable('stabilizer.roll', 'float')
-        self._lg_stab.add_variable('stabilizer.pitch', 'float')
-        self._lg_stab.add_variable('stabilizer.yaw', 'float')
+        if 'stab' in self._logIDs:
+            self._lg_stab = LogConfig(name='Stabilizer', period_in_ms=10)
+            self._lg_stab.add_variable('stabilizer.roll', 'float')
+            self._lg_stab.add_variable('stabilizer.pitch', 'float')
+            self._lg_stab.add_variable('stabilizer.yaw', 'float')
 
-        self._lg_ext_pos = LogConfig(name='External Position', period_in_ms=10)
-        self._lg_ext_pos.add_variable('ext_pos.X', 'float')
-        self._lg_ext_pos.add_variable('ext_pos.Y', 'float')
-        self._lg_ext_pos.add_variable('ext_pos.Z', 'float')
+            try:
+                self._cf.log.add_config(self._lg_stab)
+                # This callback will receive the data
+                self._lg_stab.data_received_cb.add_callback(self._log_data)
+                # This callback will be called on errors
+                self._lg_stab.error_cb.add_callback(self._log_error)
+                # Start the logging
+                self._lg_stab.start()
+            except KeyError as e:
+                print('Could not start log configuration,'
+                      '{} not found in TOC'.format(str(e)))
+            except AttributeError:
+                print('Could not add Stabilizer log config, bad configuration.')
 
-        self._lg_gyro = LogConfig(name='Gyroscope', period_in_ms=10)
-        self._lg_gyro.add_variable('gyro.x', 'float')
-        self._lg_gyro.add_variable('gyro.y', 'float')
-        self._lg_gyro.add_variable('gyro.z', 'float')
+        if 'ext_pos' in self._logIDs:
+            self._lg_ext_pos = LogConfig(name='External Position', period_in_ms=10)
+            self._lg_ext_pos.add_variable('ext_pos.X', 'float')
+            self._lg_ext_pos.add_variable('ext_pos.Y', 'float')
+            self._lg_ext_pos.add_variable('ext_pos.Z', 'float')
+    
+            try:
+                self._cf.log.add_config(self._lg_ext_pos)
+                # This callback will receive the data
+                self._lg_ext_pos.data_received_cb.add_callback(self._ext_pos_log_data)
+                # This callback will be called on errors
+                self._lg_ext_pos.error_cb.add_callback(self._ext_pos_log_error)
+                # Start the logging
+                self._lg_ext_pos.start()
+            except KeyError as e:
+                print('Could not start log configuration,'
+                      '{} not found in TOC'.format(str(e)))
+            except AttributeError:
+                print('Could not add External Position log config, bad configuration.')
 
-        self._lg_accel = LogConfig(name='Acceleration', period_in_ms=10)
-        self._lg_accel.add_variable('acc.x', 'float')
-        self._lg_accel.add_variable('acc.y', 'float')
-        self._lg_accel.add_variable('acc.z', 'float')
+        if 'gyro' in self._logIDs:
+            self._lg_gyro = LogConfig(name='Gyroscope', period_in_ms=10)
+            self._lg_gyro.add_variable('gyro.x', 'float')
+            self._lg_gyro.add_variable('gyro.y', 'float')
+            self._lg_gyro.add_variable('gyro.z', 'float')
 
-        # self._lg_accel = self.crazyflie.log.create_log_packet(_lg_accel_conf)
+            try:
+                self._cf.log.add_config(self._lg_gyro)
+                # This callback will receive the data
+                self._lg_gyro.data_received_cb.add_callback(self._log_data)
+                # This callback will be called on errors
+                self._lg_gyro.error_cb.add_callback(self._log_error)
+                # Start the logging
+                self._lg_gyro.start()
+            except KeyError as e:
+                print('Could not start log configuration,'
+                      '{} not found in TOC'.format(str(e)))
+            except AttributeError:
+                print('Could not add Gyroscope log config, bad configuation.')
+        
+        if 'acc' in self._logIDs:
+            self._lg_accel = LogConfig(name='Acceleration', period_in_ms=10)
+            self._lg_accel.add_variable('acc.x', 'float')
+            self._lg_accel.add_variable('acc.y', 'float')
+            self._lg_accel.add_variable('acc.z', 'float')
 
-        # Adding the configuration cannot be done until a Crazyflie is
-        # connected, since we need to check that the variables we
-        # would like to log are in the TOC.
-        try:
-            self._cf.log.add_config(self._lg_stab)
-            # This callback will receive the data
-            self._lg_stab.data_received_cb.add_callback(self._log_data)
-            # This callback will be called on errors
-            self._lg_stab.error_cb.add_callback(self._log_error)
-            # Start the logging
-            # self._lg_stab.start()
-        except KeyError as e:
-            print('Could not start log configuration,'
-                  '{} not found in TOC'.format(str(e)))
-        except AttributeError:
-            print('Could not add Stabilizer log config, bad configuration.')
-
-        # try:
-        #     self._cf.log.add_config(self._lg_ext_pos)
-        #     # This callback will receive the data
-        #     self._lg_ext_pos.data_received_cb.add_callback(self._ext_pos_log_data)
-        #     # This callback will be called on errors
-        #     self._lg_ext_pos.error_cb.add_callback(self._ext_pos_log_error)
-        #     # Start the logging
-        #     self._lg_ext_pos.start()
-        # except KeyError as e:
-        #     print('Could not start log configuration,'
-        #           '{} not found in TOC'.format(str(e)))
-        # except AttributeError:
-        #     print('Could not add External Position log config, bad configuration.')
-
-        try:
-            self._cf.log.add_config(self._lg_gyro)
-            # This callback will receive the data
-            self._lg_gyro.data_received_cb.add_callback(self._log_data)
-            # This callback will be called on errors
-            self._lg_gyro.error_cb.add_callback(self._log_error)
-            # Start the logging
-            self._lg_gyro.start()
-        except KeyError as e:
-            print('Could not start log configuration,'
-                  '{} not found in TOC'.format(str(e)))
-        except AttributeError:
-            print('Could not add External Position log config, bad configuation.')
-
-        try:
-            self._cf.log.add_config(self._lg_accel)
-            # This callback will receive the data
-            self._lg_accel.data_received_cb.add_callback(self._log_data)
-            # This callback will be called on errors
-            self._lg_accel.error_cb.add_callback(self._log_error)
-            # Start the logging
-            self._lg_accel.start()
-        except KeyError as e:
-            print('Could not start log configuration,'
-                  '{} not found in TOC'.format(str(e)))
-        except AttributeError:
-            print('Could not add Acceleration log config, bad configuration.')
-
-        # Start a timer to disconnect in 10s
-        t = Timer(5, self._cf.close_link)
-        t.start()
+            try:
+                self._cf.log.add_config(self._lg_accel)
+                # This callback will receive the data
+                self._lg_accel.data_received_cb.add_callback(self._log_data)
+                # This callback will be called on errors
+                self._lg_accel.error_cb.add_callback(self._log_error)
+                # Start the logging
+                self._lg_accel.start()
+            except KeyError as e:
+                print('Could not start log configuration,'
+                      '{} not found in TOC'.format(str(e)))
+            except AttributeError:
+                print('Could not add Acceleration log config, bad configuration.')
 
     def _log_error(self, logconf, msg):
         global errorLog
@@ -211,7 +215,7 @@ if __name__ == '__main__':
         print(i[0])
 
     if len(available) > 0:
-        le = LoggingExample(available[0][0])
+        le = Logger(available[0][0])
     else:
         print('No Crazyflies found, cannot run example')
 
@@ -221,8 +225,3 @@ if __name__ == '__main__':
     while le.is_connected:
         time.sleep(1)
 
-    if errorLog != None:
-        errorLog.close()
-
-    if dataLog != None:
-        dataLog.close()
