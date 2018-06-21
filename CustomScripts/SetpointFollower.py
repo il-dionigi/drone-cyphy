@@ -72,11 +72,17 @@ params4 = {'d': 1.0, 'z': 0.2, 'ver': 1}
 # }
 
 sequence = [
+    (0.0, 0.0, 0.4, 0),
+    (0.6, 0.0, 0.4, 0),
+    (0.6, 0.6, 0.4, 0),
+    (0.0, 0.6, 0.4, 0),
+    (0.0, 0.0, 0.4, 0),
+    (0.6, 0.6, 0.6, 0),
     (0, 0, 0.4, 0),
-    (.6, 0, 0.4, 0),
-    (.6, .6, 0.4, 0),
-    (0, 0.6, 0.4, 0),
-    (0, 0, 0.4, 0),
+    (0.2, 0.2, 0.4, 0),
+    (-0.3, 0.3, 0.4, 0),
+    (0.1, 0.1, 0.4, 0),
+    (-0.1, -0.1, 0.4, 0),
     (0, 0, 0.4, 0),
     (0, 0, 0.4, 0),
 ]
@@ -132,13 +138,11 @@ def reset_estimator(scf):
 
     wait_for_position_estimator(cf)
 
-
 def position_callback(timestamp, data, logconf):
     x = data['kalman.stateX']
     y = data['kalman.stateY']
     z = data['kalman.stateZ']
     print('pos: ({}, {}, {})'.format(x, y, z))
-
 
 def start_position_printing(scf):
     log_conf = LogConfig(name='Position', period_in_ms=500)
@@ -149,7 +153,6 @@ def start_position_printing(scf):
     scf.cf.log.add_config(log_conf)
     log_conf.data_received_cb.add_callback(position_callback)
     log_conf.start()
-
 
 def run_sequence(scf, sequence):
     cf = scf.cf
@@ -172,22 +175,11 @@ def run_sequence(scf, sequence):
     # since the message queue is not flushed before closing
     time.sleep(0.1)
 
-# def move_forward(cf, d, t, z):
-
-
-
 # def poshold(cf, t, z):
 #     steps = t * 10
 #     for r in range(steps):
 #         cf.commander.send_hover_setpoint(0, 0, 0, z)
 #         time.sleep(0.1)
-
-
-# def go_straight(cf, v, t, dt, z):
-#     steps = int(t/dt)
-#     for r in range(steps):
-#         cf.commander.send_hover_setpoint(v[0], v[1], 0, z)
-#         time.sleep(dt)
 
 def go_straight_d(cf, d_x, d_y, z, t, dt=DT):
 	if (t == 0):
