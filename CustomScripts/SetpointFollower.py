@@ -354,14 +354,11 @@ def follow_paths(scf):
 		if (position[0]/T > VMAX or position[1]/T > VMAX):
 			t = position[0]/VMAX if position[0]/VMAX > position[1]/VMAX else position[1]/VMAX 
 			go_straight_d(cf, movement[0], movement[1], movement[2], t)
+            time.sleep(1)
 			print('At pos: ({}, {}, {})'.format(position_internal[0], position_internal[1], position_internal[2]))
 		
-		for i in range(2):
-			position_internal[i] += movement[i]
-		for i in range(2):
-			position_internal[i+2] = movement[i+2]
-
-		time.sleep(1)
+		for i in range(4):
+			position_internal[i] = movement[i]
 
 	time.sleep(0.1)
 
