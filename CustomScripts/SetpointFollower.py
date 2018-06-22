@@ -292,8 +292,6 @@ def go_land(scf):
 	cf.commander.send_hover_setpoint(0,0,0,0.4)
 	cf.commander.send_hover_setpoint(0,0,0,0.3)
 	cf.commander.send_hover_setpoint(0,0,0,0.2)
-	cf.commander.send_hover_setpoint(0,0,0,0.1)
-	cf.commander.send_hover_setpoint(0,0,0,0.05)
 
 # def go_vertical(cf, t, dt, z0, base, direction):
 #	 steps = int(t / dt)
@@ -408,6 +406,7 @@ if __name__ == '__main__':
 			# start_position_printing(scf)
 			follow_paths(scf)
 			#go_circular(scf, 360, 0.8, 0.4, 0, 4, 0.05)
+            print("Landing now...")
 			go_land(scf)
 	else:
 		print('No Crazyflies found, cannot run example')
