@@ -402,7 +402,7 @@ if __name__ == '__main__':
 			# start_position_printing(scf)
 			follow_paths(scf)
 			#go_circular(scf, 360, 0.8, 0.4, 0, 4, 0.05)
-            print("Landing now...")
+			print("Landing now...")
 			go_land(scf)
 	else:
 		print('No Crazyflies found, cannot run example')
