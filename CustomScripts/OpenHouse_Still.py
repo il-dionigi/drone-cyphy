@@ -34,7 +34,7 @@ from cflib.crazyflie.swarm import CachedCfFactor
 from cflib.crazyflie.swarm import Swarm
 
 # Change uris according to your setup
-URI0 = 'radio://0/70/1M/E7E7E7E7E8'
+URI0 = 'radio://0/85/1M/E7E7E7E7E8'
 URI1 = 'radio://0/75/1M/E7E7E7E7E8'
 URI2 = 'radio://0/80/250K/E7E7E7E7E8'
 URI3 = 'radio://0/5/2M/E7E7E7E702'

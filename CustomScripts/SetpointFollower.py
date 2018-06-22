@@ -95,13 +95,6 @@ sequence = [
 	(0.6, 0.0, 0.4, 0),
 	(0.6, 0.6, 0.4, 0),
 	(0.0, 0.6, 0.4, 0),
-	(0.0, 0.0, 0.4, 0),
-	(0.6, 0.6, 0.6, 0),
-	(0, 0, 0.4, 0),
-	(0.2, 0.2, 0.4, 0),
-	(-0.3, 0.3, 0.4, 0),
-	(0.1, 0.1, 0.4, 0),
-	(-0.1, -0.1, 0.4, 0),
 	(0, 0, 0.4, 0),
 	(0, 0, 0.4, 0),
 ]
@@ -297,7 +290,7 @@ def go_land(scf):
 	cf = scf.cf
 	cf.param.set_value('flightmode.posSet', '1')
 	cf.commander.send_hover_setpoint(0,0,0,0.4)
-	time.sleep(0.2)
+	cf.commander.send_hover_setpoint(0,0,0,0.3)
 	cf.commander.send_hover_setpoint(0,0,0,0.2)
 	cf.commander.send_hover_setpoint(0,0,0,0.1)
 	cf.commander.send_hover_setpoint(0,0,0,0.05)
