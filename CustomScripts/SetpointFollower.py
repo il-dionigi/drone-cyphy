@@ -96,7 +96,7 @@ sequence = [
 	(0.6, 0.6, 0.4, 0),
 	(0.0, 0.6, 0.4, 0),
 	(0, 0, 0.4, 0),
-	(0, 0, 0.4, 0),
+	(0, 0, 0.4, 0)
 ]
 
 position_internal = [0,0,START_HEIGHT,0]
@@ -291,7 +291,7 @@ def go_land(scf):
 	cf.param.set_value('flightmode.posSet', '1')
 	cf.commander.send_hover_setpoint(0,0,0,0.4)
 	cf.commander.send_hover_setpoint(0,0,0,0.3)
-	cf.commander.send_hover_setpoint(0,0,0,0.2)
+	cf.commander.send_hover_setpoint(0,0,0,0.1)
 
 # def go_vertical(cf, t, dt, z0, base, direction):
 #	 steps = int(t / dt)
@@ -347,13 +347,14 @@ def follow_paths(scf):
 					position[2], 
 					position[3])
 		t = T
-		if (position[0]/T > VMAX or position[1]/T > VMAX):
-			t = position[0]/VMAX if position[0]/VMAX > position[1]/VMAX else position[1]/VMAX 
-			go_straight_d(cf, movement[0], movement[1], movement[2], t)
-			time.sleep(1)
-			print('At pos: ({}, {}, {})'.format(position_internal[0], position_internal[1], position_internal[2]))
+		if (abs(movement[0]/T) > VMAX or abs(movement[1]/T) > VMAX):
+			t = abs(movement[0]/VMAX) if abs(movement[0]/VMAX) > abs(movement[1]/VMAX) else abs(movement[1]/VMAX) 
+		go_straight_d(cf, movement[0], movement[1], movement[2], t)
+		print('Moving: ({}, {}, {}) in time {}'.format(movement[0], movement[1], movement[2], t))
+		print('Now at: ({}, {}, {})'.format(position_internal[0], position_internal[1], position_internal[2]))
+		time.sleep(1)
 		for i in range(4):
-			position_internal[i] = movement[i]
+			position_internal[i] = position[i]
 		time.sleep(0.1)
 
 def csv_stab(timestamp, data, self):
