@@ -17,15 +17,14 @@ def update(num, data, line):
 
 with open(sys.argv[0], 'rb') as csvfile:
     posreader = csv.reader(csvfile, delimiter=',', quotechar='|')
-    l = (len(posreader))
     l = range(l)[0::int(l/steps)]
     i = 0
     for row in posreader:
         if i == 0:
             print(row)
-        else if (i in l):
+        elif (i in l):
             data.append([row[1], row[2], row[3]])
-        i++
+        i = i + 1
 N = len(data)
 line, = ax.plot(data[0, 0:1], data[1, 0:1], data[2, 0:1])
 
