@@ -8,7 +8,9 @@ import sys
 fig = plt.figure()
 ax = p3.Axes3D(fig)
 steps = 100
-data = []
+datax = []
+datay = []
+dataz = []
 
 def update(num, data, line):
     line.set_data(data[:2, :num])
@@ -21,10 +23,13 @@ with open(sys.argv[1], 'r') as csvfile:
         if i == 0:
             print(row)
         else:
-            data.append([row[1], row[2], row[3]])
+            datax.append(row[1])
+            datay.append(row[2])
+            dataz.append(row[3])
         i = i + 1
+data = [datax, datay, dataz]
 print(data)
-N = len(data)
+N = len(datax)
 line, = ax.plot(data[0, 0:1], data[1, 0:1], data[2, 0:1])
 
 # Setting the axes properties
