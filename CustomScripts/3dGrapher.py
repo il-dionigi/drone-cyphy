@@ -3,6 +3,7 @@ import numpy as np
 import mpl_toolkits.mplot3d.axes3d as p3
 from matplotlib import animation
 import csv
+import sys
 
 fig = plt.figure()
 ax = p3.Axes3D(fig)
@@ -20,14 +21,14 @@ def update(num, data, line):
     line.set_3d_properties(data[2, :num])
 
 
-with open('PUT NAME HERE BRIAN.csv', 'rb') as csvfile:
+with open(sys.argv[0], 'rb') as csvfile:
     posreader = csv.reader(csvfile, delimiter=',', quotechar='|')
     l = (len(posreader))
     l = range(l)[0::int(l/steps)]
     for i in l:
         row = posreader[i];
         if i == 0:
-            #title stuff, can do something later?
+            print(row)
         else:
             data.append([row[1], row[2], row[3]])
 N = len(data)
