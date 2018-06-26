@@ -1,0 +1,16 @@
+Ideas;
+
+1. modify UART, use second set of pins, ...
+2. try create new CRTP port(?) and hope that works
+
+Files to look at:
+-Crazyflie2NRF:
+uart.c, 
+syslink.c,
+main.c,
+-Crazyflie:
+crtp.c,
+queue.c,
+syslink.c,
+console.c,
+commander.c

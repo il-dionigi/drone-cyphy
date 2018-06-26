@@ -1,0 +1,7 @@
+Once we have drone-drone communication working:
+
+To relay from one drone, change commander.py to send a packet with TYPE_XXXX and channel+addr (+other), and then in the ctrp_commander_generic.c file within crazyflie-firmware, add TYPE_XXXX and create a new decoder function to either (depending on implementation):
+
+1. Set/unset a relay flag that triggers the drone to relay all commands to channel+addr from the data
+2. Read the data (which will contain a channel+addr + command) and then send the command to the channel+addr.
+
