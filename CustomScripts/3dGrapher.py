@@ -14,18 +14,16 @@ def update(num, data, line):
     line.set_data(data[:2, :num])
     line.set_3d_properties(data[2, :num])
 
-
-with open(sys.argv[0], 'rb') as csvfile:
-    posreader = csv.reader(csvfile, delimiter=',', quotechar='|')
-    l = len(list(posreader))
-    l = range(l)[0::int(l/steps)]
+with open(sys.argv[1], 'r') as csvfile:
+    csvdata = csv.reader(csvfile, delimiter=',')
     i = 0
-    for row in posreader:
+    for row in csvdata:
         if i == 0:
             print(row)
-        elif (i in l):
+        else:
             data.append([row[1], row[2], row[3]])
         i = i + 1
+print(data)
 N = len(data)
 line, = ax.plot(data[0, 0:1], data[1, 0:1], data[2, 0:1])
 
