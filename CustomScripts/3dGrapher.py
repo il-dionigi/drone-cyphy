@@ -23,27 +23,27 @@ with open(sys.argv[1], 'r') as csvfile:
         if i == 0:
             print(row)
         else:
-            datax.append(row[1])
-            datay.append(row[2])
-            dataz.append(row[3])
+            datax.append(float(row[1]))
+            datay.append(float(row[2]))
+            dataz.append(float(row[3]))
         i = i + 1
 data = [datax, datay, dataz]
-print(data)
+data = np.array(data)
 N = len(datax)
 line, = ax.plot(data[0, 0:1], data[1, 0:1], data[2, 0:1])
 
 # Setting the axes properties
-ax.set_xlim3d([-2, 2])
+ax.set_xlim3d([-1, 1])
 ax.set_xlabel('X')
 
-ax.set_ylim3d([-2, 2])
+ax.set_ylim3d([-1, 1])
 ax.set_ylabel('Y')
 
-ax.set_zlim3d([0, 2])
+ax.set_zlim3d([0, 1])
 ax.set_zlabel('Z')
 
 ani = animation.FuncAnimation(fig, update, N, fargs=(data, line), interval=10000/N, blit=False)
-#ani.save('matplot003.gif', writer='imagemagick')
+ani.save(sys.argv[1][:-4] + '.gif', writer='imagemagick')
 plt.show()
 
 #https://stackoverflow.com/questions/38118598/3d-animation-using-matplotlib
