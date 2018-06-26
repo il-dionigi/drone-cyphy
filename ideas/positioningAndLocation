@@ -20,7 +20,8 @@ Current files which control positioning and location
 - estimator_kalman.c
 	- estimates quad position and velocity in x,y,z plus the attitude error using a kalman filter (?)
 	- note: magnetometer plays no part in estimation
-	- contains estimator using tdoa (loco-pos) and using flow, don't seem to be together
+	- contains estimator using tdoa (loco-pos) and using flow
+	-- two are mixed together using the stateEstimatorUpdate* functions which call stateEstimatorScalarUpdate
 
 - position_controller_pid.c
 	- pid-based implementation of position commander
