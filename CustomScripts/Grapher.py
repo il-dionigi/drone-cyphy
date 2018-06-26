@@ -1,11 +1,17 @@
 import plotly.plotly as py
+import plotly.tools as pyt
 import plotly.graph_objs as go
 import plotly.figure_factory as FF
+pyt.set_credentials_file(username='scifi-drone', api_key='jMZp7ui3i8EVBjzt7qFQ')
+
+import sys
 
 import numpy as np
 import pandas as pd
 
-df = pd.read_csv('GIVE_ME_NAME_HERE.csv')
+inFile = sys.argv[1]
+
+df = pd.read_csv(inFile)
 
 trace1 = go.Scatter(
                     x=df['time'], y=df['x_pos'], # Data
