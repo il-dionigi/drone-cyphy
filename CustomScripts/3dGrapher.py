@@ -43,7 +43,7 @@ ax.set_zlim3d([0, 1])
 ax.set_zlabel('Z')
 
 ani = animation.FuncAnimation(fig, update, N, fargs=(data, line), interval=10000/N, blit=False)
-ani.save(sys.argv[1][:-4] + '.gif', writer='imagemagick')
+ani.save(sys.argv[1][:-4] + '.mp4', fps=20, dpi=80)
 plt.show()
 
 #https://stackoverflow.com/questions/38118598/3d-animation-using-matplotlib
