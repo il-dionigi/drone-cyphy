@@ -27,3 +27,6 @@ Current files which control positioning and location
 	- pid-based implementation of position commander
 	- uses pid, commandar, and position_controller
 	- seems to be a straight-forward pid implementation without use of attitude
+	
+- planner.c 
+	- Sets current and future flight states based on trajectory
