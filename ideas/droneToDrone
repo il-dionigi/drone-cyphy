@@ -14,3 +14,6 @@ queue.c,
 syslink.c,
 console.c,
 commander.c
+
+From python/PC side:
+crazyradio.py, send_packet fcn; has data (but from radio dongle's ack)
