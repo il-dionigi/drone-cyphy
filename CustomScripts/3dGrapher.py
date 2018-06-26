@@ -17,6 +17,7 @@ def update(num, data, line):
 
 with open(sys.argv[0], 'rb') as csvfile:
     posreader = csv.reader(csvfile, delimiter=',', quotechar='|')
+    l = sum(1 for row in posreader)  
     l = range(l)[0::int(l/steps)]
     i = 0
     for row in posreader:
