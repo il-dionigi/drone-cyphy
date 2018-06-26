@@ -1,0 +1,28 @@
+Current files which control positioning and location
+
+*** NOTE: Bitcraze mispells 'aLtitude' as 'aTtitude'
+
+- controller_pid.c
+	- sets desired rates and adjusts setpoints
+	- logs data (actuatorThrust, roll, pitch, yaw, rollRate, pitchRate, and yawRate) under the 'controller' group
+	- uses sensfusion6, position_controller, and attitude_controller
+
+- controller_mellinger.c
+	- controller using PID based on a paper by Daniel Mellinger using 'minimum snap trajectory'
+	- has its own internal PID control
+	- logs lots of data
+	- uses position_controller and math3d
+
+- estimator_complementary.c
+	- not quite sure what this is used for
+	- is not adjusted for legacy coordinate system?
+
+- estimator_kalman.c
+	- estimates quad position and velocity in x,y,z plus the attitude error using a kalman filter (?)
+	- note: magnetometer plays no part in estimation
+	- contains estimator using tdoa (loco-pos) and using flow, don't seem to be together
+
+- position_controller_pid.c
+	- pid-based implementation of position commander
+	- uses pid, commandar, and position_controller
+	- seems to be a straight-forward pid implementation without use of attitude
