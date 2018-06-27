@@ -28,6 +28,7 @@ Demo for the open house
 """
 import math
 import time
+import sys 
 
 import cflib
 from cflib.crazyflie import Crazyflie
@@ -89,12 +90,14 @@ params4 = {'d': 1.0, 'z': 0.2, 'ver': 1}
 #	 URI3: [params3],
 #	 URI4: [params4],
 # }
+locoMode = 0
 
 sequence = [
 	(0.0, 0.0, 0.4, 0),
+	(0.0, 0.61, 0.4, 0),
 	(0.61, 0.61, 0.4, 0),
-	(0.61, 0.61, 0.4, 0),
-	(0.0, 0.0, 0.4, 0)
+	(0.61, 0.0, 0.4, 0),
+	(0.0,0.0,0.4,0.0)
 ]
 
 position_internal = [0,0,START_HEIGHT,0]
@@ -287,9 +290,12 @@ def go_straight_d(cf, d_x, d_y, z, t, dt=DT):
 def go_land(scf):
 	cf = scf.cf
 	cf.param.set_value('flightmode.posSet', '1')
-	cf.commander.send_hover_setpoint(0,0,0,0.4)
-	cf.commander.send_hover_setpoint(0,0,0,0.3)
-	cf.commander.send_hover_setpoint(0,0,0,0.1)
+	if (locoMode):
+		cf.commander.send_hover_setpoint(0,0,0,0.4)
+	else:
+		cf.commander.send_setpoint(0,0,0,int(0.4*1000))
+	
+
 
 # def go_vertical(cf, t, dt, z0, base, direction):
 #	 steps = int(t / dt)
@@ -321,6 +327,21 @@ def go_circular(scf, angle, diameter, z, direction, t, dt):
 		for _ in range(steps):
 		 	cf.commander.send_hover_setpoint(speed, 0, -angle / t, z)
 		 	time.sleep(dt)
+
+def loco_follow_paths(scf):
+	cf = scf.cf
+	cf.param.set_value('flightmode.posSet', '1')
+
+	for position in sequence:
+		print('Setting position {}'.format(position))
+		for i in range(50):
+			cf.commander.send_setpoint(position[1], position[0], position[3],
+                                       int(position[2] * 1000))
+			time.sleep(0.1)
+
+    # Make sure that the last packet leaves before the link is closed
+    # since the message queue is not flushed before closing
+	time.sleep(0.1)
 
 def follow_paths(scf):
 	cf = scf.cf
@@ -398,8 +419,12 @@ if __name__ == '__main__':
 			reset_estimator(scf)
 
 			start_logging(scf, ['stab', 'pos', 'acc', 'gyro'])
+			locoMode = (sys.argv[1] == '1')
 			# start_position_printing(scf)
-			follow_paths(scf)
+			if locoMode:
+				loco_follow_paths(scf)
+			else:
+				follow_paths(scf)
 			#go_circular(scf, 360, 0.8, 0.4, 0, 4, 0.05)
 			print("Landing now...")
 			go_land(scf)
