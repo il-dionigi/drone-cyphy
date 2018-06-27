@@ -1,5 +1,6 @@
 from matplotlib import pyplot as plt
 import numpy as np
+import matplotlib
 import mpl_toolkits.mplot3d.axes3d as p3
 from matplotlib import animation
 import csv
