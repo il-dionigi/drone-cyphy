@@ -93,11 +93,26 @@ params4 = {'d': 1.0, 'z': 0.2, 'ver': 1}
 locoMode = 0
 
 sequence = [
+	# Square
+	# (0.0, 0.0, 0.4, 0),
+	# (0.0, 0.61, 0.4, 0),
+	# (0.61, 0.61, 0.4, 0),
+	# (0.61, 0.0, 0.4, 0),
+	# (0.0,0.0,0.4,0.0)
+	# Corner
 	(0.0, 0.0, 0.4, 0),
 	(0.0, 0.61, 0.4, 0),
 	(0.61, 0.61, 0.4, 0),
-	(0.61, 0.0, 0.4, 0),
-	(0.0,0.0,0.4,0.0)
+	(0.0, 0.61, 0.4, 0),
+	(0.0, 0.0, 0.4, 0.0)
+	# Hourglass
+	# (0.0, 0.0, 0.4, 0),
+	# (0.61, 0.61, 0.4, 0),
+	# (-0.61, 0.61, 0.4, 0),
+	# (0.0, 0.0, 0.4, 0),
+	# (0.61, -0.61, 0.4, 0.0),
+	# (-0.61, -0.61, 0.4, 0),
+	# (0.0, 0.0, 0.4, 0)
 ]
 
 position_internal = [0,0,START_HEIGHT,0]
@@ -147,6 +162,7 @@ def reset_estimator(scf):
 	cf.param.set_value('kalman.resetEstimation', '1')
 	time.sleep(0.1)
 	cf.param.set_value('kalman.resetEstimation', '0')
+	time.sleep(0.2)
 
 	wait_for_position_estimator(cf)
 
@@ -427,7 +443,7 @@ if __name__ == '__main__':
 				follow_paths(scf)
 			#go_circular(scf, 360, 0.8, 0.4, 0, 4, 0.05)
 			print("Landing now...")
-			go_land(scf)
+			# go_land(scf)
 	else:
 		print('No Crazyflies found, cannot run example')
 
