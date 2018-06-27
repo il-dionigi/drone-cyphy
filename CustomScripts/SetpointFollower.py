@@ -100,19 +100,19 @@ sequence = [
 	# (0.61, 0.0, 0.4, 0),
 	# (0.0,0.0,0.4,0.0)
 	# Corner
-	(0.0, 0.0, 0.4, 0),
-	(0.0, 0.61, 0.4, 0),
-	(0.61, 0.61, 0.4, 0),
-	(0.0, 0.61, 0.4, 0),
-	(0.0, 0.0, 0.4, 0.0)
-	# Hourglass
 	# (0.0, 0.0, 0.4, 0),
+	# (0.0, 0.61, 0.4, 0),
 	# (0.61, 0.61, 0.4, 0),
-	# (-0.61, 0.61, 0.4, 0),
-	# (0.0, 0.0, 0.4, 0),
-	# (0.61, -0.61, 0.4, 0.0),
-	# (-0.61, -0.61, 0.4, 0),
-	# (0.0, 0.0, 0.4, 0)
+	# (0.0, 0.61, 0.4, 0),
+	# (0.0, 0.0, 0.4, 0.0)
+	# Hourglass
+	(0.0, 0.0, 0.4, 0),
+	(0.61, 0.61, 0.4, 0),
+	(-0.61, 0.61, 0.4, 0),
+	(0.0, 0.0, 0.4, 0),
+	(0.61, -0.61, 0.4, 0.0),
+	(-0.61, -0.61, 0.4, 0),
+	(0.0, 0.0, 0.4, 0)
 ]
 
 position_internal = [0,0,START_HEIGHT,0]
@@ -350,10 +350,10 @@ def loco_follow_paths(scf):
 
 	for position in sequence:
 		print('Setting position {}'.format(position))
-		for i in range(50):
+		for i in range(200):
 			cf.commander.send_setpoint(position[1], position[0], position[3],
                                        int(position[2] * 1000))
-			time.sleep(0.1)
+			time.sleep(0.01)
 
     # Make sure that the last packet leaves before the link is closed
     # since the message queue is not flushed before closing
