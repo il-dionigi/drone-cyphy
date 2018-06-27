@@ -327,7 +327,7 @@ def go_land(scf):
 #	 time.sleep(dt)
 
 def circ_left(scf, r, x, y, z, t, dt=DT, iterations=10):
-    	steps = t/dt
+    	steps = int(t/dt)
 		center = [x-r, y, z, 0]
 		for i in range(steps):
 			position = [r*math.cos(i*math.pi*dt/t), r*math.sin(i*math.pi*dt/t), 0, 0]
