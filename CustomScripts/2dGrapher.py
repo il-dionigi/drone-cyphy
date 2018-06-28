@@ -4,14 +4,13 @@ import csv
 import re
 
 if len(sys.argv) < 3:
-	print('''Error: this script takes a file and then 's' or 'd' designating 'save figure' or 'display figure' ''')
+	print('''Error: this script takes a file with the regex-explained format d[0-9]_n?b_enter_name_here_pos.csv and then 's' or 'd' designating 'save figure' or 'display figure' ''')
 	sys.exit(1)
 elif not(sys.argv[2] in ['s', 'd']):
 	print('''Error: this script takes either 's' or 'd' as the second input, designating 'save figure' or 'display figure' ''')
 	sys.exit(1)
 
-r = re.search('(?<=b_)([a-z]*)', sys.argv[1])
-print(r.group(0))
+r = re.search('(?<=b_)([a-z]*(_[a-z]*)*)_pos\.csv', sys.argv[1])
 
 x = []
 y = []
@@ -44,7 +43,8 @@ plt.plot(x, y, 'ro', markersize='0.5')
 plt.axis([x_range[0], x_range[1], y_range[0], y_range[1]])
 plt.xlabel('x position, meters (m)', fontsize=14)
 plt.ylabel('y position, meters (m)', fontsize=14)
+
 if sys.argv[2] == 's':
-	plt.savefig('fig_'+r.group(0)+'.png')
-else:
+	plt.savefig(r.group(1)+'_fig.png')
+else: # sys.argv[2] == 'd'
 	plt.show()

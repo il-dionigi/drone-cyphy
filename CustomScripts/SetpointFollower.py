@@ -85,19 +85,21 @@ sequence = [
 	# Hourglass
 	(0.0, 0.0, 0.4, 0),
 	(0.61, 0.61, 0.4, 0),
-	(0.61, 0.61, 0.4, 0),
-	(-0.61, 0.61, 0.4, 0),
 	(-0.61, 0.61, 0.4, 0),
 	(0.0, 0.0, 0.4, 0),
-	(0.0, 0.0, 0.4, 0),
 	(0.61, -0.61, 0.4, 0.0),
-	(0.61, -0.61, 0.4, 0.0),
-	(-0.61, -0.61, 0.4, 0),
 	(-0.61, -0.61, 0.4, 0),
 	(0.0, 0.0, 0.4, 0)
 ]
 
 position_internal = [0,0,START_HEIGHT,0]
+
+if len(sys.argv) < 2:
+	print('''Error: this script takes an input designating the type of path following to be used - 'l' for LocoPosition-based, 'p' for Position-based, or 'v' for Velocity-based''')
+	sys.exit(1)
+elif not(sys.argv[2] in ['s', 'd']):
+	print('''Error: this script takes either 'l' for LocoPosition-based path following, 'p' for Position-based path following, or 'v' for Velocity-based path following''')
+	sys.exit(1)
 
 def wait_for_position_estimator(scf):
 	print('Waiting for estimator to find position...')
@@ -381,7 +383,7 @@ def pos_follow_paths(scf):
 		time.sleep(1)
 
 # def vel_follow_paths(scf):
-def follow_paths(scf):
+def vel_follow_paths(scf):
 	cf = scf.cf
 	cf.param.set_value('flightmode.posSet', '1')
 	print(cf)
@@ -459,12 +461,13 @@ if __name__ == '__main__':
 			#start_logging(scf, ['stab', 'pos', 'acc', 'gyro'])
 			locoMode = (sys.argv[1] == '1')
 			# start_position_printing(scf)
-			if locoMode:
+			if sys.argv[1] == 'l':
 				loco_follow_paths(scf)
+			elif sys.argv[1] == 'p':
+				pos_follow_paths(scf)
+			else: #sys.argv[1] == 'v':
+				# vel_follow_paths(scf)
 				circ_left(scf, 0.61, 0, 0, 0.4, 7)
-			else:
-				# pos_follow_paths(scf)
-				follow_paths(scf)
 				
 			#go_circular(scf, 360, 0.8, 0.4, 0, 4, 0.05)
 			print("Landing now...")
