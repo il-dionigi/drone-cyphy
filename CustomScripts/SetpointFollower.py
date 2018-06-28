@@ -23,9 +23,9 @@
 #  along with this program; if not, write to the Free Software
 #  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
 #  MA  02110-1301, USA.
-"""
-Demo for the open house
-"""
+
+
+
 import math
 import time
 import sys 
@@ -63,33 +63,10 @@ z1 = 0.35
 z2 = 0.6
 
 DT = 0.1 # Default dT for go_straight_d
-T = 1 # default time of flight
+T = 3 # default time of flight
 VMAX = 0.3 # m/s if it goes higher than this then change t.
 START_HEIGHT = 0.4 # Initial hover height
-# d: diameter of circle
-# z: altitude
-params0 = {'d': 1.0, 'z': z1, 'ver': -1}
-params1 = {'d': 1.0, 'z': z2, 'ver': -1}
-params2 = {'d': 0.0, 'z': 0.2, 'ver': 1}
-params3 = {'d': 1.0, 'z': 0.2, 'ver': 1}
-params4 = {'d': 1.0, 'z': 0.2, 'ver': 1}
 
-
-# uris = {
-#	 URI0,
-# #	URI1,
-# #	URI2,
-# #	URI3,
-# #	URI4,
-# }
-
-# params = {
-#	 URI0: [params0],
-#	 URI1: [params1],
-#	 URI2: [params2],
-#	 URI3: [params3],
-#	 URI4: [params4],
-# }
 locoMode = 0
 
 sequence = [
@@ -108,9 +85,14 @@ sequence = [
 	# Hourglass
 	(0.0, 0.0, 0.4, 0),
 	(0.61, 0.61, 0.4, 0),
+	(0.61, 0.61, 0.4, 0),
+	(-0.61, 0.61, 0.4, 0),
 	(-0.61, 0.61, 0.4, 0),
 	(0.0, 0.0, 0.4, 0),
+	(0.0, 0.0, 0.4, 0),
 	(0.61, -0.61, 0.4, 0.0),
+	(0.61, -0.61, 0.4, 0.0),
+	(-0.61, -0.61, 0.4, 0),
 	(-0.61, -0.61, 0.4, 0),
 	(0.0, 0.0, 0.4, 0)
 ]
@@ -326,17 +308,27 @@ def go_land(scf):
 #	 cf.commander.send_hover_setpoint(0, 0, 0, z0 * r / steps)
 #	 time.sleep(dt)
 
-def circ_left(scf, r, x, y, z, t, dt=DT, iterations=10):
-    	steps = int(t/dt)
-		center = [x-r, y, z, 0]
-		for i in range(steps):
-			position = [r*math.cos(i*math.pi*dt/t), r*math.sin(i*math.pi*dt/t), 0, 0]
-			position += center
-			for j in range(iterations):
-    			cf.commander.send_setpoint(position[1], position[0], position[3],
-                                       int(position[2] * 1000))
-				time.sleep(dt/iterations)
+def circ_left(scf, r, x, y, z, t, dt=DT, iterations=5):
+	cf = scf.cf
+	cf.param.set_value('flightmode.posSet', '1')
 
+	cf.commander.send_setpoint(0,0,0,400)
+
+	steps = int((t/dt)/iterations)
+	print(steps)
+	center = [x-r, y, z, 0]
+	for i in range(steps):
+		position = [r*math.cos(i*2*math.pi/steps), r*math.sin(i*2*math.pi/steps), 0, 0]
+		# print('OG Position')
+		# print(position)
+		# print(position)
+		for i in range(len(position)):
+			position[i] += center[i]
+		print(position)
+		for j in range(iterations):
+			cf.commander.send_setpoint(position[1], position[0], position[3],
+								   int(position[2] * 1000))
+			time.sleep(dt)
 
 def go_circular(scf, angle, diameter, z, direction, t, dt):
 	cf = scf.cf
@@ -363,13 +355,32 @@ def loco_follow_paths(scf):
 		print('Setting position {}'.format(position))
 		for i in range(200):
 			cf.commander.send_setpoint(position[1], position[0], position[3],
-                                       int(position[2] * 1000))
+									   int(position[2] * 1000))
 			time.sleep(0.01)
 
-    # Make sure that the last packet leaves before the link is closed
-    # since the message queue is not flushed before closing
+	# Make sure that the last packet leaves before the link is closed
+	# since the message queue is not flushed before closing
 	time.sleep(0.1)
 
+def pos_follow_paths(scf):
+	cf = scf.cf
+	cf.param.set_value('flightmode.posSet', '1')
+	# for position in sequence:
+	# 	cf.commander.send_hover_setpoint(position[0], position[1], position[2], position[3])
+	# 	time.sleep(2)
+
+	# For future, make passed z a global z
+	cf.commander.send_hover_setpoint(0,0,0,START_HEIGHT)
+	time.sleep(1)
+	print('About to hover at 40 cm')
+	cf.commander.send_position_setpoint(0,0,START_HEIGHT,0)
+	time.sleep(1)
+
+	for position in sequence:
+		cf.commander.send_position_setpoint(position[0], position[1], position[2], 0)
+		time.sleep(1)
+
+# def vel_follow_paths(scf):
 def follow_paths(scf):
 	cf = scf.cf
 	cf.param.set_value('flightmode.posSet', '1')
@@ -445,13 +456,16 @@ if __name__ == '__main__':
 		with SyncCrazyflie((available[0][0] + '/E7E7E7E7E8'), cf=Crazyflie(rw_cache='./cache')) as scf:
 			reset_estimator(scf)
 
-			start_logging(scf, ['stab', 'pos', 'acc', 'gyro'])
+			#start_logging(scf, ['stab', 'pos', 'acc', 'gyro'])
 			locoMode = (sys.argv[1] == '1')
 			# start_position_printing(scf)
 			if locoMode:
 				loco_follow_paths(scf)
+				circ_left(scf, 0.61, 0, 0, 0.4, 7)
 			else:
+				# pos_follow_paths(scf)
 				follow_paths(scf)
+				
 			#go_circular(scf, 360, 0.8, 0.4, 0, 4, 0.05)
 			print("Landing now...")
 			# go_land(scf)
