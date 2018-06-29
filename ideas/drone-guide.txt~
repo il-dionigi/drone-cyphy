@@ -1,6 +1,177 @@
 Setting up the Crazyflie software
+    In order to get the crazyFlie in the air quickly, Bitcraze has set up its
+own Virtual Machine that is preloaded with all the essential software and code
+necessary to begin flying the Crazyflie. The virtual machine is intended to be
+run in Oracle VirtualBox (https://www.virtualbox.org/). If you wish to run the
+VM in WMPlayer (https://www.vmware.com/products/workstation-player.html) you
+will need to install some additional tools yourself. These can be found at
+(https://www.vmware.com/support/ws5/doc/ws_newguest_tools_linux.html#wp1118025)
+The Virtual Machine itself can be found at
+(https://wiki.bitcraze.io/projects:virtualmachine:index). If you wish to get the
+latest version of the VM, it can be found on their VM release page on Github
+(https://github.com/bitcraze/bitcraze-vm/releases/). Once the virtual machine is
+downloaded it is possible Oracle VirtualBox will throw an error when installing
+the virtual machine. This error will say something to the effect that there is
+an issue with the USB controller. To fix this, be sure to select the USB 1.1
+OHCI configuration. Once this is done, the virtual machine should hopefully
+install smoothly. Once it finishes installing, boot up the VM and click on the
+desktop configuration file named Update all Projects to automatically update all
+Crazyflie Github Repos. The Following is all the information necessary about the
+VM. It can also be found in the README on the Desktop of the VM.
+-------------------
+
+ * The username is: bitcraze
+ * The password is: crazyflie
+ * The virtual machine has 30GB drive and 1 GB of RAM
+ * The virtual machine is using Xubuntu 14.04.4 LTS
+
+Installed software
+------------------
+The following software has been pre-installed (besides basic setup)
+ * Virtualbox guest additions
+ * gnu-arm-none-eabi and build tools
+ * Git
+ * gitg
+ * PyCharm
+ * Oracle Java JRE (for PyCharm)
+ * pyusb, pygame and pyqt
+ * PyQtGraph
+ * Qt4 and Qt Designer
+ * KDE Marble with Python-bindings
+ * KiCad
+ * Eclipse with compiling/debugging/flashing
+ * Leafpad
+ * EmbSys RegView for Eclipse
+ * dfu-util
+
+System tweaks
+-------------
+The udev rules to access the Crazyradio and the NRF bootloader have been added
+to the udev configuration. They have also been added to the Virtual Box pre-set
+filters.
+
+Projects
+--------
+The following projects have been pre-cloned into the /home/bitcraze/projects
+directory:
+ * crazyflie-pc-client
+ * crazyflie-firmware
+ * crazyflie-bootloader
+ * crazyradio-firmware
+ * crazyradio-electronics
+ * crazyflie2-nrf-firmware
+ * crazyflie2-stm-firmware
+ * crazyflie2-stm-bootloader
+
+How to run the Crazyflie PC client
+----------------------------------
+The Crazyflie PC client can be run by using the following command:
+
+python3 /home/bitcraze/projects/crazyflie-pc-client/bin/cfclient
+
+Or by using the shortcut on the desktop.
+
+PLEASE NOTE!! If no other input device is passed to the VM the
+"VirtualBox USB Tablet" device will be used. Do not connect to the Crazyflie
+using this device, since the thrust will then be controlled by the mouse
+movements on the screen.
+
+How to update to the latest versions of the repositories
+--------------------------------------------------------
+Updating to the latest versions of all the repositories can be done
+by using the following command:
+
+/home/bitcraze/bin/update_all_projects.sh
+
+Or using the shortcut on the desktop.
+
+How to update the Crazyradio firmware
+-------------------------------------
+Download the latest firmware and run the following commands:
+
+cd /home/bitcraze/projects/crazyradio-firmware
+python usbtools/launchBootloader.py
+
+If you have not activated the USB filter for the NRF bootloader, pass the newly
+found "NRF BOOT" USB device to the virtual machine and then run the following
+command:
+
+python usbtools/nrfbootload.py flash new_firmware_file.bin
+
+How to build the Crazyflie firmware
+-----------------------------------
+A version of the Crazyflie firmware that is upgradable using the Crazyradio
+bootloader can be built using the following commands:
+
+cd /home/bitcraze/projects/crazyflie-firmware
+make CLOAD=1 DEBUG=0
+
+This firmware can then be downloaded to the Crazyflie using the cfclient or the
+"Flash using radio" make target in Eclipse.
+-----------------------------------
+
+Finally, be sure to right-click on the USB at the bottom of the Virtual Machine
+and select USB Settings. This will allow you to add USB drivers to the VM and is
+necessary to run a controller for flying the drone or allow it to recognize the
+CrazyRadio Dongle.
 
 Bootloading the Drone
+---------------------
+    Once the Drone has been assembled, it is necessary to flash the latest
+firmware onto the drone itself. This can be downloaded from
+(https://github.com/bitcraze/crazyflie-release/releases). Select the latest
+release zip file and use it for bootloading. To bootload the Crzyflie, hold the
+power button for 3 seconds and it should begin to flash blue LED's. If it makes
+the ordinary startup jingle and rotates its motors, turn it off and try again.
+Open up the CFClient and click on the connect tab on the top to open a drop down
+menu. Select Bootloader and then click on Initiate bootloader cold boot in the
+new window. It should connect to the Crazyflie. Once it is connected, click on
+browse and select the zip file you previously downloaded. Now click program and
+wait for it to finish flashing the firmware. once it has completed, be sure to
+click restart in firmware mode. Failure to do so will result in the crazyflie
+not being updated to the new firmware.
 
 Writing Custom Firmware
+-----------------------
+    If the project you are currently working on requires you to modify the
+firmware, there are two repositories you will need to focus on. The first is the
+crazyflie 2.0 firmware found at (https://github.com/bitcraze/crazyflie-firmware) 
+and the second is the Crazyflie2-nrf-firmware found at
+(https://github.com/bitcraze/crazyflie2-nrf-firmware). Clone these repositories
+and make your modifications as necessary. Once you are finished, run the make
+file and copy the binary created. The zip file downloaded in the last section
+contains 2 binaries and a json file. The json file specifies the names of the
+binaries so it is easiest to rename the binaries you generate from the make to
+the names of the binaries in the zip, extract the json file and then zip them up
+to create your new firmaware package. The binaries are thankfully named
+appropriately such that it is easy to tell which one corresponds to nrf and the
+one for the ordinary firmware. Once you have your new zip file, follow the same
+steps in the section on Bootloading the drone to flash your modified firmware to
+the drone itself.
 
+Loco-Positioning System
+-----------------------
+    To install the Loco-Positioning deck onto the crazyflie, be sure to place
+the flat end of the deck that has the 0xBC logo face down over the battery. The
+drone must be powered off while installing and removing the deck. Push all the
+pins through the inserts on the deck and it should now be ready to use with the
+loco-positioning system. To flash node firmware to the Loco-Positioning Nodes,
+you will need to install the LPS configuration tool. Clone the following Git
+Repositiory (https://github.com/bitcraze/lps-tools) and follow the instructions
+in the README. If you are running Windows on your device, you can alternatively
+install it by downloading the lps-tools-win32-install file found at
+(https://github.com/bitcraze/lps-tools/releases). Once you have installed the
+configuration tool, you must download the firmware for the nodes from
+(https://github.com/bitcraze/lps-node-firmware/releases). Select the .dfu file.
+To update the node, open up the LPS configuration tool and plug in the node via
+USB while holding down the button labeled DFU. If on windows you will need to
+follow instructions on installing the nodes USB driver with Zadig found here
+(https://wiki.bitcraze.io/misc:usbwindows). In the client, click on the browse
+button and select the firmware file you recently downloaded. Now click update
+and finally press the reset button on the node once it completes the update.
+Once all the nodes are updated, connect them to the computer normally and
+configure the ID. If you wish to operate in TWR mode, make sure the Mode is
+set to Anchor (TWR). Click apply and assign every node a different ID. Mark
+them with electrical tape or some other method to easily keep track of the IDs
+of the nodes. Now place the anchors in the room at least 2 meters apart with a
+line of site to the flying volume. 4 anchors is the minimum for TWR Mode

@@ -174,4 +174,5 @@ configure the ID. If you wish to operate in TWR mode, make sure the Mode is
 set to Anchor (TWR). Click apply and assign every node a different ID. Mark
 them with electrical tape or some other method to easily keep track of the IDs
 of the nodes. Now place the anchors in the room at least 2 meters apart with a
-line of site to the flying volume. 4 anchors is the minimum for TWR Mode
+line of site to the flying volume. 4 anchors is the minimum for TWR Mode with
+6 being ideal and 8 if redundancy is needed.
