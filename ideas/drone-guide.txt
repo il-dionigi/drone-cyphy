@@ -9,12 +9,11 @@ will need to install some additional tools yourself. These can be found at
 The Virtual Machine itself can be found at
 (https://wiki.bitcraze.io/projects:virtualmachine:index). If you wish to get the
 latest version of the VM, it can be found on their VM release page on Github
-(https://github.com/bitcraze/bitcraze-vm/releases/). Once the virtual machine is
-downloaded it is possible Oracle VirtualBox will throw an error when installing
-the virtual machine. This error will say something to the effect that there is
+(https://github.com/bitcraze/bitcraze-vm/releases/). One error that may come up is
+when running the VM will say something to the effect that there is
 an issue with the USB controller. To fix this, be sure to select the USB 1.1
 OHCI configuration. Once this is done, the virtual machine should hopefully
-install smoothly. Once it finishes installing, boot up the VM and click on the
+install and boot smoothly. Once it finishes installing, boot up the VM and click on the
 desktop configuration file named Update all Projects to automatically update all
 Crazyflie Github Repos. The Following is all the information necessary about the
 VM. It can also be found in the README on the Desktop of the VM.
