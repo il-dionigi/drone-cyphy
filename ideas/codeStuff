@@ -1,0 +1,16 @@
+PYTHON, from PC:
+To fly, use the functions from cflib/crazyflie/commander.py. If you want to use the drone
+without the beacons, you should use send_hover_setpoint with velocities, as this is the
+best way to do things. With beacons, you have a choice to use send_position_setpoint or 
+send_setpoint. Not sure what the main difference is, they both set position but they go to
+different ports (COMMANDER_GENERIC vs COMMANDER); both work well with the beacons though.
+	To receive data from the drone from your own port:
+and then in cflib/crazyflie/__init__.py's run function, you can add code to check the 
+packet data. We always put a code before our data (e.g. consolePuts("~@data")) and then used 
+the data only if the packet had that code to filter out the other packets. 
+C, firmware:
+To send data from the drone to the PC, use consolePuts("insert string here"). We have made 
+another C file called droneComm.c which enables droneCommPuts(), which will go to an unused 
+port (CRTP_PORT_DRONE) which may be more helpful. This port is currently likned to the PC but 
+we are planning to use this port to communicate between two drones. The file will also be 
+modified to receive packets to that port soon.  
