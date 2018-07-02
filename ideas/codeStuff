@@ -7,10 +7,11 @@ different ports (COMMANDER_GENERIC vs COMMANDER); both work well with the beacon
 	To receive data from the drone from your own port:
 and then in cflib/crazyflie/__init__.py's run function, you can add code to check the 
 packet data. We always put a code before our data (e.g. consolePuts("~@data")) and then used 
-the data only if the packet had that code to filter out the other packets. 
+the data only if the packet had that code to filter out the other packets (Or we check the 
+port if we are using the unused CRTP_PORT_DRONE) 
 C, firmware:
 To send data from the drone to the PC, use consolePuts("insert string here"). We have made 
 another C file called droneComm.c which enables droneCommPuts(), which will go to an unused 
 port (CRTP_PORT_DRONE) which may be more helpful. This port is currently likned to the PC but 
-we are planning to use this port to communicate between two drones. The file will also be 
-modified to receive packets to that port soon.  
+we are planning to use this port to communicate between two drones. This file can receive and 
+send messages right now, but only to the PC.
