@@ -372,7 +372,7 @@ def pos_follow_paths(scf):
 	# for position in sequence:
 	# 	cf.commander.send_hover_setpoint(position[0], position[1], position[2], position[3])
 	# 	time.sleep(2)
-	cf.commander.send_message('CYPHY blah')
+	cf.commander.send_message('<The quick brown fox jumped over the lazy dog. Whatta bitch.>')
 	# For future, make passed z a global z
 	cf.commander.send_hover_setpoint(0,0,0,START_HEIGHT)
 	time.sleep(1)
