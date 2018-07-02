@@ -59,6 +59,8 @@ log_timestamp = datetime.datetime.now().strftime('%Y-%m-%d_%H:%M:%S')
 
 DIRECTORY = './LoggedData/'
 
+Logger = None
+
 z1 = 0.35
 z2 = 0.6
 
@@ -97,7 +99,7 @@ position_internal = [0,0,START_HEIGHT,0]
 if len(sys.argv) < 2:
 	print('''Error: this script takes an input designating the type of path following to be used - 'l' for LocoPosition-based, 'p' for Position-based, or 'v' for Velocity-based''')
 	sys.exit(1)
-elif not(sys.argv[2] in ['s', 'd']):
+elif not(sys.argv[1] in ['l', 'p', 'v']):
 	print('''Error: this script takes either 'l' for LocoPosition-based path following, 'p' for Position-based path following, or 'v' for Velocity-based path following''')
 	sys.exit(1)
 
@@ -370,7 +372,7 @@ def pos_follow_paths(scf):
 	# for position in sequence:
 	# 	cf.commander.send_hover_setpoint(position[0], position[1], position[2], position[3])
 	# 	time.sleep(2)
-
+	cf.commander.send_message('CYPHY blah')
 	# For future, make passed z a global z
 	cf.commander.send_hover_setpoint(0,0,0,START_HEIGHT)
 	time.sleep(1)
@@ -379,6 +381,7 @@ def pos_follow_paths(scf):
 	time.sleep(1)
 
 	for position in sequence:
+		print('Setting position {}'.format(position))
 		cf.commander.send_position_setpoint(position[0], position[1], position[2], 0)
 		time.sleep(1)
 
@@ -458,7 +461,8 @@ if __name__ == '__main__':
 		with SyncCrazyflie((available[0][0] + '/E7E7E7E7E8'), cf=Crazyflie(rw_cache='./cache')) as scf:
 			reset_estimator(scf)
 
-			#start_logging(scf, ['stab', 'pos', 'acc', 'gyro'])
+
+			# start_logging(scf, ['pos'])
 			locoMode = (sys.argv[1] == '1')
 			# start_position_printing(scf)
 			if sys.argv[1] == 'l':
@@ -466,8 +470,8 @@ if __name__ == '__main__':
 			elif sys.argv[1] == 'p':
 				pos_follow_paths(scf)
 			else: #sys.argv[1] == 'v':
-				# vel_follow_paths(scf)
-				circ_left(scf, 0.61, 0, 0, 0.4, 7)
+				vel_follow_paths(scf)
+				# circ_left(scf, 0.61, 0, 0, 0.4, 7)
 				
 			#go_circular(scf, 360, 0.8, 0.4, 0, 4, 0.05)
 			print("Landing now...")

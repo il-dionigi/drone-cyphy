@@ -10,7 +10,7 @@ elif not(sys.argv[2] in ['s', 'd']):
 	print('''Error: this script takes either 's' or 'd' as the second input, designating 'save figure' or 'display figure' ''')
 	sys.exit(1)
 
-r = re.search('(?<=b_)([a-z]*(_[a-z]*)*)_pos\.csv', sys.argv[1])
+r = re.search('(?<=b_)([a-z0-9]*(_[a-z0-9]*)*)_pos\.csv', sys.argv[1])
 
 x = []
 y = []
