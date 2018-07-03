@@ -1,0 +1,3 @@
+TAG for Drone->Beacon should be RELAY (value 0x05), and the message length is a max of 28 chars (including '\0')
+Note, in src, a previous example of casting was 'reportPayload_t *report = (reportPayload_t *)(rxPacket.payload+2);'
+	-> When creating payload on drone-side, first two bytes are some other code?
