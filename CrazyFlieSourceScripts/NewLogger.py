@@ -6,6 +6,7 @@ import datetime
 import logging
 import csv
 
+import sys
 import os
 
 from cflib.crazyflie import Crazyflie
@@ -14,19 +15,39 @@ from cflib.crazyflie.syncCrazyflie import SyncCrazyflie
 from cflib.crazyflie.syncLogger import SyncLogger
 from cflib.positioning.motion_commander import MotionCommander
 
+dataLog = None
+errorLog = None
+
+stab_writer = None
+pos_writer = None
+acc_writer = None
+gyro_writer = None
+log_timestamp = None
+log_conf = None
+
+Logger = None
+
+def begin_logging(scf, args=None, path=None):
+    global Logger
+    if sys.version_info[0] < 3:
+
+    # TODO: Do this shit
+
+    if args == None and path == None:
+        Logger = NewLogger(scf)
+    elif args != None and path == None:
+        Logger = NewLogger(scf, items=args)
+    elif args == None and path != None:
+    	Logger = NewLogger(scf, directory=path)
+    else:
+    	Logger = NewLogger(scf, items=args, directory=path)
+
+    Logger.start_logging()
+
 class NewLogger:
-	dataLog = None
-	errorLog = None
 
-	stab_writer = None
-	pos_writer = None
-	acc_writer = None
-	gyro_writer = None
-	log_timestamp = None
-	log_conf = None
-
-	def __init__(self, cf, items, directory='./LoggedData/'):
-		self.cf = cf
+	def __init__(self, scf, items=['stab', 'pos', 'acc', 'gyro'], directory='./LoggedData/'):
+		self.cf = scf
 		self.items = items
 		self.directory = directory
 
@@ -46,13 +67,15 @@ class NewLogger:
 		self.log_conf.start()
 
 	def start_logging(self):
+		global stab_writer, pos_writer, acc_writer, gyro_writer
+
 		if not os.path.exists(self.directory):
 			os.makedirs(self.directory)
 
 		if 'stab' in self.items:
 			stab_log_file = open(self.directory + self.log_timestamp + '_stab.csv', 'wb')
-			self.stab_writer = csv.writer(stab_log_file)
-			self.stab_writer.writerow(['time', 'roll', 'pitch', 'yaw'])
+			stab_writer = csv.writer(stab_log_file)
+			stab_writer.writerow(['time', 'roll', 'pitch', 'yaw'])
 
 			log_stab = LogConfig(name='Stabilizer', period_in_ms=10)
 
@@ -76,8 +99,8 @@ class NewLogger:
 
 		if 'pos' in self.items:
 			pos_log_file = open(self.directory + self.log_timestamp + '_pos.csv', 'wb')
-			self.pos_writer = csv.writer(pos_log_file)
-			self.pos_writer.writerow(['time', 'x_pos', 'y_pos', 'z_pos'])
+			pos_writer = csv.writer(pos_log_file)
+			pos_writer.writerow(['time', 'x_pos', 'y_pos', 'z_pos'])
 
 			log_pos = LogConfig(name='Position', period_in_ms=10)
 
@@ -101,8 +124,8 @@ class NewLogger:
 
 		if 'acc' in self.items:
 			acc_log_file = open(self.directory + self.log_timestamp + '_acc.csv', 'wb')
-			self.acc_writer = csv.writer(acc_log_file)
-			self.acc_writer.writerow(['time', 'x_accel', 'y_accel', 'z_accel'])
+			acc_writer = csv.writer(acc_log_file)
+			acc_writer.writerow(['time', 'x_accel', 'y_accel', 'z_accel'])
 
 			log_acc = LogConfig(name='Acceleration', period_in_ms=10)
 
@@ -126,8 +149,8 @@ class NewLogger:
 
 		if 'gyro' in self.items:
 			gyro_log_file = open(self.directory + self.log_timestamp + '_gyro.csv', 'wb')
-			self.gyro_writer = csv.writer(gyro_log_file)
-			self.gyro_writer.writerow(['time', 'x_gyro', 'y_gyro', 'z_gyro'])
+			gyro_writer = csv.writer(gyro_log_file)
+			gyro_writer.writerow(['time', 'x_gyro', 'y_gyro', 'z_gyro'])
 
 			log_gyro = LogConfig(name='Gyroscope', period_in_ms=10)
 
@@ -149,24 +172,28 @@ class NewLogger:
 			except AttributeError:
 				print('Could not add Gyroscope log config, bad configuration.')
 
-	def csv_stab(self, timestamp, data):
-		self.stab_writer.writerow([timestamp, data['stabilizer.roll'], data['stabilizer.pitch'], data['stabilizer.yaw']])
+def csv_stab(timestamp, data, self):
+	global stab_writer
+	stab_writer.writerow([timestamp, data['stabilizer.roll'], data['stabilizer.pitch'], data['stabilizer.yaw']])
 
-	def csv_pos(self, timestamp, data):
-		self.pos_writer.writerow([timestamp, data['kalman.stateX'], data['kalman.stateY'], data['kalman.stateZ']])
+def csv_pos(timestamp, data, self):
+	global pos_writer
+	pos_writer.writerow([timestamp, data['kalman.stateX'], data['kalman.stateY'], data['kalman.stateZ']])
 
-	def csv_acc(self, timestamp, data):
-		self.acc_writer.writerow([timestamp, data['acc.x'], data['acc.y'], data['acc.z']])
+def csv_acc(timestamp, data, self):
+	global acc_writer
+	acc_writer.writerow([timestamp, data['acc.x'], data['acc.y'], data['acc.z']])
 
-	def csv_gyro(self, timestamp, data):
-		self.gyro_writer.writerow([timestamp, data['gyro.x'], data['gyro.y'], data['gyro.z']])
+def csv_gyro(timestamp, data, self):
+	global gyro_writer
+	gyro_writer.writerow([timestamp, data['gyro.x'], data['gyro.y'], data['gyro.z']])
 
-	def log_error(self, logconf, msg):
-		"""Callback from the log API when an error occurs"""
-		print('Error when logging %s: %s' % (logconf.name, msg))
-		if self.errorLog == None:
-			if not os.path.exists(DIRECTORY):
-				os.makedirs(DIRECTORY)
-			self.errorLog = open(DIRECTORY + datetime.datetime.now().strftime("Error Log %Y-%m-%d_%H:%M:%S"), 'a')
-		else:
-			self.errorLog.write('Error when logging %s: %s\n' % (logconf.name, msg))
+def log_error(self, logconf, msg):
+	"""Callback from the log API when an error occurs"""
+	print('Error when logging %s: %s' % (logconf.name, msg))
+	if self.errorLog == None:
+		if not os.path.exists(DIRECTORY):
+			os.makedirs(DIRECTORY)
+		self.errorLog = open(DIRECTORY + datetime.datetime.now().strftime("Error Log %Y-%m-%d_%H:%M:%S"), 'a')
+	else:
+		self.errorLog.write('Error when logging %s: %s\n' % (logconf.name, msg))

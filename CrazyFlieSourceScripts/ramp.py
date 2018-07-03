@@ -63,7 +63,7 @@ class MotorRampExample:
         """ This callback is called form the Crazyflie API when a Crazyflie
         has been connected and the TOCs have been downloaded."""
 
-        begin_logging(self._cf, ['pos'])
+        NewLogger.begin_logging(self._cf, 'LolTest')
 
         # Start a separate thread to do the motor test.
         # Do not hijack the calling thread!
@@ -106,13 +106,13 @@ class MotorRampExample:
         time.sleep(0.1)
         self._cf.close_link()
 
-def begin_logging(scf, args=None):
-    if args == None:
-        Logger = NewLogger.NewLogger(scf)
-    else:
-        Logger = NewLogger.NewLogger(scf, args)
+# def begin_logging(scf, args=None):
+#     if args == None:
+#         Logger = NewLogger.NewLogger(scf)
+#     else:
+#         Logger = NewLogger.NewLogger(scf, args)
 
-    Logger.start_logging()
+#     Logger.start_logging()
 
 if __name__ == '__main__':
     # Initialize the low-level drivers (don't list the debug drivers)

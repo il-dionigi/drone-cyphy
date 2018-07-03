@@ -14,16 +14,17 @@ from cflib.crazyflie.syncCrazyflie import SyncCrazyflie
 from cflib.crazyflie.syncLogger import SyncLogger
 from cflib.positioning.motion_commander import MotionCommander
 
-class NewLogger:
-	dataLog = None
-	errorLog = None
+dataLog = None
+errorLog = None
 
-	stab_writer = None
-	pos_writer = None
-	acc_writer = None
-	gyro_writer = None
-	log_timestamp = None
-	log_conf = None
+stab_writer = None
+pos_writer = None
+acc_writer = None
+gyro_writer = None
+log_timestamp = None
+log_conf = None
+
+class NewLogger:
 
 	def __init__(self, scf, items, directory='./LoggedData/'):
 		self.cf = scf.cf
