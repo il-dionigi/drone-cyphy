@@ -1,0 +1,5 @@
+Different modes defined in: vendor/libdw1000/src/libdw1000.c
+Seems possible to create new modes, example format:
+const uint8_t MODE_LONGDATA_RANGE_ACCURACY[] = {TRX_RATE_110KBPS, TX_PULSE_FREQ_64MHZ, TX_PREAMBLE_LEN_2048};
+Mode used in src/uwb.c; called in dwEnableMode( );
+Can also set smartPower mode and preambleCode in nearby functions 
