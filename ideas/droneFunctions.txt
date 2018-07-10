@@ -2,13 +2,13 @@ Functions and files we have created and modified
 
 Crazyflie firmware files modified
 consoleComm.c
-    droneCommSendMessage - this function sends the message we have
+    consoleCommSendMessage - this function sends the message we have
 constructed to be sent and returns true if succesful and false oterwise.
-    droneCommTest- returns whether or not it was initialized
-    droneCommPutcharFromISR - has a check for whether or not the CRTPPacket
+    consoleCommTest- returns whether or not it was initialized
+    consoleCommPutcharFromISR - has a check for whether or not the CRTPPacket
 is past the max data size. If it isn't, it will add it to the current message
 set to be printed. If not it will do nothing.
-    droneCommTask - Continuously loops to see if any messages arrive on channnel
+    consoleCommTask - Continuously loops to see if any messages arrive on channnel
 0. It sends a message back to the server "got messafe frim pc: " then relays the
 same message back. We use this for some extra functionality by sending the ~
 character before any message sent from the PC. We then relay back a message
