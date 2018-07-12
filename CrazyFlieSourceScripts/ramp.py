@@ -34,8 +34,6 @@ from threading import Thread
 import cflib
 from cflib.crazyflie import Crazyflie
 
-import NewLogger
-
 logging.basicConfig(level=logging.ERROR)
 
 LOGGER = None
@@ -55,6 +53,8 @@ class MotorRampExample:
         self._cf.connection_failed.add_callback(self._connection_failed)
         self._cf.connection_lost.add_callback(self._connection_lost)
 
+
+
         self._cf.open_link(link_uri)
 
         print('Connecting to %s' % link_uri)
@@ -62,8 +62,6 @@ class MotorRampExample:
     def _connected(self, link_uri):
         """ This callback is called form the Crazyflie API when a Crazyflie
         has been connected and the TOCs have been downloaded."""
-
-        NewLogger.begin_logging(self._cf, 'LolTest')
 
         # Start a separate thread to do the motor test.
         # Do not hijack the calling thread!
