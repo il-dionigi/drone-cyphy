@@ -30,7 +30,7 @@ Logger = None
 allowedItems = ['stab', 'pos', 'acc', 'gyro']
 defaultPath = './LoggedData/'
 
-def begin_logging(scf, arg1=None, arg2=None):
+def begin_logging(handle, arg1=None, arg2=None):
     global Logger
 
     itemList = None
@@ -64,17 +64,14 @@ def begin_logging(scf, arg1=None, arg2=None):
 				itemList.remove(item)
 				print("Item {0} removed due to not being in list of allowed items, {1}".format(item, allowedItems))
 
-
- #    # TODO: Do this shit
-
     if itemList == None and path == None:
-        Logger = AltLogger(scf)
+        Logger = AltLogger(handle)
     elif itemList != None and path == None:
-        Logger = AltLogger(scf, items=allowedItems)
+        Logger = AltLogger(handle, items=allowedItems)
     elif itemList == None and path != None:
-    	Logger = AltLogger(scf, directory=defaultPath)
+    	Logger = AltLogger(handle, directory=defaultPath)
     else:
-    	Logger = AltLogger(scf, items=allowedItems, directory=defaultPath)
+    	Logger = AltLogger(handle, items=allowedItems, directory=defaultPath)
 
     Logger.start_logging()
 
