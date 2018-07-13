@@ -33,9 +33,6 @@ import sys
 import cflib
 from cflib.crazyflie import Crazyflie
 
-import datetime
-import logging
-import csv
 import os
 
 from cflib.crazyflie import Crazyflie
@@ -44,22 +41,10 @@ from cflib.crazyflie.syncCrazyflie import SyncCrazyflie
 from cflib.crazyflie.syncLogger import SyncLogger
 from cflib.positioning.motion_commander import MotionCommander
 
-# Only output errors from the logging framework
+import AltLogger
+import logging
+
 logging.basicConfig(level=logging.ERROR)
-
-dataLog = None
-errorLog = None
-
-stab_writer = None
-pos_writer = None
-acc_writer = None
-gyro_writer = None
-
-log_timestamp = datetime.datetime.now().strftime('%Y-%m-%d_%H:%M:%S')
-
-DIRECTORY = './LoggedData/'
-
-Logger = None
 
 z1 = 0.35
 z2 = 0.6
@@ -99,8 +84,8 @@ position_internal = [0,0,START_HEIGHT,0]
 if len(sys.argv) < 2:
 	print('''Error: this script takes an input designating the type of path following to be used - 'l' for LocoPosition-based, 'p' for Position-based, or 'v' for Velocity-based''')
 	sys.exit(1)
-elif not(sys.argv[1] in ['l', 'p', 'v']):
-	print('''Error: this script takes either 'l' for LocoPosition-based path following, 'p' for Position-based path following, or 'v' for Velocity-based path following''')
+elif not(sys.argv[1] in ['l', 'p', 'v', 'm']):
+	print('''Error: this script takes either 'l' for LocoPosition-based path following, 'p' for Position-based path following, 'v' for Velocity-based path following, or 'm' for sending a message''')
 	sys.exit(1)
 
 def wait_for_position_estimator(scf):
@@ -168,116 +153,11 @@ def start_position_printing(scf):
 	log_conf.data_received_cb.add_callback(position_callback)
 	log_conf.start()
 
-def start_logging(scf, args):
-	global stab_writer, pos_writer, acc_writer, gyro_writer
+def test_message(scf):
+	cf = scf.cf
 
-	if not os.path.exists(DIRECTORY):
-		os.makedirs(DIRECTORY)
-
-	if 'stab' in args:
-		stab_log_file = open(DIRECTORY + log_timestamp + '_stab.csv', 'wb')
-		stab_writer = csv.writer(stab_log_file)
-		stab_writer.writerow(['time', 'roll', 'pitch', 'yaw'])
-
-		log_stab = LogConfig(name='Stabilizer', period_in_ms=10)
-
-		try:
-			log_stab.add_variable('stabilizer.roll', 'float')
-			log_stab.add_variable('stabilizer.pitch', 'float')
-			log_stab.add_variable('stabilizer.yaw', 'float')
-
-			scf.cf.log.add_config(log_stab)
-			# This callback will receive the data
-			log_stab.data_received_cb.add_callback(csv_stab)
-			# This callback will be called on errors
-			log_stab.error_cb.add_callback(log_error)
-			# Start the logging
-			log_stab.start()
-		except KeyError as e:
-			print('Could not start log configuration,'
-				  '{} not found in TOC'.format(str(e)))
-		except AttributeError:
-			print('Could not add Stabilizer log config, bad configuration.')
-
-	if 'pos' in args:
-		pos_log_file = open(DIRECTORY + log_timestamp + '_pos.csv', 'wb')
-		pos_writer = csv.writer(pos_log_file)
-		pos_writer.writerow(['time', 'x_pos', 'y_pos', 'z_pos'])
-
-		log_pos = LogConfig(name='Position', period_in_ms=10)
-
-		try:
-			log_pos.add_variable('kalman.stateX', 'float')
-			log_pos.add_variable('kalman.stateY', 'float')
-			log_pos.add_variable('kalman.stateZ', 'float')
-
-			scf.cf.log.add_config(log_pos)
-			# This callback will receive the data
-			log_pos.data_received_cb.add_callback(csv_pos)
-			# This callback will be called on errors
-			log_pos.error_cb.add_callback(log_error)
-			# Start the logging
-			log_pos.start()
-		except KeyError as e:
-			print('Could not start log configuration,'
-				  '{} not found in TOC'.format(str(e)))
-		except AttributeError:
-			print('Could not add Position log config, bad configuration.')
-
-	if 'acc' in args:
-		acc_log_file = open(DIRECTORY + log_timestamp + '_acc.csv', 'wb')
-		acc_writer = csv.writer(acc_log_file)
-		acc_writer.writerow(['time', 'x_accel', 'y_accel', 'z_accel'])
-
-		log_acc = LogConfig(name='Acceleration', period_in_ms=10)
-
-		try:
-			log_acc.add_variable('acc.x', 'float')
-			log_acc.add_variable('acc.y', 'float')
-			log_acc.add_variable('acc.z', 'float')
-
-			scf.cf.log.add_config(log_acc)
-			# This callback will receive the data
-			log_acc.data_received_cb.add_callback(csv_acc)
-			# This callback will be called on errors
-			log_acc.error_cb.add_callback(log_error)
-			# Start the logging
-			log_acc.start()
-		except KeyError as e:
-			print('Could not start log configuration,'
-				  '{} not found in TOC'.format(str(e)))
-		except AttributeError:
-			print('Could not add Acceleration log config, bad configuration.')
-
-	if 'gyro' in args:
-		gyro_log_file = open(DIRECTORY + log_timestamp + '_gyro.csv', 'wb')
-		gyro_writer = csv.writer(gyro_log_file)
-		gyro_writer.writerow(['time', 'x_gyro', 'y_gyro', 'z_gyro'])
-
-		log_gyro = LogConfig(name='Gyroscope', period_in_ms=10)
-
-		try:
-			log_gyro.add_variable('gyro.x', 'float')
-			log_gyro.add_variable('gyro.y', 'float')
-			log_gyro.add_variable('gyro.z', 'float')
-
-			scf.cf.log.add_config(log_gyro)
-			# This callback will receive the data
-			log_gyro.data_received_cb.add_callback(csv_gyro)
-			# This callback will be called on errors
-			log_gyro.error_cb.add_callback(log_error)
-			# Start the logging
-			log_gyro.start()
-		except KeyError as e:
-			print('Could not start log configuration,'
-				  '{} not found in TOC'.format(str(e)))
-		except AttributeError:
-			print('Could not add Gyroscope log config, bad configuration.')
-# def poshold(cf, t, z):
-#	 steps = t * 10
-#	 for r in range(steps):
-#		 cf.commander.send_hover_setpoint(0, 0, 0, z)
-#		 time.sleep(0.1)
+	cf.commander.send_message("~test")
+	time.sleep(2)
 
 def go_straight_d(cf, d_x, d_y, z, t, dt=DT):
 	if (t == 0):
@@ -323,9 +203,6 @@ def circ_left(scf, r, x, y, z, t, dt=DT, iterations=5):
 	center = [x-r, y, z, 0]
 	for i in range(steps):
 		position = [r*math.cos(i*2*math.pi/steps), r*math.sin(i*2*math.pi/steps), 0, 0]
-		# print('OG Position')
-		# print(position)
-		# print(position)
 		for i in range(len(position)):
 			position[i] += center[i]
 		print(position)
@@ -372,7 +249,6 @@ def pos_follow_paths(scf):
 	# for position in sequence:
 	# 	cf.commander.send_hover_setpoint(position[0], position[1], position[2], position[3])
 	# 	time.sleep(2)
-	cf.commander.send_message('<The quick brown fox jumped over the lazy dog. Whatta bitch.>')
 	# For future, make passed z a global z
 	cf.commander.send_hover_setpoint(0,0,0,START_HEIGHT)
 	time.sleep(1)
@@ -385,7 +261,6 @@ def pos_follow_paths(scf):
 		cf.commander.send_position_setpoint(position[0], position[1], position[2], 0)
 		time.sleep(1)
 
-# def vel_follow_paths(scf):
 def vel_follow_paths(scf):
 	cf = scf.cf
 	cf.param.set_value('flightmode.posSet', '1')
@@ -419,33 +294,6 @@ def vel_follow_paths(scf):
 			position_internal[i] = position[i]
 		time.sleep(0.1)
 
-def csv_stab(timestamp, data, self):
-	global stab_writer
-	stab_writer.writerow([timestamp, data['stabilizer.roll'], data['stabilizer.pitch'], data['stabilizer.yaw']])
-
-def csv_pos(timestamp, data, self):
-	global pos_writer
-	pos_writer.writerow([timestamp, data['kalman.stateX'], data['kalman.stateY'], data['kalman.stateZ']])
-
-def csv_acc(timestamp, data, self):
-	global acc_writer
-	acc_writer.writerow([timestamp, data['acc.x'], data['acc.y'], data['acc.z']])
-
-def csv_gyro(timestamp, data, self):
-	global gyro_writer
-	gyro_writer.writerow([timestamp, data['gyro.x'], data['gyro.y'], data['gyro.z']])
-
-def log_error(self, logconf, msg):
-	global errorLog
-	"""Callback from the log API when an error occurs"""
-	print('Error when logging %s: %s' % (logconf.name, msg))
-	if errorLog == None:
-		if not os.path.exists(DIRECTORY):
-			os.makedirs(DIRECTORY)
-		errorLog = open(DIRECTORY + datetime.datetime.now().strftime("Error Log %Y-%m-%d_%H:%M:%S"), 'a')
-	else:
-		errorLog.write('Error when logging %s: %s\n' % (logconf.name, msg))
-
 if __name__ == '__main__':
 	cflib.crtp.init_drivers(enable_debug_driver=False)
 
@@ -461,26 +309,20 @@ if __name__ == '__main__':
 		with SyncCrazyflie((available[0][0] + '/E7E7E7E7E8'), cf=Crazyflie(rw_cache='./cache')) as scf:
 			reset_estimator(scf)
 
+			AltLogger.begin_logging(scf)
 
-			# start_logging(scf, ['pos'])
 			locoMode = (sys.argv[1] == '1')
-			# start_position_printing(scf)
+
 			if sys.argv[1] == 'l':
 				loco_follow_paths(scf)
 			elif sys.argv[1] == 'p':
 				pos_follow_paths(scf)
-			else: #sys.argv[1] == 'v':
+			elif sys.argv[1] == 'v': 
 				vel_follow_paths(scf)
-				# circ_left(scf, 0.61, 0, 0, 0.4, 7)
-				
-			#go_circular(scf, 360, 0.8, 0.4, 0, 4, 0.05)
+			else: #sys.argv[1] == 'm':
+				test_message(scf)
+
 			print("Landing now...")
 			# go_land(scf)
 	else:
 		print('No Crazyflies found, cannot run example')
-
-# Luigi's code
-	# factory = CachedCfFactory(rw_cache='./cache')
-	# with Swarm(uris, factory=factory) as swarm:
-	#	 swarm.parallel(reset_estimator)
-	#	 swarm.parallel(run_sequence, args_dict=params)

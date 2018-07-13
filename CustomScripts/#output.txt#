@@ -1,72 +1,2390 @@
 Scanning interfaces for Crazyflies...
 In radio scanner!
 Crazyflies found:
-radio://0/85/2M
+radio://0/70/2M
 usb://0
-Connecting to radio://0/85/2M/E7E7E7E7E8
-Connected to radio://0/85/2M/E7E7E7E7E8
+Connecting to radio://0/70/2M/E7E7E7E7E8
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)beaconDataH<F>
+
+eaconDataHeader:2expected B2D(
+eaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+Connected to radio://0/70/2M/E7E7E7E7E8
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
 Waiting for estimator to find position...
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
 
-CYPHY
-cÜ@
-Before Test1: 
-printing-brian: 
-c
-
-Ü
-@
-
-
-
-
-L
-o
-c
-o
-
-
-D
-ù
-U
-U
-™
-™
-U
-U
-™
-™
-U
-U
-™
-™
-U
-U
-printing-tameez: 
-Error, temp=cUUÜÜU
-Error, temp=@U
-Error, temp=LU
-Error, temp=oU
-Error, temp=cU
-Error, temp=oUUU
-Error, temp=DUùùU
-Error, temp=UU
-Error, temp=UU™™U™™U
-Error, temp=UU
-Error, temp=UU™™U™™U
-Error, temp=UU
-Error, temp=UU™™U™™U
-Error, temp=UU
-Error, temp=UU
-Test,sprintf
-cÜ@
-CHAR*data:
-cÜ@
-About to hover at 40 cm
-Setting position (0.0, 0.0, 0.4, 0)
-Setting position (0.61, 0.61, 0.4, 0)
-Setting position (-0.61, 0.61, 0.4, 0)
-Setting position (0.0, 0.0, 0.4, 0)
-Setting position (0.61, -0.61, 0.4, 0.0)
-Setting position (-0.61, -0.61, 0.4, 0)
-Setting position (0.0, 0.0, 0.4, 0)
+got message from pc: ~7sinep
+ Sending to beacon; port,messa
+ge:
+7,sinep
+About to send this to beacon:
+sinep
+this msg sent to beacon:
+sinep
+Sending message now!
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
+beaconDataHeader:
+2
+expected B2D(5)
 Landing now...

@@ -27,27 +27,66 @@ log_conf = None
 
 Logger = None
 
-def begin_logging(scf, args=None, path=None):
+allowedItems = ['stab', 'pos', 'acc', 'gyro']
+defaultPath = './LoggedData/'
+
+def begin_logging(scf, arg1=None, arg2=None):
     global Logger
+
+    itemList = None
+    path = None
+
     if sys.version_info[0] < 3:
-
-    # TODO: Do this shit
-
-    if args == None and path == None:
-        Logger = NewLogger(scf)
-    elif args != None and path == None:
-        Logger = NewLogger(scf, items=args)
-    elif args == None and path != None:
-    	Logger = NewLogger(scf, directory=path)
+    	if isinstance(arg1, basestring):
+    		path = arg1
+    	elif isinstance(arg2, basestring):
+    		path = arg2
     else:
-    	Logger = NewLogger(scf, items=args, directory=path)
+    	if isinstance(arg1, (str, unicode)):
+    		path = arg1
+    	elif isinstance(arg2, (str, unicode)):
+    		path = arg2
+    	
+	if type(arg1) is list:
+		itemList = arg1
+	elif type(arg2) is list:
+		itemList = arg2
+
+	if path != None:
+		if path[0:1] != './':
+			path = './' + path
+		if path[-1] != '/':
+			path = path + '/'
+
+	if itemList != None:
+		for item in itemList:
+			if item not in allowedItems:
+				itemList.remove(item)
+				print("Item {0} removed due to not being in list of allowed items, {1}".format(item, allowedItems))
+
+
+ #    # TODO: Do this shit
+
+    if itemList == None and path == None:
+        Logger = NewLogger(scf)
+    elif itemList != None and path == None:
+        Logger = NewLogger(scf, items=allowedItems)
+    elif itemList == None and path != None:
+    	Logger = NewLogger(scf, directory=defaultPath)
+    else:
+    	Logger = NewLogger(scf, items=allowedItems, directory=defaultPath)
 
     Logger.start_logging()
 
-class NewLogger:
+class AltLogger:
 
-	def __init__(self, scf, items=['stab', 'pos', 'acc', 'gyro'], directory='./LoggedData/'):
-		self.cf = scf
+	def __init__(self, handle, items=allowedItems, directory=defaultPath):
+
+		try:
+			self.cf = handle.cf
+		except:
+			self.cf = handle
+
 		self.items = items
 		self.directory = directory
 
