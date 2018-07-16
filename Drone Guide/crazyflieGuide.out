@@ -1,0 +1,39 @@
+\BOOKMARK [1][-]{section.1}{Native Installation}{}% 1
+\BOOKMARK [2][-]{subsection.1.1}{Crazyflie Python Library}{section.1}% 2
+\BOOKMARK [2][-]{subsection.1.2}{Crazyflie Python Client}{section.1}% 3
+\BOOKMARK [2][-]{subsection.1.3}{Crazyflie Firmware}{section.1}% 4
+\BOOKMARK [2][-]{subsection.1.4}{Crazyflie LPS Node Firmware}{section.1}% 5
+\BOOKMARK [1][-]{section.2}{VM Installation and Software}{}% 6
+\BOOKMARK [2][-]{subsection.2.1}{Installation}{section.2}% 7
+\BOOKMARK [2][-]{subsection.2.2}{Installed Software}{section.2}% 8
+\BOOKMARK [2][-]{subsection.2.3}{System tweaks}{section.2}% 9
+\BOOKMARK [2][-]{subsection.2.4}{Projects}{section.2}% 10
+\BOOKMARK [1][-]{section.3}{Running Crazyflie}{}% 11
+\BOOKMARK [2][-]{subsection.3.1}{PC Client}{section.3}% 12
+\BOOKMARK [2][-]{subsection.3.2}{Updating Repos}{section.3}% 13
+\BOOKMARK [2][-]{subsection.3.3}{Updating Crazyradio Firmware}{section.3}% 14
+\BOOKMARK [2][-]{subsection.3.4}{Compiling Crazyflie Firmware}{section.3}% 15
+\BOOKMARK [2][-]{subsection.3.5}{Adding USB Drivers}{section.3}% 16
+\BOOKMARK [2][-]{subsection.3.6}{Bootloading the Crazyflie}{section.3}% 17
+\BOOKMARK [1][-]{section.4}{Custom Firmware}{}% 18
+\BOOKMARK [2][-]{subsection.4.1}{Crazyflie}{section.4}% 19
+\BOOKMARK [2][-]{subsection.4.2}{Loco-Positioning System}{section.4}% 20
+\BOOKMARK [1][-]{section.5}{Loco-Positioning System}{}% 21
+\BOOKMARK [2][-]{subsection.5.1}{Configuring Drones}{section.5}% 22
+\BOOKMARK [2][-]{subsection.5.2}{Configuring Nodes}{section.5}% 23
+\BOOKMARK [2][-]{subsection.5.3}{Node Placement}{section.5}% 24
+\BOOKMARK [1][-]{section.6}{Setpoint Following}{}% 25
+\BOOKMARK [2][-]{subsection.6.1}{Setup}{section.6}% 26
+\BOOKMARK [2][-]{subsection.6.2}{Code}{section.6}% 27
+\BOOKMARK [1][-]{section.7}{Logging}{}% 28
+\BOOKMARK [2][-]{subsection.7.1}{Loggable Variables}{section.7}% 29
+\BOOKMARK [2][-]{subsection.7.2}{Skeleton Code}{section.7}% 30
+\BOOKMARK [2][-]{subsection.7.3}{AltLogger}{section.7}% 31
+\BOOKMARK [1][-]{section.8}{Custom Communication}{}% 32
+\BOOKMARK [2][-]{subsection.8.1}{Between Crazyflie and Base Station}{section.8}% 33
+\BOOKMARK [3][-]{subsubsection.8.1.1}{Crazyflie Code}{subsection.8.1}% 34
+\BOOKMARK [3][-]{subsubsection.8.1.2}{Base Station Code}{subsection.8.1}% 35
+\BOOKMARK [2][-]{subsection.8.2}{Between Crazyflie and Beacon}{section.8}% 36
+\BOOKMARK [3][-]{subsubsection.8.2.1}{Crazyflie Code}{subsection.8.2}% 37
+\BOOKMARK [3][-]{subsubsection.8.2.2}{Beacon Code}{subsection.8.2}% 38
+\BOOKMARK [2][-]{subsection.8.3}{Between Crazyflie and Crazyflie}{section.8}% 39
