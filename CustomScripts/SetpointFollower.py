@@ -156,7 +156,7 @@ def start_position_printing(scf):
 def test_message(scf):
 	cf = scf.cf
 
-	cf.commander.send_message("~test")
+	cf.commander.send_message("WontSendToBeacon", 0)
 	time.sleep(2)
 
 def go_straight_d(cf, d_x, d_y, z, t, dt=DT):
@@ -307,9 +307,9 @@ if __name__ == '__main__':
 
 	if len(available) > 0:
 		with SyncCrazyflie(('radio://0/80/2M/E7E7E7E7E8'), cf=Crazyflie(rw_cache='./cache')) as scf:
-			reset_estimator(scf)
+#			reset_estimator(scf)
 
-			AltLogger.begin_logging(scf)
+#			AltLogger.begin_logging(scf)
 
 			locoMode = (sys.argv[1] == '1')
 
@@ -320,7 +320,8 @@ if __name__ == '__main__':
 			elif sys.argv[1] == 'v': 
 				vel_follow_paths(scf)
 			else: #sys.argv[1] == 'm':
-				test_message(scf)
+				while True:
+					test_message(scf)
 
 			print("Landing now...")
 			# go_land(scf)
