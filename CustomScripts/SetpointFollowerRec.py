@@ -156,9 +156,10 @@ def start_position_printing(scf):
 def test_message(scf):
 	cf = scf.cf
 
-	cf.commander.send_message("WontSendToBeacon", 0)
-	print("Sending message...")
-	time.sleep(2)
+	x = raw_input("What to send?")
+	y = raw_input("What channel?")
+	cf.commander.send_message(str(x), int(y))
+	time.sleep(1)
 
 def go_straight_d(cf, d_x, d_y, z, t, dt=DT):
 	if (t == 0):
@@ -321,7 +322,7 @@ if __name__ == '__main__':
 			elif sys.argv[1] == 'v': 
 				vel_follow_paths(scf)
 			else: #sys.argv[1] == 'm':
-				while True:
+				while(True):
 					test_message(scf)
 
 			print("Landing now...")
