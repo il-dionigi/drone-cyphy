@@ -1,4 +1,11 @@
+from Tkinter import *
+from random import randint
+ 
+# these two imports are important
+from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
+from matplotlib.figure import Figure
 import time
+import threading
 
 import cflib
 
@@ -42,6 +49,16 @@ defaultPath = './LoggedData/'
 argList = []
 
 rtGraphing = None
+mod10 = 0
+xtenPoints = []
+ytenPoints = []
+for i in range(10):
+	xtenPoints.append(0)
+	ytenPoints.append(0)
+xdataPoints = []
+ydataPoints = []
+plot = 0
+
 
 def begin_logging(handle, arg1=None, arg2=None, arg3=None):
 	global Logger, argList, rtGraphing, surf, fig
@@ -114,8 +131,10 @@ def begin_logging(handle, arg1=None, arg2=None, arg3=None):
 		Logger = AltLogger(handle, directory=defaultPath, rtGraphing=rtGraphing)
 	else:
 		Logger = AltLogger(handle, items=allowedItems, directory=defaultPath, rtGraphing=rtGraphing)
+    threading.Thread(target=Logger.start_logging).start()
+	threading.Thread(target=app).start()
+	print("done!?")
 
-	Logger.start_logging()
 
 class AltLogger:
 
@@ -272,8 +291,16 @@ def csv_stab(timestamp, data, self):
 	stab_writer.writerow([timestamp, data['stabilizer.roll'], data['stabilizer.pitch'], data['stabilizer.yaw']])
 
 def csv_pos(timestamp, data, self):
-	global pos_writer, rtGraphing, surf, fig, ax
+	global pos_writer, rtGraphing, surf, fig, ax, mod10, xtenPoints, ytenPoints, plot
 	pos_writer.writerow([timestamp, data['kalman.stateX'], data['kalman.stateY'], data['kalman.stateZ']])
+	xtenPoints[mod10] = data['kalman.stateX']
+	ytenPoints[mod10] = data['kalman.stateY']
+	mod10 += 1
+	if mod10 == 10:
+		mod10 = 0
+		ydataPoints += ytenPoints
+		xdataPoints += xtenPoints
+		plot = 1
 	if rtGraphing:
 		surf.remove()
 		surf = ax.plot_surface( data['kalman.stateX'], data['kalman.stateY'], data['kalman.stateZ'], rstride=1, cstride=1, cmap=cm.jet, linewidth=0, antialiased=False )
@@ -297,3 +324,49 @@ def log_error(self, logconf, msg):
 		self.errorLog = open(DIRECTORY + datetime.datetime.now().strftime("Error Log %Y-%m-%d_%H:%M:%S"), 'a')
 	else:
 		self.errorLog.write('Error when logging %s: %s\n' % (logconf.name, msg))
+
+
+def change_state():
+    global continuePlotting
+    if continuePlotting == True:
+        continuePlotting = False
+    else:
+        continuePlotting = True
+
+def app():
+	global xdataPoints, ydataPoints, plot
+    # initialise a window.
+    root = Tk()
+    root.config(background='white')
+    root.geometry("1000x700")
+    
+    lab = Label(root, text="Live Plotting", bg = 'white').pack()
+    
+    fig = Figure()
+    
+    ax = fig.add_subplot(111)
+    ax.set_xlabel("X axis")
+    ax.set_ylabel("Y axis")
+    ax.grid()
+ 
+    graph = FigureCanvasTkAgg(fig, master=root)
+    graph.get_tk_widget().pack(side="top",fill='both',expand=True)
+ 
+    def plotter():
+        while continuePlotting:
+            ax.cla()
+            ax.grid()
+            ax.plot(xdataPoints, ydataPoints, marker='o', color='orange')
+            graph.draw()
+			plot = 0
+			while(not plot):
+            	time.sleep(0.05)
+ 
+    def gui_handler():
+        change_state()
+        threading.Thread(target=plotter).start()
+ 
+    b = Button(root, text="Start/stop", command=gui_handler, bg="red", fg="white")
+    b.pack()
+    
+    root.mainloop()
