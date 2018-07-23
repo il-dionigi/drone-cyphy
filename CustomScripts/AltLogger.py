@@ -47,33 +47,33 @@ def begin_logging(handle, arg1=None, arg2=None, arg3=None):
 
     if sys.version_info[0] < 3:
     	if isinstance(arg1, basestring):
-    		if arg1[0] not '-':
+    		if arg1[0] != '-':
 	    		path = arg1
 	    	else:
 	    		argList.insert(arg1[1])
     	elif isinstance(arg2, basestring):
-    		if arg2[0] not '-':
+    		if arg2[0] != '-':
 	    		path = arg2
 	    	else:
 	    		argList.insert(arg2[1])
     	elif isinstance(arg3, basestring):
-    		if arg3[0] not '-':
+    		if arg3[0] != '-':
 	    		path = arg3
 	    	else:
 	    		argList.insert(arg3[1])
     else:
     	if isinstance(arg1, (str, unicode)):
-    		if arg1[0] not '-':
+    		if arg1[0] != '-':
 	    		path = arg1
 	    	else:
 	    		argList.insert(arg1[1])
     	elif isinstance(arg2, (str, unicode)):
-    		if arg2[0] not '-':
+    		if arg2[0] != '-':
 	    		path = arg2
 	    	else:
 	    		argList.insert(arg2[1])
 		elif isinstance(arg3, basestring):
-			if arg3[0] not '-':
+			if arg3[0] != '-':
 				path = arg3
 	    	else:
 	    		argList.insert(arg3[1])
@@ -96,7 +96,7 @@ def begin_logging(handle, arg1=None, arg2=None, arg3=None):
 
 	if itemList != None:
 		for item in itemList:
-			if item not in allowedItems:
+			if item != in allowedItems:
 				itemList.remove(item)
 				print("Item {0} removed due to not being in list of allowed items, {1}".format(item, allowedItems))
 
