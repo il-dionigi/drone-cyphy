@@ -72,9 +72,9 @@ def begin_logging(handle, arg1=None, arg2=None, arg3=None):
 	    		path = arg2
 	    	else:
 	    		argList.insert(arg2[1])
-		elif isinstance(arg3, basestring):
-			if arg3[0] != '-':
-				path = arg3
+	elif isinstance(arg3, basestring):
+		if arg3[0] != '-':
+			path = arg3
 	    	else:
 	    		argList.insert(arg3[1])
 
@@ -96,7 +96,7 @@ def begin_logging(handle, arg1=None, arg2=None, arg3=None):
 
 	if itemList != None:
 		for item in itemList:
-			if item != in allowedItems:
+			if item not in allowedItems:
 				itemList.remove(item)
 				print("Item {0} removed due to not being in list of allowed items, {1}".format(item, allowedItems))
 
@@ -116,21 +116,19 @@ class AltLogger:
 	def __init__(self, handle, items=allowedItems, directory=defaultPath, rtGraphing=False):
 		if (rtGraphing):
 			self.systemSideLength = systemSideLength
-		    self.lowerCutoffLength = lowerCutoffLength
-		    self.fig = plt.figure()
-		    self.ax = self.fig.add_subplot( 111, projection='3d' )
-		    self.ax.set_zlim3d( 0, 1 )
+			self.lowerCutoffLength = lowerCutoffLength
+			self.fig = plt.figure()
+			self.ax = self.fig.add_subplot( 111, projection='3d' )
+			self.ax.set_zlim3d( 0, 1 )
 
-		    rng = np.arange( 0, self.systemSideLength, self.lowerCutoffLength )
-		    self.X, self.Y = np.meshgrid(rng,rng)
+			rng = np.arange( 0, self.systemSideLength, self.lowerCutoffLength )
+			self.X, self.Y = np.meshgrid(rng,rng)
 
-		    self.ax.w_zaxis.set_major_locator( LinearLocator( 10 ) )
-		    self.ax.w_zaxis.set_major_formatter( FormatStrFormatter( '%.03f' ) )
+			self.ax.w_zaxis.set_major_locator( LinearLocator( 10 ) )
+			self.ax.w_zaxis.set_major_formatter( FormatStrFormatter( '%.03f' ) )
 
-		    heightR = np.zeros( self.X.shape )
-		    self.surf = self.ax.plot_surface( 
-		        self.X, self.Y, heightR, rstride=1, cstride=1, 
-		        cmap=cm.jet, linewidth=0, antialiased=False )
+			heightR = np.zeros( self.X.shape )
+			self.surf = self.ax.plot_surface(self.X, self.Y, heightR, rstride=1, cstride=1, cmap=cm.jet, linewidth=0, antialiased=False )
 
 			matplotlib.interactive(True)
 
@@ -271,12 +269,10 @@ def csv_pos(timestamp, data, self):
 	global pos_writer, rtGraphing
 	pos_writer.writerow([timestamp, data['kalman.stateX'], data['kalman.stateY'], data['kalman.stateZ']])
 	if rtGraphing:
-        self.surf.remove()
-        self.surf = self.ax.plot_surface( 
-            data['kalman.stateX'], data['kalman.stateY'], data['kalman.stateZ'], rstride=1, cstride=1, 
-            cmap=cm.jet, linewidth=0, antialiased=False )
-        plt.draw()                      # redraw the canvas
-        self.fig.canvas.flush_events()
+		self.surf.remove()
+		self.surf = self.ax.plot_surface( data['kalman.stateX'], data['kalman.stateY'], data['kalman.stateZ'], rstride=1, cstride=1, cmap=cm.jet, linewidth=0, antialiased=False )
+		plt.draw() # redraw the canvas
+		self.fig.canvas.flush_events()
 
 def csv_acc(timestamp, data, self):
 	global acc_writer
