@@ -133,7 +133,7 @@ def begin_logging(handle, arg1=None, arg2=None, arg3=None):
 		Logger = AltLogger(handle, directory=defaultPath, rtGraphing=rtGraphing)
 	else:
 		Logger = AltLogger(handle, items=allowedItems, directory=defaultPath, rtGraphing=rtGraphing)
-    threading.Thread(target=Logger.start_logging).start()
+	threading.Thread(target=Logger.start_logging).start()
 	threading.Thread(target=app).start()
 	print("done!?")
 
@@ -329,46 +329,46 @@ def log_error(self, logconf, msg):
 
 
 def change_state():
-    global continuePlotting
-    if continuePlotting == True:
-        continuePlotting = False
-    else:
-        continuePlotting = True
+	global continuePlotting
+	if continuePlotting == True:
+		continuePlotting = False
+	else:
+		continuePlotting = True
 
 def app():
 	global xdataPoints, ydataPoints, plot
-    # initialise a window.
-    root = Tk()
-    root.config(background='white')
-    root.geometry("1000x700")
-    
-    lab = Label(root, text="Live Plotting", bg = 'white').pack()
-    
-    fig = Figure()
-    
-    ax = fig.add_subplot(111)
-    ax.set_xlabel("X axis")
-    ax.set_ylabel("Y axis")
-    ax.grid()
+	# initialise a window.
+	root = Tk()
+	root.config(background='white')
+	root.geometry("1000x700")
+	
+	lab = Label(root, text="Live Plotting", bg = 'white').pack()
+	
+	fig = Figure()
+	
+	ax = fig.add_subplot(111)
+	ax.set_xlabel("X axis")
+	ax.set_ylabel("Y axis")
+	ax.grid()
  
-    graph = FigureCanvasTkAgg(fig, master=root)
-    graph.get_tk_widget().pack(side="top",fill='both',expand=True)
+	graph = FigureCanvasTkAgg(fig, master=root)
+	graph.get_tk_widget().pack(side="top",fill='both',expand=True)
  
-    def plotter():
-        while continuePlotting:
-            ax.cla()
-            ax.grid()
-            ax.plot(xdataPoints, ydataPoints, marker='o', color='orange')
-            graph.draw()
+	def plotter():
+		while continuePlotting:
+			ax.cla()
+			ax.grid()
+			ax.plot(xdataPoints, ydataPoints, marker='o', color='orange')
+			graph.draw()
 			plot = 0
 			while(not plot):
-            	time.sleep(0.05)
+				time.sleep(0.05)
  
-    def gui_handler():
-        change_state()
-        threading.Thread(target=plotter).start()
+	def gui_handler():
+		change_state()
+		threading.Thread(target=plotter).start()
  
-    b = Button(root, text="Start/stop", command=gui_handler, bg="red", fg="white")
-    b.pack()
-    
-    root.mainloop()
+	b = Button(root, text="Start/stop", command=gui_handler, bg="red", fg="white")
+	b.pack()
+	
+	root.mainloop()
