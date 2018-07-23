@@ -30,8 +30,11 @@ import math
 import time
 import sys 
 
-import cflib
 from cflib.crazyflie import Crazyflie
+
+from cflib.drivers.crazyradio import Crazyradio
+import cflib.drivers.crazyradio
+import cflib.crtp
 
 import os
 
@@ -295,6 +298,12 @@ def vel_follow_paths(scf):
 		time.sleep(0.1)
 
 if __name__ == '__main__':
+	cr = Crazyradio()
+
+	cr.send_packet((0xFF, 0x05, 0x0))
+
+	cr.close()
+
 	cflib.crtp.init_drivers(enable_debug_driver=False)
 
 	# Scan for Crazyflies and use the first one found
@@ -306,7 +315,7 @@ if __name__ == '__main__':
 		print(i[0])
 
 	if len(available) > 0:
-		with SyncCrazyflie('radio://0/85/2M/E7E7E7E7E8', cf=Crazyflie(rw_cache='./cache')) as scf:
+		with SyncCrazyflie('radio://0/80/2M/E7E7E7E7E9', cf=Crazyflie(rw_cache='./cache')) as scf:
 			# reset_estimator(scf)
 
 			# AltLogger.begin_logging(scf)
@@ -320,6 +329,8 @@ if __name__ == '__main__':
 			elif sys.argv[1] == 'v': 
 				vel_follow_paths(scf)
 			else: #sys.argv[1] == 'm':
+				scf.cf.commander.send_new_target(0xE7E7E7E7E8, 80, 2)
+				time.sleep(1)
 				scf.cf.commander.send_new_target(0xE7E7E7E7E8, 80, 2)
 				while True:
 					test_message(scf)
