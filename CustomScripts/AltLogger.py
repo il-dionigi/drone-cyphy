@@ -293,7 +293,7 @@ def csv_stab(timestamp, data, self):
 	stab_writer.writerow([timestamp, data['stabilizer.roll'], data['stabilizer.pitch'], data['stabilizer.yaw']])
 
 def csv_pos(timestamp, data, self):
-	global pos_writer, rtGraphing, surf, fig, ax, mod10, xtenPoints, ytenPoints, plot
+	global pos_writer, rtGraphing, surf, fig, ax, mod10, xtenPoints, ytenPoints, plot, xdataPoints, ydataPoints
 	pos_writer.writerow([timestamp, data['kalman.stateX'], data['kalman.stateY'], data['kalman.stateZ']])
 	xtenPoints[mod10] = data['kalman.stateX']
 	ytenPoints[mod10] = data['kalman.stateY']
