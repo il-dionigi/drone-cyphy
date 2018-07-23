@@ -119,7 +119,7 @@ class AltLogger:
 		    self.lowerCutoffLength = lowerCutoffLength
 		    self.fig = plt.figure()
 		    self.ax = self.fig.add_subplot( 111, projection='3d' )
-		    self.ax.set_zlim3d( -10e-9, 10e9 )
+		    self.ax.set_zlim3d( 0, 1 )
 
 		    rng = np.arange( 0, self.systemSideLength, self.lowerCutoffLength )
 		    self.X, self.Y = np.meshgrid(rng,rng)
@@ -268,7 +268,7 @@ def csv_stab(timestamp, data, self):
 	stab_writer.writerow([timestamp, data['stabilizer.roll'], data['stabilizer.pitch'], data['stabilizer.yaw']])
 
 def csv_pos(timestamp, data, self):
-	global pos_writer
+	global pos_writer, rtGraphing
 	pos_writer.writerow([timestamp, data['kalman.stateX'], data['kalman.stateY'], data['kalman.stateZ']])
 	if rtGraphing:
         self.surf.remove()
