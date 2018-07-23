@@ -49,6 +49,8 @@ defaultPath = './LoggedData/'
 argList = []
 
 rtGraphing = None
+
+continuePlotting = False
 mod10 = 0
 xtenPoints = []
 ytenPoints = []
@@ -301,11 +303,11 @@ def csv_pos(timestamp, data, self):
 		ydataPoints += ytenPoints
 		xdataPoints += xtenPoints
 		plot = 1
-	if rtGraphing:
+	"""if rtGraphing:
 		surf.remove()
 		surf = ax.plot_surface( data['kalman.stateX'], data['kalman.stateY'], data['kalman.stateZ'], rstride=1, cstride=1, cmap=cm.jet, linewidth=0, antialiased=False )
 		plt.draw() # redraw the canvas
-		fig.canvas.flush_events()
+		fig.canvas.flush_events()"""
 
 def csv_acc(timestamp, data, self):
 	global acc_writer
