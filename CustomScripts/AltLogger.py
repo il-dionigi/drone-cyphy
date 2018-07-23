@@ -34,52 +34,58 @@ log_conf = None
 
 Logger = None
 
+surf = None
+fig = None
+
 allowedItems = ['stab', 'pos', 'acc', 'gyro']
 defaultPath = './LoggedData/'
 argList = []
 
+rtGraphing = None
+
 def begin_logging(handle, arg1=None, arg2=None, arg3=None):
-    global Logger, argList
+	global Logger, argList, rtGraphing, surf, fig
 
-    itemList = None
-    path = None
-    rtGraphing = False
+	itemList = None
+	path = None
+	rtGraphing = False
 
-    if sys.version_info[0] < 3:
-    	if isinstance(arg1, basestring):
-    		if arg1[0] != '-':
-	    		path = arg1
-	    	else:
-	    		argList.insert(arg1[1])
-    	elif isinstance(arg2, basestring):
-    		if arg2[0] != '-':
-	    		path = arg2
-	    	else:
-	    		argList.insert(arg2[1])
-    	elif isinstance(arg3, basestring):
-    		if arg3[0] != '-':
-	    		path = arg3
-	    	else:
-	    		argList.insert(arg3[1])
-    else:
-    	if isinstance(arg1, (str, unicode)):
-    		if arg1[0] != '-':
-	    		path = arg1
-	    	else:
-	    		argList.insert(arg1[1])
-    	elif isinstance(arg2, (str, unicode)):
-    		if arg2[0] != '-':
-	    		path = arg2
-	    	else:
-	    		argList.insert(arg2[1])
-	elif isinstance(arg3, basestring):
-		if arg3[0] != '-':
-			path = arg3
-	    	else:
-	    		argList.insert(arg3[1])
+	if sys.version_info[0] < 3:
+		if isinstance(arg1, basestring):
+			if arg1[0] != '-':
+				path = arg1
+			else:
+				argList.append(arg1[1])
+		elif isinstance(arg2, basestring):
+			if arg2[0] != '-':
+				path = arg2
+			else:
+				argList.append(arg2[1])
+		elif isinstance(arg3, basestring):
+			if arg3[0] != '-':
+				path = arg3
+			else:
+				argList.append(arg3[1])
+	else:
+		if isinstance(arg1, (str, unicode)):
+			if arg1[0] != '-':
+				path = arg1
+			else:
+				argList.append(arg1[1])
+		elif isinstance(arg2, (str, unicode)):
+			if arg2[0] != '-':
+				path = arg2
+			else:
+				argList.append(arg2[1])
+		elif isinstance(arg3, basestring):
+			if arg3[0] != '-':
+				path = arg3
+			else:
+				argList.append(arg3[1])
 
 	if 'g' in argList:
 		rtGraphing = True
+		print("Graphing on!")
 
 	if type(arg1) is list:
 		itemList = arg1
@@ -100,35 +106,36 @@ def begin_logging(handle, arg1=None, arg2=None, arg3=None):
 				itemList.remove(item)
 				print("Item {0} removed due to not being in list of allowed items, {1}".format(item, allowedItems))
 
-    if itemList == None and path == None:
-        Logger = AltLogger(handle, rtGraphing=rtGraphing)
-    elif itemList != None and path == None:
-        Logger = AltLogger(handle, items=allowedItems, rtGraphing=rtGraphing)
-    elif itemList == None and path != None:
-    	Logger = AltLogger(handle, directory=defaultPath, rtGraphing=rtGraphing)
-    else:
-    	Logger = AltLogger(handle, items=allowedItems, directory=defaultPath, rtGraphing=rtGraphing)
+	if itemList == None and path == None:
+		Logger = AltLogger(handle, rtGraphing=rtGraphing)
+	elif itemList != None and path == None:
+		Logger = AltLogger(handle, items=allowedItems, rtGraphing=rtGraphing)
+	elif itemList == None and path != None:
+		Logger = AltLogger(handle, directory=defaultPath, rtGraphing=rtGraphing)
+	else:
+		Logger = AltLogger(handle, items=allowedItems, directory=defaultPath, rtGraphing=rtGraphing)
 
-    Logger.start_logging()
+	Logger.start_logging()
 
 class AltLogger:
 
 	def __init__(self, handle, items=allowedItems, directory=defaultPath, rtGraphing=False):
+		global fig, ax, surf
 		if (rtGraphing):
-			self.systemSideLength = systemSideLength
-			self.lowerCutoffLength = lowerCutoffLength
-			self.fig = plt.figure()
-			self.ax = self.fig.add_subplot( 111, projection='3d' )
-			self.ax.set_zlim3d( 0, 1 )
+			systemSideLength = 4
+			lowerCutoffLength = 0.1
+			fig = plt.figure()
+			ax = fig.add_subplot( 111, projection='3d' )
+			ax.set_zlim3d( 0, 1 )
 
-			rng = np.arange( 0, self.systemSideLength, self.lowerCutoffLength )
-			self.X, self.Y = np.meshgrid(rng,rng)
+			rng = np.arange( 0, systemSideLength, lowerCutoffLength )
+			X, Y = np.meshgrid(rng,rng)
 
-			self.ax.w_zaxis.set_major_locator( LinearLocator( 10 ) )
-			self.ax.w_zaxis.set_major_formatter( FormatStrFormatter( '%.03f' ) )
+			ax.w_zaxis.set_major_locator( LinearLocator( 10 ) )
+			ax.w_zaxis.set_major_formatter( FormatStrFormatter( '%.03f' ) )
 
-			heightR = np.zeros( self.X.shape )
-			self.surf = self.ax.plot_surface(self.X, self.Y, heightR, rstride=1, cstride=1, cmap=cm.jet, linewidth=0, antialiased=False )
+			heightR = np.zeros( X.shape )
+			surf = ax.plot_surface(X, Y, heightR, rstride=1, cstride=1, cmap=cm.jet, linewidth=0, antialiased=False )
 
 			matplotlib.interactive(True)
 
@@ -143,7 +150,6 @@ class AltLogger:
 		logging.basicConfig(level=logging.ERROR)
 		
 		self.log_timestamp = datetime.datetime.now().strftime('%Y-%m-%d_%H:%M:%S')
-
 
 	def start_position_printing(self):
 		self.log_conf = LogConfig(name='Position', period_in_ms=500)
@@ -266,13 +272,13 @@ def csv_stab(timestamp, data, self):
 	stab_writer.writerow([timestamp, data['stabilizer.roll'], data['stabilizer.pitch'], data['stabilizer.yaw']])
 
 def csv_pos(timestamp, data, self):
-	global pos_writer, rtGraphing
+	global pos_writer, rtGraphing, surf, fig, ax
 	pos_writer.writerow([timestamp, data['kalman.stateX'], data['kalman.stateY'], data['kalman.stateZ']])
 	if rtGraphing:
-		self.surf.remove()
-		self.surf = self.ax.plot_surface( data['kalman.stateX'], data['kalman.stateY'], data['kalman.stateZ'], rstride=1, cstride=1, cmap=cm.jet, linewidth=0, antialiased=False )
+		surf.remove()
+		surf = ax.plot_surface( data['kalman.stateX'], data['kalman.stateY'], data['kalman.stateZ'], rstride=1, cstride=1, cmap=cm.jet, linewidth=0, antialiased=False )
 		plt.draw() # redraw the canvas
-		self.fig.canvas.flush_events()
+		fig.canvas.flush_events()
 
 def csv_acc(timestamp, data, self):
 	global acc_writer

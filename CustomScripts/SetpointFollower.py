@@ -306,7 +306,7 @@ if __name__ == '__main__':
 		print(i[0])
 
 	if len(available) > 0:
-		with SyncCrazyflie('radio://0/85/2M/E7E7E7E7E8', cf=Crazyflie(rw_cache='./cache')) as scf:
+		with SyncCrazyflie(available[0][0] + '/E7E7E7E7E8', cf=Crazyflie(rw_cache='./cache')) as scf:
 			# reset_estimator(scf)
 
 			AltLogger.begin_logging(scf, "-g")
