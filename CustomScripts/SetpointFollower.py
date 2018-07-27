@@ -84,8 +84,8 @@ position_internal = [0,0,START_HEIGHT,0]
 if len(sys.argv) < 2:
 	print('''Error: this script takes an input designating the type of path following to be used - 'l' for LocoPosition-based, 'p' for Position-based, or 'v' for Velocity-based''')
 	sys.exit(1)
-elif not(sys.argv[1] in ['l', 'p', 'v', 'm']):
-	print('''Error: this script takes either 'l' for LocoPosition-based path following, 'p' for Position-based path following, 'v' for Velocity-based path following, or 'm' for sending a message''')
+elif not(sys.argv[1] in ['l', 'p', 'v', 'm', 'e']):
+	print('''Error: this script takes either 'l' for LocoPosition-based path following, 'p' for Position-based path following, 'v' for Velocity-based path following, 'm' for sending a message, or 'e' for receiving encrypted messages ''')
 	sys.exit(1)
 
 def wait_for_position_estimator(scf):
@@ -158,6 +158,17 @@ def test_message(scf):
 
 	# cf.commander.send_message("~ACK")
 	time.sleep(2)
+
+def test_decrypt(scf):
+	cf = scf.cf
+	cf.commander.send_message("Encrypt This")
+	x = 0
+	while(True):
+		x = x + 1
+		cf.commander.send_message(str("Test" + str(x)))
+		time.sleep(1)
+		if (x > 100):
+			x = 0
 
 def go_straight_d(cf, d_x, d_y, z, t, dt=DT):
 	if (t == 0):
@@ -319,6 +330,8 @@ if __name__ == '__main__':
 				pos_follow_paths(scf)
 			elif sys.argv[1] == 'v': 
 				vel_follow_paths(scf)
+			elif sys.argv[1] == 'e': 
+				test_decrypt(scf)
 			else: #sys.argv[1] == 'm':
 				scf.cf.commander.send_new_target(0xE7E7E7E7E8, 80, 2)
 				while True:
