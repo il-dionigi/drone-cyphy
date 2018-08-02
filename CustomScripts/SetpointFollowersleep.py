@@ -319,10 +319,10 @@ if __name__ == '__main__':
 	for i in available:
 		print(i[0])
 
-	if len(available) >= 0:
-		with SyncCrazyflie(('radio://0/80/2M/E7E7E7E7E8'), cf=Crazyflie(rw_cache='./cache')) as scf:
+	if len(available) > 0:
+		with SyncCrazyflie(available[0][0] + '/E7E7E7E7E8', cf=Crazyflie(rw_cache='./cache')) as scf:
 			# reset_estimator(scf)
-			print('connected to 80')
+
 			AltLogger.begin_logging(scf, "-g")
 
 			locoMode = (sys.argv[1] == '1')
@@ -343,4 +343,4 @@ if __name__ == '__main__':
 			print("Landing now...")
 			# go_land(scf)
 	else:
-		print('No Crazyflies found. Cannot run example')
+		print('No Crazyflies found, cannot run example')

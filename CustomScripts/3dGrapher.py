@@ -20,7 +20,7 @@ elif not(sys.argv[2] in ['s', 'd']):
     print('''Error: this script takes either 's' or 'd' as the second input, designating 'save graphic' or 'display graphic' ''')
     sys.exit(1)
 
-r = re.search('(?<=b_)([a-z]*(_[a-z]*)*)_pos\.csv', sys.argv[1])
+#r = re.search('(?<=b_)([a-z]*(_[a-z]*)*)_pos\.csv', sys.argv[1])
 
 def update(num, data, line):
     line.set_data(data[:2, :num])
