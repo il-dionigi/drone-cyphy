@@ -32,7 +32,7 @@ with open(sys.argv[1], 'r') as csvfile:
     for row in csvdata:
         if i == 0:
             print(row)
-        else:
+        elif i%10 == 0:
             datax.append(float(row[1]))
             datay.append(float(row[2]))
             dataz.append(float(row[3]))
@@ -43,13 +43,30 @@ N = len(datax)
 line, = ax.plot(data[0, 0:1], data[1, 0:1], data[2, 0:1])
 
 # Setting the axes properties
-ax.set_xlim3d([-1, 1])
+xlim = [min(datax)*0.9, max(datax)*1.2]
+ylim = [min(datay)*0.9, max(datay)*1.2]
+xlen = xlim[1] - xlim[0]
+ylen = ylim[1] - ylim[0]
+while (xlen > ylen*3):
+     print(ylim)
+     ylim[0] *= 2
+     ylim[1] *= 2
+     ylen = ylim[1] - ylim[0]
+while (ylen > xlen*3):
+     xlim[0] *= 2
+     xlim[1] *= 2
+     xlen = xlim[1] - xlim[0]
+
+print("xlinm, ylim")
+print(xlim)
+print(ylim)
+ax.set_xlim3d(xlim)
 ax.set_xlabel('X')
 
-ax.set_ylim3d([-1, 1])
+ax.set_ylim3d(ylim)
 ax.set_ylabel('Y')
 
-ax.set_zlim3d([0, 1])
+ax.set_zlim3d([0, max(dataz)*1.2])
 ax.set_zlabel('Z')
 
 if sys.argv[2] == 's':

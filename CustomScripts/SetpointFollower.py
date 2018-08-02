@@ -241,7 +241,11 @@ def go_circular(scf, angle, diameter, z, direction, t, dt):
 
 def loco_follow_paths(scf):
 	#FOR TESTING JUST SLEEP AND RETURN
-	time.sleep(300)
+	totalTime = 180
+	while (totalTime > 0):
+		time.sleep(1)
+		print("Time remaining: " + str(totalTime))
+		totalTime = totalTime - 1
 	return
 	cf = scf.cf
 	cf.param.set_value('flightmode.posSet', '1')
