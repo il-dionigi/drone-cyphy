@@ -1,11 +1,4 @@
-from Tkinter import *
-from random import randint
- 
-# these two imports are important
-from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
-from matplotlib.figure import Figure
 import time
-import threading
 
 import cflib
 
@@ -22,13 +15,6 @@ from cflib.crazyflie.syncCrazyflie import SyncCrazyflie
 from cflib.crazyflie.syncLogger import SyncLogger
 from cflib.positioning.motion_commander import MotionCommander
 
-import numpy as np
-import matplotlib.pyplot as plt
-from mpl_toolkits.mplot3d import Axes3D
-from matplotlib import cm
-from matplotlib.ticker import LinearLocator, FixedLocator, FormatStrFormatter
-import matplotlib
-
 dataLog = None
 errorLog = None
 
@@ -41,77 +27,30 @@ log_conf = None
 
 Logger = None
 
-surf = None
-fig = None
-
 allowedItems = ['stab', 'pos', 'acc', 'gyro']
 defaultPath = './LoggedData/'
-argList = []
 
-rtGraphing = None
+def begin_logging(handle, arg1=None, arg2=None):
+    global Logger
 
-continuePlotting = False
-mod10 = 0
-xtenPoints = []
-ytenPoints = []
-for i in range(10):
-	xtenPoints.append(0)
-	ytenPoints.append(0)
-xdataPoints = []
-ydataPoints = []
-plot = 0
+    itemList = None
+    path = None
 
-
-def begin_logging(handle, arg1=None, arg2=None, arg3=None):
-	global Logger, argList, rtGraphing, surf, fig
-
-	itemList = None
-	path = None
-	rtGraphing = False
-
-	if sys.version_info[0] < 3:
-		if isinstance(arg1, basestring):
-			if arg1[0] != '-':
-				path = arg1
-			else:
-				argList.append(arg1[1])
-		elif isinstance(arg2, basestring):
-			if arg2[0] != '-':
-				path = arg2
-			else:
-				argList.append(arg2[1])
-		elif isinstance(arg3, basestring):
-			if arg3[0] != '-':
-				path = arg3
-			else:
-				argList.append(arg3[1])
-	else:
-		if isinstance(arg1, (str, unicode)):
-			if arg1[0] != '-':
-				path = arg1
-			else:
-				argList.append(arg1[1])
-		elif isinstance(arg2, (str, unicode)):
-			if arg2[0] != '-':
-				path = arg2
-			else:
-				argList.append(arg2[1])
-		elif isinstance(arg3, basestring):
-			if arg3[0] != '-':
-				path = arg3
-			else:
-				argList.append(arg3[1])
-
-	if 'g' in argList:
-		rtGraphing = True
-		print("Graphing on!")
-
+    if sys.version_info[0] < 3:
+    	if isinstance(arg1, basestring):
+    		path = arg1
+    	elif isinstance(arg2, basestring):
+    		path = arg2
+    else:
+    	if isinstance(arg1, (str, unicode)):
+    		path = arg1
+    	elif isinstance(arg2, (str, unicode)):
+    		path = arg2
+    	
 	if type(arg1) is list:
 		itemList = arg1
 	elif type(arg2) is list:
 		itemList = arg2
-	elif type(arg3) is list:
-		itemList = arg3
 
 	if path != None:
 		if path[0:1] != './':
@@ -125,40 +64,20 @@ def begin_logging(handle, arg1=None, arg2=None, arg3=None):
 				itemList.remove(item)
 				print("Item {0} removed due to not being in list of allowed items, {1}".format(item, allowedItems))
 
-	if itemList == None and path == None:
-		Logger = AltLogger(handle, rtGraphing=rtGraphing)
-	elif itemList != None and path == None:
-		Logger = AltLogger(handle, items=allowedItems, rtGraphing=rtGraphing)
-	elif itemList == None and path != None:
-		Logger = AltLogger(handle, directory=defaultPath, rtGraphing=rtGraphing)
-	else:
-		Logger = AltLogger(handle, items=allowedItems, directory=defaultPath, rtGraphing=rtGraphing)
-	threading.Thread(target=Logger.start_logging).start()
-	threading.Thread(target=app).start()
-	print("done!?")
+    if itemList == None and path == None:
+        Logger = AltLogger(handle)
+    elif itemList != None and path == None:
+        Logger = AltLogger(handle, items=allowedItems)
+    elif itemList == None and path != None:
+    	Logger = AltLogger(handle, directory=defaultPath)
+    else:
+    	Logger = AltLogger(handle, items=allowedItems, directory=defaultPath)
 
+    Logger.start_logging()
 
 class AltLogger:
 
-	def __init__(self, handle, items=allowedItems, directory=defaultPath, rtGraphing=False):
-		global fig, ax, surf
-		if (rtGraphing):
-			systemSideLength = 4
-			lowerCutoffLength = 0.1
-			fig = plt.figure()
-			ax = fig.add_subplot( 111, projection='3d' )
-			ax.set_zlim3d( 0, 1 )
-
-			rng = np.arange( 0, systemSideLength, lowerCutoffLength )
-			X, Y = np.meshgrid(rng,rng)
-
-			ax.w_zaxis.set_major_locator( LinearLocator( 10 ) )
-			ax.w_zaxis.set_major_formatter( FormatStrFormatter( '%.03f' ) )
-
-			heightR = np.zeros( X.shape )
-			surf = ax.plot_surface(X, Y, heightR, rstride=1, cstride=1, cmap=cm.jet, linewidth=0, antialiased=False )
-
-			matplotlib.interactive(True)
+	def __init__(self, handle, items=allowedItems, directory=defaultPath):
 
 		try:
 			self.cf = handle.cf
@@ -171,6 +90,7 @@ class AltLogger:
 		logging.basicConfig(level=logging.ERROR)
 		
 		self.log_timestamp = datetime.datetime.now().strftime('%Y-%m-%d_%H:%M:%S')
+
 
 	def start_position_printing(self):
 		self.log_conf = LogConfig(name='Position', period_in_ms=500)
@@ -293,21 +213,8 @@ def csv_stab(timestamp, data, self):
 	stab_writer.writerow([timestamp, data['stabilizer.roll'], data['stabilizer.pitch'], data['stabilizer.yaw']])
 
 def csv_pos(timestamp, data, self):
-	global pos_writer, rtGraphing, surf, fig, ax, mod10, xtenPoints, ytenPoints, plot, xdataPoints, ydataPoints
+	global pos_writer
 	pos_writer.writerow([timestamp, data['kalman.stateX'], data['kalman.stateY'], data['kalman.stateZ']])
-	xtenPoints[mod10] = data['kalman.stateX']
-	ytenPoints[mod10] = data['kalman.stateY']
-	mod10 += 1
-	if mod10 == 10:
-		mod10 = 0
-		ydataPoints += ytenPoints
-		xdataPoints += xtenPoints
-		plot = 1
-	"""if rtGraphing:
-		surf.remove()
-		surf = ax.plot_surface( data['kalman.stateX'], data['kalman.stateY'], data['kalman.stateZ'], rstride=1, cstride=1, cmap=cm.jet, linewidth=0, antialiased=False )
-		plt.draw() # redraw the canvas
-		fig.canvas.flush_events()"""
 
 def csv_acc(timestamp, data, self):
 	global acc_writer
@@ -326,49 +233,3 @@ def log_error(self, logconf, msg):
 		self.errorLog = open(DIRECTORY + datetime.datetime.now().strftime("Error Log %Y-%m-%d_%H:%M:%S"), 'a')
 	else:
 		self.errorLog.write('Error when logging %s: %s\n' % (logconf.name, msg))
-
-
-def change_state():
-	global continuePlotting
-	if continuePlotting == True:
-		continuePlotting = False
-	else:
-		continuePlotting = True
-
-def app():
-	global xdataPoints, ydataPoints, plot
-	# initialise a window.
-	root = Tk()
-	root.config(background='white')
-	root.geometry("1000x700")
-	
-	lab = Label(root, text="Live Plotting", bg = 'white').pack()
-	
-	fig = Figure()
-	
-	ax = fig.add_subplot(111)
-	ax.set_xlabel("X axis")
-	ax.set_ylabel("Y axis")
-	ax.grid()
- 
-	graph = FigureCanvasTkAgg(fig, master=root)
-	graph.get_tk_widget().pack(side="top",fill='both',expand=True)
- 
-	def plotter():
-		while continuePlotting:
-			ax.cla()
-			ax.grid()
-			ax.plot(xdataPoints, ydataPoints, marker='o', color='orange')
-			graph.draw()
-			plot = 0
-			while(not plot):
-				time.sleep(0.05)
- 
-	def gui_handler():
-		change_state()
-		threading.Thread(target=plotter).start()
- 
-	b = Button(root, text="Start/stop", command=gui_handler, bg="red", fg="white")
-	b.pack()
-	
-	root.mainloop()
