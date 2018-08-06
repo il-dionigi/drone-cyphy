@@ -43,8 +43,8 @@ N = len(datax)
 line, = ax.plot(data[0, 0:1], data[1, 0:1], data[2, 0:1])
 
 # Setting the axes properties
-xlim = [min(datax)*0.9, max(datax)*1.2]
-ylim = [min(datay)*0.9, max(datay)*1.2]
+xlim = [min(datax), max(datax)]
+ylim = [min(datay), max(datay)]
 xlen = xlim[1] - xlim[0]
 ylen = ylim[1] - ylim[0]
 while (xlen > ylen*3):
