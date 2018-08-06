@@ -241,7 +241,11 @@ def go_circular(scf, angle, diameter, z, direction, t, dt):
 
 def loco_follow_paths(scf):
 	#FOR TESTING JUST SLEEP AND RETURN
-	time.sleep(300)
+	timeLeft = 600
+	while (timeLeft > 0):
+		time.sleep(1)
+		timeLeft = timeLeft - 1
+		print("Time remaining: " + str(timeLeft))
 	return
 	cf = scf.cf
 	cf.param.set_value('flightmode.posSet', '1')
@@ -320,9 +324,8 @@ if __name__ == '__main__':
 		print(i[0])
 
 	if len(available) >= 0:
-		with SyncCrazyflie(('radio://0/80/2M/E7E7E7E7E8'), cf=Crazyflie(rw_cache='./cache')) as scf:
+		with SyncCrazyflie(('radio://0/85/2M/E7E7E7E7E8'), cf=Crazyflie(rw_cache='./cache')) as scf:
 			# reset_estimator(scf)
-			print('connected to 80')
 			AltLogger.begin_logging(scf, "-g")
 
 			locoMode = (sys.argv[1] == '1')
