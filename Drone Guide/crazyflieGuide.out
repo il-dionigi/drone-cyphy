@@ -18,22 +18,28 @@
 \BOOKMARK [1][-]{section.4}{Custom Firmware}{}% 18
 \BOOKMARK [2][-]{subsection.4.1}{Crazyflie}{section.4}% 19
 \BOOKMARK [2][-]{subsection.4.2}{Loco-Positioning System}{section.4}% 20
-\BOOKMARK [1][-]{section.5}{Loco-Positioning System}{}% 21
-\BOOKMARK [2][-]{subsection.5.1}{Configuring Drones}{section.5}% 22
-\BOOKMARK [2][-]{subsection.5.2}{Configuring Nodes}{section.5}% 23
-\BOOKMARK [2][-]{subsection.5.3}{Node Placement}{section.5}% 24
-\BOOKMARK [1][-]{section.6}{Setpoint Following}{}% 25
-\BOOKMARK [2][-]{subsection.6.1}{Setup}{section.6}% 26
-\BOOKMARK [2][-]{subsection.6.2}{Code}{section.6}% 27
-\BOOKMARK [1][-]{section.7}{Logging}{}% 28
-\BOOKMARK [2][-]{subsection.7.1}{Loggable Variables}{section.7}% 29
-\BOOKMARK [2][-]{subsection.7.2}{Skeleton Code}{section.7}% 30
-\BOOKMARK [2][-]{subsection.7.3}{AltLogger}{section.7}% 31
-\BOOKMARK [1][-]{section.8}{Custom Communication}{}% 32
-\BOOKMARK [2][-]{subsection.8.1}{Between Crazyflie and Base Station}{section.8}% 33
-\BOOKMARK [3][-]{subsubsection.8.1.1}{Crazyflie Code}{subsection.8.1}% 34
-\BOOKMARK [3][-]{subsubsection.8.1.2}{Base Station Code}{subsection.8.1}% 35
-\BOOKMARK [2][-]{subsection.8.2}{Between Crazyflie and Beacon}{section.8}% 36
-\BOOKMARK [3][-]{subsubsection.8.2.1}{Crazyflie Code}{subsection.8.2}% 37
-\BOOKMARK [3][-]{subsubsection.8.2.2}{Beacon Code}{subsection.8.2}% 38
-\BOOKMARK [2][-]{subsection.8.3}{Between Crazyflie and Crazyflie}{section.8}% 39
+\BOOKMARK [1][-]{section.5}{Debugging}{}% 21
+\BOOKMARK [2][-]{subsection.5.1}{Crazyflie Firmware Debugging}{section.5}% 22
+\BOOKMARK [3][-]{subsubsection.5.1.1}{STM32}{subsection.5.1}% 23
+\BOOKMARK [3][-]{subsubsection.5.1.2}{nRF51}{subsection.5.1}% 24
+\BOOKMARK [2][-]{subsection.5.2}{Crazyflie Python Lib}{section.5}% 25
+\BOOKMARK [2][-]{subsection.5.3}{ROS}{section.5}% 26
+\BOOKMARK [1][-]{section.6}{Loco-Positioning System}{}% 27
+\BOOKMARK [2][-]{subsection.6.1}{Configuring Drones}{section.6}% 28
+\BOOKMARK [2][-]{subsection.6.2}{Configuring Nodes}{section.6}% 29
+\BOOKMARK [2][-]{subsection.6.3}{Node Placement}{section.6}% 30
+\BOOKMARK [1][-]{section.7}{Setpoint Following}{}% 31
+\BOOKMARK [2][-]{subsection.7.1}{Setup}{section.7}% 32
+\BOOKMARK [2][-]{subsection.7.2}{Code}{section.7}% 33
+\BOOKMARK [1][-]{section.8}{Logging}{}% 34
+\BOOKMARK [2][-]{subsection.8.1}{Loggable Variables}{section.8}% 35
+\BOOKMARK [2][-]{subsection.8.2}{Skeleton Code}{section.8}% 36
+\BOOKMARK [2][-]{subsection.8.3}{AltLogger}{section.8}% 37
+\BOOKMARK [1][-]{section.9}{Custom Communication}{}% 38
+\BOOKMARK [2][-]{subsection.9.1}{Between Crazyflie and Base Station}{section.9}% 39
+\BOOKMARK [3][-]{subsubsection.9.1.1}{Crazyflie Code}{subsection.9.1}% 40
+\BOOKMARK [3][-]{subsubsection.9.1.2}{Base Station Code}{subsection.9.1}% 41
+\BOOKMARK [2][-]{subsection.9.2}{Between Crazyflie and Beacon}{section.9}% 42
+\BOOKMARK [3][-]{subsubsection.9.2.1}{Crazyflie Code}{subsection.9.2}% 43
+\BOOKMARK [3][-]{subsubsection.9.2.2}{Beacon Code}{subsection.9.2}% 44
+\BOOKMARK [2][-]{subsection.9.3}{Between Crazyflie and Crazyflie}{section.9}% 45

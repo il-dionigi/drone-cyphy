@@ -65,8 +65,6 @@ def begin_logging(scf, arg1=None, arg2=None):
 				print("Item {0} removed due to not being in list of allowed items, {1}".format(item, allowedItems))
 
 
- #    # TODO: Do this shit
-
     if itemList == None and path == None:
         Logger = NewLogger(scf)
     elif itemList != None and path == None:
