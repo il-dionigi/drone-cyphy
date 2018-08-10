@@ -18,22 +18,28 @@
 \contentsline {section}{\numberline {4}Custom Firmware}{6}{section.4}
 \contentsline {subsection}{\numberline {4.1}Crazyflie}{6}{subsection.4.1}
 \contentsline {subsection}{\numberline {4.2}Loco-Positioning System}{7}{subsection.4.2}
-\contentsline {section}{\numberline {5}Loco-Positioning System}{7}{section.5}
-\contentsline {subsection}{\numberline {5.1}Configuring Drones}{7}{subsection.5.1}
-\contentsline {subsection}{\numberline {5.2}Configuring Nodes}{8}{subsection.5.2}
-\contentsline {subsection}{\numberline {5.3}Node Placement}{8}{subsection.5.3}
-\contentsline {section}{\numberline {6}Setpoint Following}{8}{section.6}
-\contentsline {subsection}{\numberline {6.1}Setup}{8}{subsection.6.1}
-\contentsline {subsection}{\numberline {6.2}Code}{8}{subsection.6.2}
-\contentsline {section}{\numberline {7}Logging}{10}{section.7}
-\contentsline {subsection}{\numberline {7.1}Loggable Variables}{10}{subsection.7.1}
-\contentsline {subsection}{\numberline {7.2}Skeleton Code}{10}{subsection.7.2}
-\contentsline {subsection}{\numberline {7.3}AltLogger}{12}{subsection.7.3}
-\contentsline {section}{\numberline {8}Custom Communication}{12}{section.8}
-\contentsline {subsection}{\numberline {8.1}Crazyflie $\rightleftharpoons $ Base Station}{12}{subsection.8.1}
-\contentsline {subsubsection}{\numberline {8.1.1}Crazyflie Code}{12}{subsubsection.8.1.1}
-\contentsline {subsubsection}{\numberline {8.1.2}Base Station Code}{13}{subsubsection.8.1.2}
-\contentsline {subsection}{\numberline {8.2}Crazyflie $\rightleftharpoons $ Beacon}{13}{subsection.8.2}
-\contentsline {subsubsection}{\numberline {8.2.1}Crazyflie Code}{13}{subsubsection.8.2.1}
-\contentsline {subsubsection}{\numberline {8.2.2}Beacon Code}{14}{subsubsection.8.2.2}
-\contentsline {subsection}{\numberline {8.3}Crazyflie $\rightleftharpoons $ Crazyflie}{15}{subsection.8.3}
+\contentsline {section}{\numberline {5}Debugging}{7}{section.5}
+\contentsline {subsection}{\numberline {5.1}Crazyflie Firmware Debugging}{7}{subsection.5.1}
+\contentsline {subsubsection}{\numberline {5.1.1}STM32}{8}{subsubsection.5.1.1}
+\contentsline {subsubsection}{\numberline {5.1.2}nRF51}{10}{subsubsection.5.1.2}
+\contentsline {subsection}{\numberline {5.2}Crazyflie Python Lib}{10}{subsection.5.2}
+\contentsline {subsection}{\numberline {5.3}ROS}{11}{subsection.5.3}
+\contentsline {section}{\numberline {6}Loco-Positioning System}{11}{section.6}
+\contentsline {subsection}{\numberline {6.1}Configuring Drones}{11}{subsection.6.1}
+\contentsline {subsection}{\numberline {6.2}Configuring Nodes}{11}{subsection.6.2}
+\contentsline {subsection}{\numberline {6.3}Node Placement}{11}{subsection.6.3}
+\contentsline {section}{\numberline {7}Setpoint Following}{11}{section.7}
+\contentsline {subsection}{\numberline {7.1}Setup}{11}{subsection.7.1}
+\contentsline {subsection}{\numberline {7.2}Code}{12}{subsection.7.2}
+\contentsline {section}{\numberline {8}Logging}{14}{section.8}
+\contentsline {subsection}{\numberline {8.1}Loggable Variables}{14}{subsection.8.1}
+\contentsline {subsection}{\numberline {8.2}Skeleton Code}{14}{subsection.8.2}
+\contentsline {subsection}{\numberline {8.3}AltLogger}{16}{subsection.8.3}
+\contentsline {section}{\numberline {9}Custom Communication}{16}{section.9}
+\contentsline {subsection}{\numberline {9.1}Crazyflie $\rightleftharpoons $ Base Station}{16}{subsection.9.1}
+\contentsline {subsubsection}{\numberline {9.1.1}Crazyflie Code}{16}{subsubsection.9.1.1}
+\contentsline {subsubsection}{\numberline {9.1.2}Base Station Code}{17}{subsubsection.9.1.2}
+\contentsline {subsection}{\numberline {9.2}Crazyflie $\rightleftharpoons $ Beacon}{17}{subsection.9.2}
+\contentsline {subsubsection}{\numberline {9.2.1}Crazyflie Code}{17}{subsubsection.9.2.1}
+\contentsline {subsubsection}{\numberline {9.2.2}Beacon Code}{18}{subsubsection.9.2.2}
+\contentsline {subsection}{\numberline {9.3}Crazyflie $\rightleftharpoons $ Crazyflie}{19}{subsection.9.3}

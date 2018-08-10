@@ -47,7 +47,7 @@
 		basicstyle=\color{white}\ttfamily,
 		backgroundcolor=\color{terminalBackground},
 		emph=[1]{\$},emphstyle=[1]{\color{terminalDollar}\ttfamily},
-		breaklines=true,
+		breaklines=true
 }}
 {}
 
@@ -120,7 +120,7 @@
 \noindent In terminal, type the following to install cflib:
 	
 \begin{terminal}
-$ git clone git@github.com:YOUR-USERNAME/crazyflie-lib-python.git
+$ git clone https://github.com/bitcraze/crazyflie-lib-python.git
 $ pip install -e path/to/cflib
 \end{terminal}
 
@@ -153,7 +153,7 @@ $ pip3 install -e .
 \noindent To install the Crazyflie 2.0 firmware and be able to edit it:
 
 \begin{terminal}
-$ https://github.com/bitcraze/crazyflie-firmware.git
+$ git clone https://github.com/bitcraze/crazyflie-firmware.git
 $ sudo add-apt-repository ppa:terry.guo/gcc-arm-embedded # For ubuntu 14.04 64b
 $ sudo add-apt-repository ppa:team-gcc-arm-embedded/ppa # For ubuntu 16.04 64b
 $ sudo apt-get update
@@ -168,7 +168,7 @@ $ sudo apt-get install libnewlib-arm-none-eabi
 \begin{terminal}
 $ git clone https://github.com/bitcraze/lps-node-firmware.git
 $ sudo apt-get install libncurses5:i386
-$ sudo apt-get install arm-none-eabi-gcc
+$ sudo apt-get install gcc-arm-none-eabi
 \end{terminal}
 
 \noindent Compiling is done with `make'
@@ -324,6 +324,89 @@ Then once files are modified, run the following in the root directory and upload
 $ make clean; make
 \end{terminal}
 
+\section{Debugging}
+
+\subsection{Crazyflie Firmware Debugging}
+
+\noindent For debugging the Crazyflie, the \href{https://www.bitcraze.io/debug-adapter-kit/}{debug adapter} sold through bitcraze and a \href{https://www.mouser.com/ProductDetail/STMicroelectronics/ST-LINK-V2?qs=H4BOwPtf9MC1sDQ8j3cy4w\%3D\%3D\&gclid=Cj0KCQjw77TbBRDtARIsAC4l83n7YmsHaUOhIKdwmhN99Ryz07R8_PLHcgRH1x0KDGkoEPuFHsZZVjsaAgH9EALw_wcB}{ST-Link/v2} will be needed. To install the proper ST-Link v2 drivers, do the following:
+
+\begin{terminal}
+$ git clone https://github.com/texane/stlink stlink.git
+$ cd stlink
+$ make
+# install binaries
+$ sudo cp build/Debug/st-* /usr/local/bin
+# install udev rules
+$ sudo cp etc/udev/rules.d/49-stlinkv* /etc/udev/rules.d/
+# restart udev rules
+$ sudo restart udev
+\end{terminal}
+
+\noindent Also be sure to install \href{https://www.eclipse.org/downloads/download.php?file=/oomph/epp/photon/R/eclipse-inst-linux64.tar.gz}{Eclipse Photon} and \href{https://gnu-mcu-eclipse.github.io/openocd/install/#gnulinux}{openOCD} both on-system and within Eclipse as a debugging plugin (reference link for both).
+
+\subsubsection{STM32}
+
+Within Eclipse: \\
+Go to `Run' $\rightarrow$ `Debug Configuration'. Create a new `GDB OpenOCD Debugging' configuration and call it `Crazyflie 2.0 STM32.' \\
+
+Under Main: \\
+Make `Project' your firmware folder and `C/C++ Application' your cf2.elf file. Within `Build (if required) before launching' section set `Build Configuration' to `Select Automatically' and click on `Use workspace settings'.
+
+\includegraphics[width=0.55\linewidth]{DebugConfig1.png}
+
+Under Debugger: \\
+Within `OpenOCD Client Setup' section ensure that executable is `\$\{openocd\_path\}/\$\{openocd\_executable\}', `GDB port' is 3333, `Telnet port' is 4444, and `Config options' are ` -f ``board/stm32discovery.cfg" '. \\
+Within `GDB Client Setup' ensure that `Executable' is `/usr/bin/arm-none-eabi-gdb' and the `Commands' are `set mem inaccesible-by-default off'.
+
+\includegraphics[width=0.55\linewidth]{DebugConfig2.png}
+
+Under Startup: \\
+Ensure it is the same as the following.
+
+\includegraphics[width=0.55\linewidth]{DebugConfig3.png}
+
+Under Common: \\
+Within `Save as' section check `Shared file' and set the location to the folder of the crazyflie firmware.
+
+\includegraphics[width=0.55\linewidth]{DebugConfig4.png}
+
+Under the Build Targets view add the following targets by clicking `New Build Target':
+``Make CLOAD DEBUG" with the parameters ``all CLOAD=1 DEBUG=1"
+``Make CLOAD" with the parameters ``all CLOAD=1 DEBUG=0"
+``Make DEBUG" with the parameters ``all CLOAD=0 DEBUG=1"
+``Flash using debugger" with parameters ``flash"
+``Flash using radio" with parameters ``cload"
+
+
+To run the debugger within Eclipse:\\
+$>$ Make DEBUG \\
+$>$ Flash using debugger \\
+$>$ Run $\rightarrow$ Debug Configurations $\rightarrow$ Crazyflie 2.0 STM32 $\rightarrow$ Debug
+
+\subsubsection{nRF51}
+
+\subsection{Crazyflie Python Lib}
+
+The debugging of the python code is a lot simpler as you can just use the python debugger (pdb) library.
+
+This can be done by either running the following terminal command:
+
+\begin{terminal}
+$ python -m pdb myscript.py
+\end{terminal}
+
+Or adding `import pdb; pdb.set\_trace()' where you want to break the file you wish to debug and then running the file via terminal.
+
+Within terminal, these are key commands:
+\begin{terminal}
+$ h # help
+$ l # list code around current break
+$ s # step to next executed line
+$ n # step to next line in current file
+$ c # continue to next breakpoint
+\end{terminal}
+
+\subsection{ROS}
 
 \section{Loco-Positioning System}
 

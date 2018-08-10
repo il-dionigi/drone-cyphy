@@ -1,0 +1,23 @@
+In the makefile, changed
+OPENOCD_TARGET    ?= target/stm32f4x.cfg
+
+
+
+// For PDF
+
+Get rid of all 'YOUR-USERNAME' parts
+
+
+// Not actually about debugging
+
+  const uint8_t* data,
+x=0.2,y=0.2,z=0.4
+"<\315\314L>\315\314L\276"
+
+
+vx=0.05,vy=0.05,z=??
+"|\005\315\314L=\315\314L="
+
+
+3:0 (205, 204, 76, 62, 205, 204, 76, 190, 0, 0, 0, 0, 144, 1)
+cdcc4c3ecdcc4cbe000000009001
