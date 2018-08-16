@@ -317,9 +317,10 @@ if __name__ == '__main__':
 		print(i[0])
 
 	if len(available) >= 0:
-		with SyncCrazyflie(('radio://0/85/2M/E7E7E7E7E8'), cf=Crazyflie(rw_cache='./cache')) as scf:
+		with SyncCrazyflie(('radio://0/80/2M/E7E7E7E7E8'), cf=Crazyflie(rw_cache='./cache')) as scf:
 			# reset_estimator(scf)
-			AltLogger.begin_logging(scf, "-g")
+			import pdb; pdb.set_trace()
+			AltLogger.begin_logging(scf, ["pos"])
 
 			locoMode = (sys.argv[1] == '1')
 

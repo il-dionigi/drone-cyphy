@@ -8,38 +8,40 @@
 \contentsline {subsection}{\numberline {2.2}Installed Software}{4}{subsection.2.2}
 \contentsline {subsection}{\numberline {2.3}System tweaks}{5}{subsection.2.3}
 \contentsline {subsection}{\numberline {2.4}Projects}{5}{subsection.2.4}
-\contentsline {section}{\numberline {3}Running Crazyflie}{5}{section.3}
-\contentsline {subsection}{\numberline {3.1}PC Client}{5}{subsection.3.1}
-\contentsline {subsection}{\numberline {3.2}Updating Repos}{5}{subsection.3.2}
-\contentsline {subsection}{\numberline {3.3}Updating Crazyradio Firmware}{6}{subsection.3.3}
-\contentsline {subsection}{\numberline {3.4}Compiling Crazyflie Firmware}{6}{subsection.3.4}
-\contentsline {subsection}{\numberline {3.5}Adding USB Drivers}{6}{subsection.3.5}
-\contentsline {subsection}{\numberline {3.6}Bootloading the Crazyflie}{6}{subsection.3.6}
-\contentsline {section}{\numberline {4}Custom Firmware}{6}{section.4}
-\contentsline {subsection}{\numberline {4.1}Crazyflie}{6}{subsection.4.1}
-\contentsline {subsection}{\numberline {4.2}Loco-Positioning System}{7}{subsection.4.2}
-\contentsline {section}{\numberline {5}Debugging}{7}{section.5}
-\contentsline {subsection}{\numberline {5.1}Crazyflie Firmware Debugging}{7}{subsection.5.1}
-\contentsline {subsubsection}{\numberline {5.1.1}STM32}{8}{subsubsection.5.1.1}
-\contentsline {subsubsection}{\numberline {5.1.2}nRF51}{10}{subsubsection.5.1.2}
-\contentsline {subsection}{\numberline {5.2}Crazyflie Python Lib}{10}{subsection.5.2}
-\contentsline {subsection}{\numberline {5.3}ROS}{11}{subsection.5.3}
-\contentsline {section}{\numberline {6}Loco-Positioning System}{11}{section.6}
-\contentsline {subsection}{\numberline {6.1}Configuring Drones}{11}{subsection.6.1}
-\contentsline {subsection}{\numberline {6.2}Configuring Nodes}{11}{subsection.6.2}
-\contentsline {subsection}{\numberline {6.3}Node Placement}{11}{subsection.6.3}
-\contentsline {section}{\numberline {7}Setpoint Following}{11}{section.7}
-\contentsline {subsection}{\numberline {7.1}Setup}{11}{subsection.7.1}
-\contentsline {subsection}{\numberline {7.2}Code}{12}{subsection.7.2}
-\contentsline {section}{\numberline {8}Logging}{14}{section.8}
-\contentsline {subsection}{\numberline {8.1}Loggable Variables}{14}{subsection.8.1}
-\contentsline {subsection}{\numberline {8.2}Skeleton Code}{14}{subsection.8.2}
-\contentsline {subsection}{\numberline {8.3}AltLogger}{16}{subsection.8.3}
-\contentsline {section}{\numberline {9}Custom Communication}{16}{section.9}
-\contentsline {subsection}{\numberline {9.1}Crazyflie $\rightleftharpoons $ Base Station}{16}{subsection.9.1}
-\contentsline {subsubsection}{\numberline {9.1.1}Crazyflie Code}{16}{subsubsection.9.1.1}
-\contentsline {subsubsection}{\numberline {9.1.2}Base Station Code}{17}{subsubsection.9.1.2}
-\contentsline {subsection}{\numberline {9.2}Crazyflie $\rightleftharpoons $ Beacon}{17}{subsection.9.2}
-\contentsline {subsubsection}{\numberline {9.2.1}Crazyflie Code}{17}{subsubsection.9.2.1}
-\contentsline {subsubsection}{\numberline {9.2.2}Beacon Code}{18}{subsubsection.9.2.2}
-\contentsline {subsection}{\numberline {9.3}Crazyflie $\rightleftharpoons $ Crazyflie}{19}{subsection.9.3}
+\contentsline {section}{\numberline {3}ROS Installation}{5}{section.3}
+\contentsline {subsection}{\numberline {3.1}Installation Script}{5}{subsection.3.1}
+\contentsline {section}{\numberline {4}Running Crazyflie}{7}{section.4}
+\contentsline {subsection}{\numberline {4.1}PC Client}{7}{subsection.4.1}
+\contentsline {subsection}{\numberline {4.2}Updating Repos}{7}{subsection.4.2}
+\contentsline {subsection}{\numberline {4.3}Updating Crazyradio Firmware}{8}{subsection.4.3}
+\contentsline {subsection}{\numberline {4.4}Compiling Crazyflie Firmware}{8}{subsection.4.4}
+\contentsline {subsection}{\numberline {4.5}Adding USB Drivers}{8}{subsection.4.5}
+\contentsline {subsection}{\numberline {4.6}Bootloading the Crazyflie}{8}{subsection.4.6}
+\contentsline {section}{\numberline {5}Custom Firmware}{9}{section.5}
+\contentsline {subsection}{\numberline {5.1}Crazyflie}{9}{subsection.5.1}
+\contentsline {subsection}{\numberline {5.2}Loco-Positioning System}{9}{subsection.5.2}
+\contentsline {section}{\numberline {6}Debugging}{9}{section.6}
+\contentsline {subsection}{\numberline {6.1}Crazyflie Firmware Debugging}{9}{subsection.6.1}
+\contentsline {subsubsection}{\numberline {6.1.1}STM32}{10}{subsubsection.6.1.1}
+\contentsline {subsubsection}{\numberline {6.1.2}nRF51}{13}{subsubsection.6.1.2}
+\contentsline {subsection}{\numberline {6.2}Crazyflie Python Lib}{13}{subsection.6.2}
+\contentsline {subsection}{\numberline {6.3}ROS}{14}{subsection.6.3}
+\contentsline {section}{\numberline {7}Loco-Positioning System}{14}{section.7}
+\contentsline {subsection}{\numberline {7.1}Configuring Drones}{14}{subsection.7.1}
+\contentsline {subsection}{\numberline {7.2}Configuring Nodes}{14}{subsection.7.2}
+\contentsline {subsection}{\numberline {7.3}Node Placement}{14}{subsection.7.3}
+\contentsline {section}{\numberline {8}Setpoint Following}{14}{section.8}
+\contentsline {subsection}{\numberline {8.1}Setup}{14}{subsection.8.1}
+\contentsline {subsection}{\numberline {8.2}Code}{15}{subsection.8.2}
+\contentsline {section}{\numberline {9}Logging}{17}{section.9}
+\contentsline {subsection}{\numberline {9.1}Loggable Variables}{17}{subsection.9.1}
+\contentsline {subsection}{\numberline {9.2}Skeleton Code}{17}{subsection.9.2}
+\contentsline {subsection}{\numberline {9.3}AltLogger}{19}{subsection.9.3}
+\contentsline {section}{\numberline {10}Custom Communication}{19}{section.10}
+\contentsline {subsection}{\numberline {10.1}Crazyflie $\rightleftharpoons $ Base Station}{19}{subsection.10.1}
+\contentsline {subsubsection}{\numberline {10.1.1}Crazyflie Code}{19}{subsubsection.10.1.1}
+\contentsline {subsubsection}{\numberline {10.1.2}Base Station Code}{20}{subsubsection.10.1.2}
+\contentsline {subsection}{\numberline {10.2}Crazyflie $\rightleftharpoons $ Beacon}{20}{subsection.10.2}
+\contentsline {subsubsection}{\numberline {10.2.1}Crazyflie Code}{20}{subsubsection.10.2.1}
+\contentsline {subsubsection}{\numberline {10.2.2}Beacon Code}{21}{subsubsection.10.2.2}
+\contentsline {subsection}{\numberline {10.3}Crazyflie $\rightleftharpoons $ Crazyflie}{22}{subsection.10.3}
