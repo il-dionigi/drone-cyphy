@@ -229,87 +229,19 @@ $ sudo apt-get install gcc-arm-none-eabi
 \section{ROS Installation}
 
 \subsection{Installation Script}
-\noindent Take the following script and run it on your Linux System (preferably Ubuntu 16.04).
+\noindent Rather than install ROS Kinetic via the \href{http://wiki.ros.org/kinetic/Installation}{website} for Ubuntu 16.04, run the following script via terminal:
 
 \begin{terminal}
-\#!/bin/bash
-\# The BSD License
-\# Copyright (c) 2014 OROCA and ROS Korea Users Group
-\# wget --output-document install.sh https://gist.github.com/alexanderswerdlow/b7da86e3e885d947cccba2723207a885/raw \&\& chmod 755 install.sh \&\& bash install.sh
-\# Go to update settings and change main server to mirrors.ocf.berkeley.edu
-set -x -e
+$ wget --output-document install_ros.sh https://raw.githubusercontent.com/il-dionigi/drone-cyphy/master/install.sh
+$ chmod +755 install.sh
+$ bash install.sh 
+\end{terminal}
 
-name_catkinws="catkin_ws"
-name_ros_distro="kinetic"
+\subsection{ROS\_Crazyflie Installation}
+Clone the following repository into your $\sim$/catkin\_ws/src/ and then run catkin\_make within $\sim$/catkin\_ws/ to compile the library and install it.
 
-version=`lsb_release -sc`
-
-echo "[Checking the ubuntu version]"
-case $version in
-"saucy" | "trusty" | "vivid" | "wily" | "xenial")
-;;
-*)
-echo "ERROR: This script will only work on Ubuntu Saucy(13.10) / Trusty(14.04) / Vivid / Wily / Xenial. Exit."
-exit 0
-esac
-
-sudo sh -c "echo \"net.ipv6.conf.all.disable_ipv6 = 1\" >> /etc/sysctl.conf"
-sudo sh -c "echo \"net.ipv6.conf.default.disable_ipv6 = 1\" >> /etc/sysctl.conf"
-sudo sh -c "echo \"net.ipv6.conf.lo.disable_ipv6 = 1\" >> /etc/sysctl.conf"
-sudo service networking restart
-
-echo "[Update \& upgrade the package]"
-sudo apt -y update
-sudo apt -y upgrade
-
-echo "Your ubuntu version is $relesenum"
-
-sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
-
-sudo apt-key adv --keyserver hkp://ha.pool.sks-keyservers.net:80 --recv-key 421C365BD9FF1F717815A3895523BAEEB01FA116
-
-echo "[Update \& upgrade the package]"
-sudo apt -y update
-sudo apt -y upgrade
-
-echo "[Installing ROS]"
-sudo apt -y install ros-$name_ros_distro-desktop-full ros-$name_ros_distro-rqt-*
-
-echo "[rosdep init and python-rosinstall]"
-sudo sh -c "rosdep init"
-rosdep update
-. /opt/ros/$name_ros_distro/setup.sh
-sudo apt -y install python-rosinstall
-
-echo "[Making the catkin workspace and testing the catkin_make]"
-mkdir -p ~/$name_catkinws/src
-cd ~/$name_catkinws/src
-
-catkin_init_workspace
-
-cd ~/$name_catkinws/
-
-rosdep install --from-paths -i -y src
-
-catkin_make
-
-echo "[Setting the ROS evironment]"
-sh -c "echo \"source /opt/ros/$name_ros_distro/setup.bash\" >> ~/.bashrc"
-sh -c "echo \"source ~/$name_catkinws/devel/setup.bash\" >> ~/.bashrc"
-sh -c "echo \"#export ROS_MASTER_URI=http://localhost:11311\" >> ~/.bashrc"
-sh -c "echo \"#export ROS_HOSTNAME=localhost\" >> ~/.bashrc"
-sh -c "echo \"export ROS_MASTER_URI=http://192.168.1.1:11311\" >> ~/.bashrc"
-sh -c "echo \"export ROS_IP=192.168.1.110\" >> ~/.bashrc"
-sh -c "echo \"alias tf='cd /var/tmp \&\& rosrun tf view_frames \&\& evince frames.pdf \&'\" >> ~/.bashrc"
-sudo sh -c "echo \"192.168.1.1      cyber-physical\" >> /etc/hosts"
-
-code ~/$name_catkinws/src/
-
-echo "[Complete!!!]"
-
-exec bash
-
-exit 0
+\begin{terminal}
+$ git clone https://github.com/il-dionigi/crazyflie_ros_cyphy.git
 \end{terminal}
 
 \section{Running Crazyflie}
@@ -377,6 +309,19 @@ $ make CLOAD=1 DEBUG=0
 
 \noindent Once the Drone has been assembled, it is necessary to flash the \href{https://github.com/bitcraze/crazyflie-release/releases}{latest
 firmware} onto the drone itself. Select the latest release zip file and use it for bootloading. To bootload the Crazyflie, hold the power button for 3 seconds and it should begin to flash blue LED's. If it makes the ordinary startup jingle and rotates its motors, turn it off and try again. Open up the CFClient and click on the connect tab on the top to open a drop down menu. Select Bootloader and then click on Initiate bootloader cold boot in the new window. It should connect to the Crazyflie. Once it is connected, click on browse and select the zip file you previously downloaded. Now click program and wait for it to finish flashing the firmware. once it has completed, be sure to click restart in firmware mode. Failure to do so will result in the Crazyflie not being updated to the new firmware.
+
+\section{Running ROS}
+
+\subsection{Tips \& Tricks}
+
+\noindent An easy way to run catkin\_make from any directory is by adding the following line to your $\sim$/.bashrc:
+
+\begin{terminal}
+$ ~/.bashrc
+$ cm=`cd ~/catkin_ws && catkin_make && cd -'
+\end{terminal}
+
+This allows one to type `cm' from any directory to compile/make the ros library and then return to the directory the command was executed from.
 
 \section{Custom Firmware}
 
@@ -813,6 +758,6 @@ case RELAY_D2B:
 \subsection{\texorpdfstring{Crazyflie $\rightleftharpoons$ Crazyflie}%
 	{Between Crazyflie and Crazyflie}}
 
-\noindent Under progress
+\noindent Currently abandoned for other work
 
 \end{document}
