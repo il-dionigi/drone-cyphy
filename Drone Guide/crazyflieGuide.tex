@@ -312,6 +312,27 @@ firmware} onto the drone itself. Select the latest release zip file and use it f
 
 \section{Running ROS}
 
+\subsection{ROS Flow}
+
+\noindent About ROS topics: \\
+\noindent ROS uses topics to manage shared data; one `node' or process can publish data as a message to a topic, ad then another node can get that data by subscribing. An example of a subscriber/publisher can be found in interface.py. It subscribes to the location data that the server gets from he drone, and it publishes data the server should send. \\
+
+\noindent About the code: \\
+\noindent The launch files use crazyflie\_add node to add the crazyflie based on its uri and then calls the crazyflie\_server node and the python script. The server is in direct communication with the drone; it gets messages to send based on the subscribed topics, i.e. based on which topic the python code publishes to.
+
+\subsection{Terminal Commands}
+
+\begin{terminal}
+$ roscore // start the roscore which is needed for further commands
+$ roslaunch <dir> <file> // run a .launch file
+$	e.g. roslaunch crazyflie_demo position.launch
+$ rosrun crazyflie_tools <tool> // e.g. scan, which scans
+$ rostopic echo <topic> // echos all data published to topic
+$ rostopic list -v // lists all topics + how many subscribers/publishers
+$ rostopic info <topic> // lists which nodes are published/subscribed
+$ rosrun rqt_graph rqt_graph // shows a graph of publishers/subscribers
+\end{terminal}
+
 \subsection{Tips \& Tricks}
 
 \noindent An easy way to run catkin\_make from any directory is by adding the following line to your $\sim$/.bashrc:
@@ -321,7 +342,13 @@ $ ~/.bashrc
 $ cm=`cd ~/catkin_ws && catkin_make && cd -'
 \end{terminal}
 
-This allows one to type `cm' from any directory to compile/make the ros library and then return to the directory the command was executed from.
+This allows one to type `cm' from any directory to compile/make the ROS library and then return to the directory the command was executed from. \\
+
+Note, however, that catkin\_make only needs to be run if C code is modified, and not if python code or launch files are changed. \\
+
+On creating a python file, it must be chmod'd to add executable permission. \\
+
+If you get a what() timeout error, this usually means the connection failed because it could not find the drone, you must change the address in the launch file. \\
 
 \section{Custom Firmware}
 

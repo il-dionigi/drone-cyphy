@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2018.8.10)  16 AUG 2018 17:08
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2018.8.10)  17 AUG 2018 12:21
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -335,7 +335,7 @@ LaTeX Info: Redefining \nameref on input line 93.
 \openout4 = `crazyflieGuide.out'.
 
 
-<DronesforDummies.jpg, id=205, 167.29167pt x 125.13417pt>
+<DronesforDummies.jpg, id=213, 167.29167pt x 125.13417pt>
 File: DronesforDummies.jpg Graphic file (type jpg)
 
 <use DronesforDummies.jpg>
@@ -353,7 +353,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.39 ...}{\numberline {10}Logging}{15}{section.10}
+l.39 ...numberline {9.1}Setup}{14}{subsection.9.1}
                                                    [1
 
 ])
@@ -387,107 +387,132 @@ LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
 LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <10> not available
 (Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 282.
  [6]
-Underfull \hbox (badness 10000) in paragraph at lines 335--336
+Underfull \hbox (badness 10000) in paragraph at lines 317--319
 
  []
 
 [7]
-Overfull \hbox (0.71094pt too wide) in paragraph at lines 352--353
+Underfull \hbox (badness 10000) in paragraph at lines 345--346
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 347--348
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 349--350
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 351--352
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 362--363
+
+ []
+
+[8]
+Overfull \hbox (0.71094pt too wide) in paragraph at lines 379--380
 []\OT1/cmr/m/n/10 Then once files are mod-i-fied, run the fol-low-ing in the ro
 ot di-rec-tory and up-load the `.dfu' in `lps-node-firmware/bin'
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 380--382
+Underfull \hbox (badness 10000) in paragraph at lines 407--409
 
  []
 
-[8] <DebugConfig1.png, id=396, 173.448pt x 113.4639pt>
+<DebugConfig1.png, id=401, 173.448pt x 113.4639pt>
 File: DebugConfig1.png Graphic file (type png)
  <use DebugConfig1.png>
-Package pdftex.def Info: DebugConfig1.png used on input line 386.
+Package pdftex.def Info: DebugConfig1.png used on input line 413.
 (pdftex.def)             Requested size: 269.24847pt x 176.14247pt.
 
-<DebugConfig2.png, id=397, 174.1707pt x 114.1866pt>
+[9] <DebugConfig2.png, id=421, 174.1707pt x 114.1866pt>
 File: DebugConfig2.png Graphic file (type png)
  <use DebugConfig2.png>
-Package pdftex.def Info: DebugConfig2.png used on input line 392.
+Package pdftex.def Info: DebugConfig2.png used on input line 419.
 (pdftex.def)             Requested size: 269.24847pt x 176.53262pt.
 
-<DebugConfig3.png, id=398, 512.66531pt x 843.15pt>
+<DebugConfig3.png, id=422, 512.66531pt x 843.15pt>
 File: DebugConfig3.png Graphic file (type png)
  <use DebugConfig3.png>
-Package pdftex.def Info: DebugConfig3.png used on input line 397.
+Package pdftex.def Info: DebugConfig3.png used on input line 424.
 (pdftex.def)             Requested size: 269.24847pt x 442.81476pt.
 
-[9 <./DebugConfig1.png (PNG copy)> <./DebugConfig2.png (PNG copy)>] [10 <./Debu
-gConfig3.png>] <DebugConfig4.png, id=410, 174.4116pt x 114.1866pt>
+[10 <./DebugConfig1.png (PNG copy)> <./DebugConfig2.png (PNG copy)>] [11 <./Deb
+ugConfig3.png>] <DebugConfig4.png, id=433, 174.4116pt x 114.1866pt>
 File: DebugConfig4.png Graphic file (type png)
 
 <use DebugConfig4.png>
-Package pdftex.def Info: DebugConfig4.png used on input line 404.
+Package pdftex.def Info: DebugConfig4.png used on input line 431.
 (pdftex.def)             Requested size: 269.24847pt x 176.27998pt.
- [11 <./DebugConfig4.png (PNG copy)>]
-Underfull \hbox (badness 10000) in paragraph at lines 450--451
+ [12 <./DebugConfig4.png (PNG copy)>]
+Underfull \hbox (badness 10000) in paragraph at lines 477--478
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 452--453
+Underfull \hbox (badness 10000) in paragraph at lines 479--480
 
  []
 
-[12]
-Underfull \hbox (badness 10000) in paragraph at lines 472--473
+[13]
+Underfull \hbox (badness 10000) in paragraph at lines 499--500
 
  []
 
-[13] (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
+[14] (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2015/06/04 1.6 listings language file
-) [14]
-<TOCList.png, id=494, 1606.0pt x 876.27374pt>
+) [15]
+<TOCList.png, id=518, 1606.0pt x 876.27374pt>
 File: TOCList.png Graphic file (type png)
  <use TOCList.png>
-Package pdftex.def Info: TOCList.png used on input line 537.
+Package pdftex.def Info: TOCList.png used on input line 564.
 (pdftex.def)             Requested size: 489.53998pt x 267.10933pt.
- [15 <./TOCList.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 601--602
+ [16 <./TOCList.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 628--629
 
  []
 
-[16]
+[17]
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 621.
+(Font)              <12> on input line 648.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 621.
+(Font)              <8> on input line 648.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 621.
+(Font)              <6> on input line 648.
  (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2015/06/04 1.6 listings language file
 )
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2015/06/04 1.6 (Carsten Heinz)
-) [17]
-Overfull \hbox (32.5293pt too wide) in paragraph at lines 675--676
+) [18]
+Overfull \hbox (32.5293pt too wide) in paragraph at lines 702--703
 \OT1/cmr/m/n/10 When the drone re-ceives a packet from the bea-con we check the
  type of packet it is. If it is of type LPS[]TWR[]RELAY[]B2D
  []
 
-[18] [19]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 763.
- [20]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 763.
+[19] [20]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 790.
+ [21]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 790.
  (./crazyflieGuide.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 763.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 763.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 790.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 790.
 Package rerunfilecheck Info: File `crazyflieGuide.out' has not changed.
-(rerunfilecheck)             Checksum: 185C52E4FDD2DD61F5C1D133A6191066;3271.
+(rerunfilecheck)             Checksum: 9D2471FA6147D34C3E0408A1F1F6EE1A;3396.
  ) 
 Here is how much of TeX's memory you used:
- 8461 strings out of 494953
- 122070 string characters out of 6180977
+ 8546 strings out of 494953
+ 123064 string characters out of 6180977
  361711 words of memory out of 5000000
- 11305 multiletter control sequences out of 15000+600000
+ 11378 multiletter control sequences out of 15000+600000
  8998 words of font info for 33 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  33i,11n,49p,1423b,1808s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -503,10 +528,10 @@ lic/amsfonts/cm/cmr9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsf
 onts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/c
 m/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt
 9.pfb>
-Output written on crazyflieGuide.pdf (21 pages, 708799 bytes).
+Output written on crazyflieGuide.pdf (22 pages, 711314 bytes).
 PDF statistics:
- 805 PDF objects out of 1000 (max. 8388607)
- 754 compressed objects within 8 object streams
- 369 named destinations out of 1000 (max. 500000)
- 431 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 830 PDF objects out of 1000 (max. 8388607)
+ 778 compressed objects within 8 object streams
+ 381 named destinations out of 1000 (max. 500000)
+ 447 words of extra memory for PDF output out of 10000 (max. 10000000)
 

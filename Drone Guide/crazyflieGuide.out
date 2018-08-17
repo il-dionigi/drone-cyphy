@@ -19,32 +19,34 @@
 \BOOKMARK [2][-]{subsection.4.5}{Adding USB Drivers}{section.4}% 19
 \BOOKMARK [2][-]{subsection.4.6}{Bootloading the Crazyflie}{section.4}% 20
 \BOOKMARK [1][-]{section.5}{Running ROS}{}% 21
-\BOOKMARK [2][-]{subsection.5.1}{Tips \046 Tricks}{section.5}% 22
-\BOOKMARK [1][-]{section.6}{Custom Firmware}{}% 23
-\BOOKMARK [2][-]{subsection.6.1}{Crazyflie}{section.6}% 24
-\BOOKMARK [2][-]{subsection.6.2}{Loco-Positioning System}{section.6}% 25
-\BOOKMARK [1][-]{section.7}{Debugging}{}% 26
-\BOOKMARK [2][-]{subsection.7.1}{Crazyflie Firmware Debugging}{section.7}% 27
-\BOOKMARK [3][-]{subsubsection.7.1.1}{STM32}{subsection.7.1}% 28
-\BOOKMARK [3][-]{subsubsection.7.1.2}{nRF51}{subsection.7.1}% 29
-\BOOKMARK [2][-]{subsection.7.2}{Crazyflie Python Lib}{section.7}% 30
-\BOOKMARK [2][-]{subsection.7.3}{ROS}{section.7}% 31
-\BOOKMARK [1][-]{section.8}{Loco-Positioning System}{}% 32
-\BOOKMARK [2][-]{subsection.8.1}{Configuring Drones}{section.8}% 33
-\BOOKMARK [2][-]{subsection.8.2}{Configuring Nodes}{section.8}% 34
-\BOOKMARK [2][-]{subsection.8.3}{Node Placement}{section.8}% 35
-\BOOKMARK [1][-]{section.9}{Setpoint Following}{}% 36
-\BOOKMARK [2][-]{subsection.9.1}{Setup}{section.9}% 37
-\BOOKMARK [2][-]{subsection.9.2}{Code}{section.9}% 38
-\BOOKMARK [1][-]{section.10}{Logging}{}% 39
-\BOOKMARK [2][-]{subsection.10.1}{Loggable Variables}{section.10}% 40
-\BOOKMARK [2][-]{subsection.10.2}{Skeleton Code}{section.10}% 41
-\BOOKMARK [2][-]{subsection.10.3}{AltLogger}{section.10}% 42
-\BOOKMARK [1][-]{section.11}{Custom Communication}{}% 43
-\BOOKMARK [2][-]{subsection.11.1}{Between Crazyflie and Base Station}{section.11}% 44
-\BOOKMARK [3][-]{subsubsection.11.1.1}{Crazyflie Code}{subsection.11.1}% 45
-\BOOKMARK [3][-]{subsubsection.11.1.2}{Base Station Code}{subsection.11.1}% 46
-\BOOKMARK [2][-]{subsection.11.2}{Between Crazyflie and Beacon}{section.11}% 47
-\BOOKMARK [3][-]{subsubsection.11.2.1}{Crazyflie Code}{subsection.11.2}% 48
-\BOOKMARK [3][-]{subsubsection.11.2.2}{Beacon Code}{subsection.11.2}% 49
-\BOOKMARK [2][-]{subsection.11.3}{Between Crazyflie and Crazyflie}{section.11}% 50
+\BOOKMARK [2][-]{subsection.5.1}{ROS Flow}{section.5}% 22
+\BOOKMARK [2][-]{subsection.5.2}{Terminal Commands}{section.5}% 23
+\BOOKMARK [2][-]{subsection.5.3}{Tips \046 Tricks}{section.5}% 24
+\BOOKMARK [1][-]{section.6}{Custom Firmware}{}% 25
+\BOOKMARK [2][-]{subsection.6.1}{Crazyflie}{section.6}% 26
+\BOOKMARK [2][-]{subsection.6.2}{Loco-Positioning System}{section.6}% 27
+\BOOKMARK [1][-]{section.7}{Debugging}{}% 28
+\BOOKMARK [2][-]{subsection.7.1}{Crazyflie Firmware Debugging}{section.7}% 29
+\BOOKMARK [3][-]{subsubsection.7.1.1}{STM32}{subsection.7.1}% 30
+\BOOKMARK [3][-]{subsubsection.7.1.2}{nRF51}{subsection.7.1}% 31
+\BOOKMARK [2][-]{subsection.7.2}{Crazyflie Python Lib}{section.7}% 32
+\BOOKMARK [2][-]{subsection.7.3}{ROS}{section.7}% 33
+\BOOKMARK [1][-]{section.8}{Loco-Positioning System}{}% 34
+\BOOKMARK [2][-]{subsection.8.1}{Configuring Drones}{section.8}% 35
+\BOOKMARK [2][-]{subsection.8.2}{Configuring Nodes}{section.8}% 36
+\BOOKMARK [2][-]{subsection.8.3}{Node Placement}{section.8}% 37
+\BOOKMARK [1][-]{section.9}{Setpoint Following}{}% 38
+\BOOKMARK [2][-]{subsection.9.1}{Setup}{section.9}% 39
+\BOOKMARK [2][-]{subsection.9.2}{Code}{section.9}% 40
+\BOOKMARK [1][-]{section.10}{Logging}{}% 41
+\BOOKMARK [2][-]{subsection.10.1}{Loggable Variables}{section.10}% 42
+\BOOKMARK [2][-]{subsection.10.2}{Skeleton Code}{section.10}% 43
+\BOOKMARK [2][-]{subsection.10.3}{AltLogger}{section.10}% 44
+\BOOKMARK [1][-]{section.11}{Custom Communication}{}% 45
+\BOOKMARK [2][-]{subsection.11.1}{Between Crazyflie and Base Station}{section.11}% 46
+\BOOKMARK [3][-]{subsubsection.11.1.1}{Crazyflie Code}{subsection.11.1}% 47
+\BOOKMARK [3][-]{subsubsection.11.1.2}{Base Station Code}{subsection.11.1}% 48
+\BOOKMARK [2][-]{subsection.11.2}{Between Crazyflie and Beacon}{section.11}% 49
+\BOOKMARK [3][-]{subsubsection.11.2.1}{Crazyflie Code}{subsection.11.2}% 50
+\BOOKMARK [3][-]{subsubsection.11.2.2}{Beacon Code}{subsection.11.2}% 51
+\BOOKMARK [2][-]{subsection.11.3}{Between Crazyflie and Crazyflie}{section.11}% 52
