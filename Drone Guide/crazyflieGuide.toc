@@ -35,8 +35,8 @@
 \contentsline {subsection}{\numberline {8.1}Configuring Drones}{13}{subsection.8.1}
 \contentsline {subsection}{\numberline {8.2}Configuring Nodes}{13}{subsection.8.2}
 \contentsline {subsection}{\numberline {8.3}Node Placement}{13}{subsection.8.3}
-\contentsline {section}{\numberline {9}Setpoint Following}{13}{section.9}
-\contentsline {subsection}{\numberline {9.1}Setup}{13}{subsection.9.1}
+\contentsline {section}{\numberline {9}Setpoint Following}{14}{section.9}
+\contentsline {subsection}{\numberline {9.1}Setup}{14}{subsection.9.1}
 \contentsline {subsection}{\numberline {9.2}Code}{14}{subsection.9.2}
 \contentsline {section}{\numberline {10}Logging}{16}{section.10}
 \contentsline {subsection}{\numberline {10.1}Loggable Variables}{16}{subsection.10.1}

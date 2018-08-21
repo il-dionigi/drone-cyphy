@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2018.8.10)  17 AUG 2018 12:21
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2018.8.10)  20 AUG 2018 11:29
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -353,7 +353,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.39 ...numberline {9.1}Setup}{14}{subsection.9.1}
+l.39 ...numberline {9.1}Setup}{13}{subsection.9.1}
                                                    [1
 
 ])
@@ -462,60 +462,65 @@ Underfull \hbox (badness 10000) in paragraph at lines 479--480
 
  []
 
+
+Underfull \hbox (badness 10000) in paragraph at lines 483--484
+
+ []
+
 [13]
-Underfull \hbox (badness 10000) in paragraph at lines 499--500
+Underfull \hbox (badness 10000) in paragraph at lines 508--509
 
  []
 
 [14] (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2015/06/04 1.6 listings language file
 ) [15]
-<TOCList.png, id=518, 1606.0pt x 876.27374pt>
+<TOCList.png, id=523, 1606.0pt x 876.27374pt>
 File: TOCList.png Graphic file (type png)
  <use TOCList.png>
-Package pdftex.def Info: TOCList.png used on input line 564.
+Package pdftex.def Info: TOCList.png used on input line 573.
 (pdftex.def)             Requested size: 489.53998pt x 267.10933pt.
  [16 <./TOCList.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 628--629
+Underfull \hbox (badness 10000) in paragraph at lines 637--638
 
  []
 
 [17]
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 648.
+(Font)              <12> on input line 657.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 648.
+(Font)              <8> on input line 657.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 648.
+(Font)              <6> on input line 657.
  (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2015/06/04 1.6 listings language file
 )
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2015/06/04 1.6 (Carsten Heinz)
 ) [18]
-Overfull \hbox (32.5293pt too wide) in paragraph at lines 702--703
+Overfull \hbox (32.5293pt too wide) in paragraph at lines 711--712
 \OT1/cmr/m/n/10 When the drone re-ceives a packet from the bea-con we check the
  type of packet it is. If it is of type LPS[]TWR[]RELAY[]B2D
  []
 
 [19] [20]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 790.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 799.
  [21]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 790.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 799.
  (./crazyflieGuide.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 790.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 790.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 799.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 799.
 Package rerunfilecheck Info: File `crazyflieGuide.out' has not changed.
 (rerunfilecheck)             Checksum: 9D2471FA6147D34C3E0408A1F1F6EE1A;3396.
  ) 
 Here is how much of TeX's memory you used:
- 8546 strings out of 494953
- 123064 string characters out of 6180977
+ 8557 strings out of 494953
+ 123206 string characters out of 6180977
  361711 words of memory out of 5000000
- 11378 multiletter control sequences out of 15000+600000
+ 11384 multiletter control sequences out of 15000+600000
  8998 words of font info for 33 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 33i,11n,49p,1423b,1808s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 33i,11n,49p,1426b,1808s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/share/tex
@@ -528,10 +533,10 @@ lic/amsfonts/cm/cmr9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsf
 onts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/c
 m/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt
 9.pfb>
-Output written on crazyflieGuide.pdf (22 pages, 711314 bytes).
+Output written on crazyflieGuide.pdf (22 pages, 712170 bytes).
 PDF statistics:
- 830 PDF objects out of 1000 (max. 8388607)
- 778 compressed objects within 8 object streams
- 381 named destinations out of 1000 (max. 500000)
+ 836 PDF objects out of 1000 (max. 8388607)
+ 784 compressed objects within 8 object streams
+ 386 named destinations out of 1000 (max. 500000)
  447 words of extra memory for PDF output out of 10000 (max. 10000000)
 

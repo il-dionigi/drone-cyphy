@@ -480,7 +480,16 @@ $ c # continue to next breakpoint
 
 \subsection{Configuring Nodes}
 
-\noindent To flash node firmware to the Loco-Positioning Nodes, you will need to install the LPS configuration tool. Clone the following \href{https://github.com/bitcraze/lps-tools}{Git Repository} and follow the instructions in the README. If you are running Windows on your device, you can alternatively install it by downloading the \href{https://github.com/bitcraze/lps-tools/releases}{lps-tools-win32-install file}. Once you have installed the configuration tool, you must download the \href{https://github.com/bitcraze/lps-node-firmware/releases}{firmware for the nodes}. Select the .dfu file. To update the node, open up the LPS configuration tool and plug in the node via USB while holding down the button labeled DFU. If on Windows, you will need to \href{https://wiki.bitcraze.io/misc:usbwindows}{follow instructions} on installing the nodes USB driver with Zadig. In the client, click on the browse button and select the firmware file you recently downloaded. Now click update and finally press the reset button on the node once it completes the update. Once all the nodes are updated, connect them to the computer normally and configure the ID. If you wish to operate in TWR mode, make sure the Mode is set to Anchor (TWR). Click apply and assign every node a different ID. Mark them with electrical tape or some other method to easily keep track of the IDs of the nodes.
+\noindent To flash node firmware to the Loco-Positioning Nodes, you will need to install the LPS configuration tool. Clone the following \href{https://github.com/bitcraze/lps-tools}{Git Repository} and follow the instructions in the README. If you are running Windows on your device, you can alternatively install it by downloading the \href{https://github.com/bitcraze/lps-tools/releases}{lps-tools-win32-install file}. Once you have installed the configuration tool, you must download the \href{https://github.com/bitcraze/lps-node-firmware/releases}{firmware for the nodes}. Select the .dfu file. To update the node, open up the LPS configuration tool and plug in the node via USB while holding down the button labeled DFU. If on Windows, you will need to \href{https://wiki.bitcraze.io/misc:usbwindows}{follow instructions} on installing the nodes USB driver with Zadig. In the client, click on the browse button and select the firmware file you recently downloaded. Now click update and finally press the reset button on the node once it completes the update. Once all the nodes are updated, connect them to the computer normally and configure the ID. If you wish to operate in TWR mode, make sure the Mode is set to Anchor (TWR). Click apply and assign every node a different ID. Mark them with electrical tape or some other method to easily keep track of the IDs of the nodes. \\
+
+\noindent If the above doesn't work for setting the ID/ switching the mode or flashing a new firmware is not required, there is another method. By installing picocom and plugging in a beacon, one is able to modify the beacon's ID or mode via terminal in the following way:
+
+\begin{terminal}
+$ sudo apt-get install picocom
+$ dmesg # use this to find the address
+$ picocom /dev/ttyACM0 # this was the address on my device
+$ h # help command which lists all other commands
+\end{terminal}
 
 \subsection{Node Placement}
 
